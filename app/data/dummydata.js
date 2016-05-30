@@ -1,20 +1,3 @@
-class App extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
-    return (
-      <Users />
-      <Chat />
-    );
-  }
-}
-
-ReactDOM.render(<App data={messageData}/>, document.getElementById('app'));
-
 var messagesData =
 [
   {
@@ -38,3 +21,5 @@ var messagesData =
     message: 'hello'
   },
 ];
+
+window.messagesData = messagesData;

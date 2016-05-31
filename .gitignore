@@ -3,3 +3,7 @@ node_modules
 
 # webpack template
 webpack.config-orig.js
+
+# .DS_Store
+*.DS_Store
+.DS_Store

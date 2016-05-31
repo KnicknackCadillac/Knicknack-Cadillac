@@ -1,25 +1,21 @@
-var messagesData =
+const messagesData =
 [
   {
-    username: 'Bob',
+    username: 'Daniel',
     message: 'hello'
   },
   {
-    username: 'Bob',
-    message: 'hello'
+    username: 'Arthur',
+    message: 'bye'
   },
   {
-    username: 'Bob',
-    message: 'hello'
+    username: 'Ali',
+    message: 'what'
   },
   {
-    username: 'Bob',
-    message: 'hello'
-  },
-  {
-    username: 'Bob',
-    message: 'hello'
+    username: 'Shinji',
+    message: 'yolo'
   },
 ];
 
-window.messagesData = messagesData;
+export default messagesData;

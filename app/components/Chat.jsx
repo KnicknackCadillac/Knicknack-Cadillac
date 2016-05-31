@@ -1,7 +1,9 @@
-let Chat = (props) => (
+import React from 'react';
+
+const Chat = props => (
   <div>
-    { this.props.data.map((user) => { user.message }) }
+    { props.message.message }
   </div>
 );
 
-window.Chat = Chat;
+export default Chat;

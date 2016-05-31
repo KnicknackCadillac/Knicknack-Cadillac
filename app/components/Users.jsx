@@ -1,8 +1,11 @@
 import React from 'react';
+import User from './User.jsx'
 
-const Users = ({ data }) => (
+const Users = props => (
   <div>
-    { data.map( chat => { chat.username }) }
+    { props.chats.map( user => (
+      <User user={user} key={user.message} click={() => props.click(user)} />
+    )) }
   </div>
 );
 

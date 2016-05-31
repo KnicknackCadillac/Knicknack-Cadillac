@@ -60,6 +60,14 @@
 	
 	var _Users2 = _interopRequireDefault(_Users);
 	
+	var _Chats = __webpack_require__(170);
+	
+	var _Chats2 = _interopRequireDefault(_Chats);
+	
+	var _dummydata = __webpack_require__(173);
+	
+	var _dummydata2 = _interopRequireDefault(_dummydata);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67,6 +75,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	// import test from './test.jsx';
+	
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -77,41 +87,83 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 	
 	    _this.state = {
-	      chats: [{
-	        username: 'bob',
-	        message: 'hello'
-	      }, {
-	        username: 'bob',
-	        message: 'hello'
-	      }]
+	      chats: [],
+	      message: {
+	        message: ''
+	      }
 	    };
 	    return _this;
 	  }
 	
-	  // componentDidMount() {
-	  //   $.ajax({
-	  //     type: 'GET',
-	  //     url: '/messages',
-	  //     success: function(data) {
-	  //       this.setState({
-	  //         chat: data
-	  //       });
-	  //     }
-	  //   });
-	  // }
-	
 	  _createClass(App, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.setState({
+	        chats: this.props.props
+	      });
+	      $.ajax({
+	        type: 'GET',
+	        url: '/messages',
+	        success: function success(data) {
+	          this.setState({
+	            chat: data
+	          });
+	        }
+	      });
+	      $.ajax({
+	        type: 'POST',
+	        url: '/messages',
+	        data: { username: 'testuser', message: 'testing message POST' },
+	        success: function success(data) {
+	          console.log('Successfully posted message');
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'selectUser',
 	    value: function selectUser(user) {
-	      // this.state
+	      console.log(user.message);
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	      /**
+	      var author = this.state.message.trim();
+	      this.props.onCommentSubmit({author: author, text: text});
+	      this.setState({author: '', text: ''});
+	      **/
+	      // $.ajax({
+	      //   type: 'GET',
+	      //   url: '/messages',
+	      //   success: function(data) {
+	      //     this.setState({
+	      //       chat: data
+	      //     });
+	      //   }
+	      // });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_Users2.default, { data: this.state.chats, onClick: this.selectUser.bind(this) })
+	        _react2.default.createElement('div', null),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-md-6' },
+	          _react2.default.createElement(_Users2.default, { chats: this.state.chats, click: function click(user) {
+	              return _this2.selectUser(user);
+	            } })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-md-6' },
+	          _react2.default.createElement(_Chats2.default, { chats: this.state.chats })
+	        )
 	      );
 	    }
 	  }]);
@@ -119,7 +171,7 @@
 	  return App;
 	}(_react2.default.Component);
 	
-	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+	_reactDom2.default.render(_react2.default.createElement(App, { props: _dummydata2.default }), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -20403,20 +20455,135 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _User = __webpack_require__(169);
+	
+	var _User2 = _interopRequireDefault(_User);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Users = function Users(_ref) {
-	  var data = _ref.data;
+	var Users = function Users(props) {
 	  return _react2.default.createElement(
 	    'div',
 	    null,
-	    data.map(function (chat) {
-	      chat.username;
+	    props.chats.map(function (user) {
+	      return _react2.default.createElement(_User2.default, { user: user, key: user.message, click: function click() {
+	          return props.click(user);
+	        } });
 	    })
 	  );
 	};
 	
 	exports.default = Users;
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var User = function User(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { onClick: props.click },
+	    props.user.username
+	  );
+	};
+	
+	exports.default = User;
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Chat = __webpack_require__(171);
+	
+	var _Chat2 = _interopRequireDefault(_Chat);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Chats = function Chats(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    props.chats.map(function (message) {
+	      return _react2.default.createElement(_Chat2.default, { message: message, key: message.message });
+	    })
+	  );
+	};
+	
+	exports.default = Chats;
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Chat = function Chat(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    props.message.message
+	  );
+	};
+	
+	exports.default = Chat;
+
+/***/ },
+/* 172 */,
+/* 173 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var messagesData = [{
+	  username: 'Daniel',
+	  message: 'hello'
+	}, {
+	  username: 'Arthur',
+	  message: 'bye'
+	}, {
+	  username: 'Ali',
+	  message: 'what'
+	}, {
+	  username: 'Shinji',
+	  message: 'yolo'
+	}];
+	
+	exports.default = messagesData;
 
 /***/ }
 /******/ ]);

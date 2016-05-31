@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Users from 'Users';
+import Users from './Users.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Users data={ this.state.chat } onClick={ this.selectUser.bind(this) } />
+        <Users data={ this.state.chats } onClick={ this.selectUser.bind(this) } />
       </div>
     );
   }

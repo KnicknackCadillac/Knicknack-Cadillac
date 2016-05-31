@@ -10,9 +10,10 @@
     "postinstall": "curl -s https://raw.githubusercontent.com/hackreactor-labs/pomander/master/bin/install | bash"
   },
   "dependencies": {
+    "express": "^4.10.2",
+    "jquery": "^2.2.4",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "express": "^4.10.2",
     "socket.io": "^1.4.6"
   },
   "devDependencies": {

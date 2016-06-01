@@ -64,7 +64,7 @@
 	
 	var _Chats2 = _interopRequireDefault(_Chats);
 	
-	var _dummydata = __webpack_require__(172);
+	var _dummydata = __webpack_require__(171);
 	
 	var _dummydata2 = _interopRequireDefault(_dummydata);
 	
@@ -91,42 +91,38 @@
 	        username: 'someUserName',
 	        message: 'some message yeah'
 	      }],
-	      message: {
+	      chat: {
+	        username: 'boo',
 	        message: ''
 	      }
 	    };
 	    return _this;
 	  }
 	
-	  // getAllMessages(callback) {
-	  //   fetch('/messages')
-	  //   .then(items => {
-	  //     callback(items);
-	  //   })
-	  //   .catch(err =>
-	  //     console.error(err)
-	  //   );
-	  // }
-	
 	  _createClass(App, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.setState({
-	        chats: this.props.props
-	      });
-	
+	    key: 'getAllMessages',
+	    value: function getAllMessages(callback) {
 	      $.ajax({
 	        type: 'GET',
 	        url: '/messages',
 	        contentType: 'application/json',
 	        success: function success(data) {
-	          this.setState({
-	            chat: data
-	          });
+	          callback(data);
 	        },
 	        error: function error(err) {
 	          console.log('Error fetching results: ', err);
 	        }
+	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      this.getAllMessages(function (items) {
+	        _this2.setState({
+	          chats: items
+	        });
 	      });
 	    }
 	  }, {
@@ -135,29 +131,33 @@
 	      console.log(user.message);
 	    }
 	  }, {
+	    key: 'handleMessageChange',
+	    value: function handleMessageChange(e) {
+	      this.setState({
+	        chat: {
+	          username: 'boo',
+	          message: e.target.value
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
-	      var _this2 = this;
-	
 	      e.preventDefault();
-	      getAllMessages(function (messages) {
-	        _this2.setState({
-	          chats: messages
-	        });
+	      $.ajax({
+	        type: 'POST',
+	        url: '/messages',
+	        data: {
+	          username: this.state.chat.username,
+	          message: this.state.chat.message
+	        },
+	        success: function success(data) {
+	          console.log('Successfully posted message');
+	        }
 	      });
-	      /**
-	      var author = this.state.message.trim();
-	      this.props.onCommentSubmit({author: author, text: text});
-	      this.setState({author: '', text: ''});
-	      **/
-	      // $.ajax({
-	      //   type: 'POST',
-	      //   url: '/messages',
-	      //   data: {username: 'testuser', message: 'testing message POST'},
-	      //   success: function(data) {
-	      //     console.log('Successfully posted message');
-	      //   }
-	      // });
+	      this.setState({
+	        chat: { message: '' }
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -167,11 +167,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          this.state.chats[0].username
-	        ),
+	        _react2.default.createElement('div', null),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'col-md-6' },
@@ -182,7 +178,14 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'col-md-6' },
-	          _react2.default.createElement(_Chats2.default, { chats: this.state.chats })
+	          _react2.default.createElement(_Chats2.default, {
+	            chats: this.state.chats,
+	            sendMessage: function sendMessage(event) {
+	              return _this3.handleSubmit(event);
+	            }, handleMessageChange: function handleMessageChange(event) {
+	              return _this3.handleMessageChange(event);
+	            },
+	            currentChat: this.state.chat })
 	        )
 	      );
 	    }
@@ -20482,15 +20485,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Users = function Users(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    props.chats.map(function (user) {
-	      return _react2.default.createElement(_User2.default, { user: user, key: user.message, click: function click() {
-	          return props.click(user);
-	        } });
-	    })
-	  );
+	  return _react2.default.createElement('div', null);
 	};
 	
 	exports.default = Users;
@@ -20535,7 +20530,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Chat = __webpack_require__(171);
+	var _Chat = __webpack_require__(172);
 	
 	var _Chat2 = _interopRequireDefault(_Chat);
 	
@@ -20545,6 +20540,16 @@
 	  return _react2.default.createElement(
 	    'div',
 	    null,
+	    _react2.default.createElement(
+	      'form',
+	      { onSubmit: function onSubmit(e) {
+	          return props.sendMessage(e);
+	        } },
+	      _react2.default.createElement('input', { type: 'text', value: props.currentChat.message, onChange: function onChange(e) {
+	          return props.handleMessageChange(e);
+	        } }),
+	      _react2.default.createElement('input', { type: 'submit' })
+	    ),
 	    props.chats.map(function (message) {
 	      return _react2.default.createElement(_Chat2.default, { message: message, key: message.message });
 	    })
@@ -20555,6 +20560,31 @@
 
 /***/ },
 /* 171 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var messagesData = [{
+	  username: 'Daniel',
+	  message: 'hello'
+	}, {
+	  username: 'Arthur',
+	  message: 'bye'
+	}, {
+	  username: 'Ali',
+	  message: 'what'
+	}, {
+	  username: 'Shinji',
+	  message: 'yolo'
+	}];
+	
+	exports.default = messagesData;
+
+/***/ },
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20578,31 +20608,6 @@
 	};
 	
 	exports.default = Chat;
-
-/***/ },
-/* 172 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var messagesData = [{
-	  username: 'Daniel',
-	  message: 'hello'
-	}, {
-	  username: 'Arthur',
-	  message: 'bye'
-	}, {
-	  username: 'Ali',
-	  message: 'what'
-	}, {
-	  username: 'Shinji',
-	  message: 'yolo'
-	}];
-	
-	exports.default = messagesData;
 
 /***/ }
 /******/ ]);

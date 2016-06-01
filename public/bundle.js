@@ -64,7 +64,7 @@
 	
 	var _Chats2 = _interopRequireDefault(_Chats);
 	
-	var _dummydata = __webpack_require__(173);
+	var _dummydata = __webpack_require__(172);
 	
 	var _dummydata2 = _interopRequireDefault(_dummydata);
 	
@@ -87,7 +87,10 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 	
 	    _this.state = {
-	      chats: [],
+	      chats: [{
+	        username: 'someUserName',
+	        message: 'some message yeah'
+	      }],
 	      message: {
 	        message: ''
 	      }
@@ -95,27 +98,34 @@
 	    return _this;
 	  }
 	
+	  // getAllMessages(callback) {
+	  //   fetch('/messages')
+	  //   .then(items => {
+	  //     callback(items);
+	  //   })
+	  //   .catch(err =>
+	  //     console.error(err)
+	  //   );
+	  // }
+	
 	  _createClass(App, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.setState({
 	        chats: this.props.props
 	      });
+	
 	      $.ajax({
 	        type: 'GET',
 	        url: '/messages',
+	        contentType: 'application/json',
 	        success: function success(data) {
 	          this.setState({
 	            chat: data
 	          });
-	        }
-	      });
-	      $.ajax({
-	        type: 'POST',
-	        url: '/messages',
-	        data: { username: 'testuser', message: 'testing message POST' },
-	        success: function success(data) {
-	          console.log('Successfully posted message');
+	        },
+	        error: function error(err) {
+	          console.log('Error fetching results: ', err);
 	        }
 	      });
 	    }
@@ -127,36 +137,46 @@
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
+	      var _this2 = this;
+	
 	      e.preventDefault();
+	      getAllMessages(function (messages) {
+	        _this2.setState({
+	          chats: messages
+	        });
+	      });
 	      /**
 	      var author = this.state.message.trim();
 	      this.props.onCommentSubmit({author: author, text: text});
 	      this.setState({author: '', text: ''});
 	      **/
 	      // $.ajax({
-	      //   type: 'GET',
+	      //   type: 'POST',
 	      //   url: '/messages',
+	      //   data: {username: 'testuser', message: 'testing message POST'},
 	      //   success: function(data) {
-	      //     this.setState({
-	      //       chat: data
-	      //     });
+	      //     console.log('Successfully posted message');
 	      //   }
 	      // });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('div', null),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          this.state.chats[0].username
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'col-md-6' },
 	          _react2.default.createElement(_Users2.default, { chats: this.state.chats, click: function click(user) {
-	              return _this2.selectUser(user);
+	              return _this3.selectUser(user);
 	            } })
 	        ),
 	        _react2.default.createElement(
@@ -20560,8 +20580,7 @@
 	exports.default = Chat;
 
 /***/ },
-/* 172 */,
-/* 173 */
+/* 172 */
 /***/ function(module, exports) {
 
 	'use strict';

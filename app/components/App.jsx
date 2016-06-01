@@ -9,41 +9,26 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chats: [
+      chats:[
         {
           username: 'someUserName',
           message: 'some message yeah'
         }
       ],
-      message: {
+      chat: {
+        username: 'boo',
         message: ''
       }
     };
   }
 
-  // getAllMessages(callback) {
-  //   fetch('/messages')
-  //   .then(items => {
-  //     callback(items);
-  //   })
-  //   .catch(err =>
-  //     console.error(err)
-  //   );
-  // }
-
-  componentDidMount() {
-    this.setState({
-      chats: this.props.props
-    });
-
+  getAllMessages(callback) {
     $.ajax({
       type: 'GET',
       url: '/messages',
       contentType: 'application/json',
       success: function(data) {
-        this.setState({
-          chat: data
-        });
+        callback(data);
       },
       error: function(err) {
         console.log('Error fetching results: ', err);
@@ -51,44 +36,59 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.getAllMessages(items => {
+      this.setState({
+        chats: items
+      });
+    });
+  }
+
   selectUser(user) {
     console.log(user.message);
   }
 
+  handleMessageChange(e) {
+    this.setState({
+      chat: {
+        username: 'boo',
+        message: e.target.value
+      }
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    getAllMessages(messages => {
-      this.setState({
-        chats: messages
-      });
+    $.ajax({
+      type: 'POST',
+      url: '/messages',
+      data: {
+        username: this.state.chat.username,
+        message: this.state.chat.message
+      },
+      success: function(data) {
+        console.log('Successfully posted message');
+      }
     });
-    /**
-    var author = this.state.message.trim();
-    this.props.onCommentSubmit({author: author, text: text});
-    this.setState({author: '', text: ''});
-    **/
-    // $.ajax({
-    //   type: 'POST',
-    //   url: '/messages',
-    //   data: {username: 'testuser', message: 'testing message POST'},
-    //   success: function(data) {
-    //     console.log('Successfully posted message');
-    //   }
-    // });
+    this.setState({
+      chat: {message: ''}
+    });
   }
 
   render() {
     return (
       <div>
         <div>
-          { this.state.chats[0].username }
           {/*<test test={ this.state.chats } />*/}
         </div>
         <div className="col-md-6">
           <Users chats={ this.state.chats } click={ user => this.selectUser(user) } />
         </div>
         <div className="col-md-6">
-          <Chats chats={ this.state.chats } />
+          <Chats
+            chats={ this.state.chats }
+            sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleMessageChange(event) }
+            currentChat={this.state.chat} />
         </div>
       </div>
     );

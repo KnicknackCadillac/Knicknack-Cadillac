@@ -10,3 +10,6 @@ webpack.config-orig.js
 
 # configFile
 config
+
+# public bundle
+public/bundle.*

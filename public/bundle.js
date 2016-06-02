@@ -94,19 +94,19 @@
 	        inputText: '',
 	        message: '',
 	        tone: [{
-	          label: 'boo',
+	          label: 'Anger',
 	          value: 1
 	        }, {
-	          label: 'boo',
+	          label: 'Disgust',
 	          value: 1
 	        }, {
-	          label: 'boo',
+	          label: 'Fear',
 	          value: 1
 	        }, {
-	          label: 'boo',
+	          label: 'Joy',
 	          value: 1
 	        }, {
-	          label: 'boo',
+	          label: 'Sadness',
 	          value: 1
 	        }]
 	      }
@@ -164,12 +164,11 @@
 	  //   });
 	  // }
 	
+	  // selectUser(user) {
+	  //   console.log(user.message);
+	  // }
+	
 	  _createClass(App, [{
-	    key: 'selectUser',
-	    value: function selectUser(user) {
-	      console.log(user.message);
-	    }
-	  }, {
 	    key: 'handleChange',
 	    value: function handleChange(e) {
 	      this.setState({
@@ -20632,6 +20631,17 @@
 	
 	var rd3 = __webpack_require__(171);
 	var PieChart = rd3.PieChart;
+	var width = window.innerWidth;
+	var height = window.innerWidth;
+	var colorMap = ['#E80521', // 'Anger'
+	'#592684', // 'Disgust'
+	'#325E2B', // 'Fear'
+	'#FFD629', // 'Joy'
+	'#086DB2'];
+	
+	// 'Sadness'
+	// '#274b5f', // Language Style
+	// '#1cb4a0', // Social Tendencies
 	
 	var Chart = function (_React$Component) {
 	  _inherits(Chart, _React$Component);
@@ -20652,11 +20662,14 @@
 	    value: function render() {
 	      return _react2.default.createElement(PieChart, {
 	        data: this.props.pieData.tone,
-	        width: 450,
-	        height: 400,
-	        radius: 110,
-	        innerRadius: 20,
+	        width: width,
+	        height: height / 2 + 50,
+	        radius: height / 4 - 20,
+	        innerRadius: height / 4 - 50,
 	        sectorBorderColor: 'white',
+	        colors: function colors(d) {
+	          return colorMap[d];
+	        },
 	        title: 'Emotional Tone'
 	      });
 	    }
@@ -20667,7 +20680,22 @@
 	
 	exports.default = Chart;
 	
-	// ReactDOM.render(<Chart />, document.getElementById('container'));
+	// propTypes: {
+	//   data:               React.PropTypes.array,
+	//   radius:             React.PropTypes.number,
+	//   cx:                 React.PropTypes.number,
+	//   cy:                 React.PropTypes.number,
+	//   labelTextFill:      React.PropTypes.string,
+	//   valueTextFill:      React.PropTypes.string,
+	//   valueTextFormatter: React.PropTypes.func,
+	//   colors:             React.PropTypes.func,
+	//   colorAccessor:      React.PropTypes.func,
+	//   title:              React.PropTypes.string,
+	//   showInnerLabels:    React.PropTypes.bool,
+	//   showOuterLabels:    React.PropTypes.bool,
+	//   sectorBorderColor:  React.PropTypes.string,
+	//   hoverAnimation:     React.PropTypes.bool
+	// },
 
 /***/ },
 /* 171 */

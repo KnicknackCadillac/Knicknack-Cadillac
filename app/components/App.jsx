@@ -16,23 +16,23 @@ class App extends React.Component {
         message: '',
         tone: [
           {
-            label: 'boo',
+            label: 'Anger',
             value: 1
           },
           {
-            label: 'boo',
+            label: 'Disgust',
             value: 1
           },
           {
-            label: 'boo',
+            label: 'Fear',
             value: 1
           },
           {
-            label: 'boo',
+            label: 'Joy',
             value: 1
           },
           {
-            label: 'boo',
+            label: 'Sadness',
             value: 1
           },
         ]
@@ -90,9 +90,9 @@ class App extends React.Component {
   //   });
   // }
 
-  selectUser(user) {
-    console.log(user.message);
-  }
+  // selectUser(user) {
+  //   console.log(user.message);
+  // }
 
   handleChange(e) {
     this.setState({

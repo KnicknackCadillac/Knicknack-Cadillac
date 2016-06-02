@@ -7,3 +7,6 @@ webpack.config-orig.js
 # .DS_Store
 *.DS_Store
 .DS_Store
+
+# configFile
+config

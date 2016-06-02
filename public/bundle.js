@@ -75,7 +75,7 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	// import test from './test.jsx';
+	// : delete dummy data after connecting db
 	
 	
 	var App = function (_React$Component) {
@@ -131,8 +131,8 @@
 	      console.log(user.message);
 	    }
 	  }, {
-	    key: 'handleMessageChange',
-	    value: function handleMessageChange(e) {
+	    key: 'handleChange',
+	    value: function handleChange(e) {
 	      this.setState({
 	        chat: {
 	          username: 'boo',
@@ -152,7 +152,7 @@
 	          message: this.state.chat.message
 	        },
 	        success: function success(data) {
-	          console.log('Successfully posted message');
+	          console.log('Successfully posted message', data);
 	        }
 	      });
 	      this.setState({
@@ -167,7 +167,6 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('div', null),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'col-md-6' },
@@ -183,7 +182,7 @@
 	            sendMessage: function sendMessage(event) {
 	              return _this3.handleSubmit(event);
 	            }, handleMessageChange: function handleMessageChange(event) {
-	              return _this3.handleMessageChange(event);
+	              return _this3.handleChange(event);
 	            },
 	            currentChat: this.state.chat })
 	        )
@@ -193,6 +192,9 @@
 	
 	  return App;
 	}(_react2.default.Component);
+	
+	// TODO: replace 'messagesData' with fetched data
+	
 	
 	_reactDom2.default.render(_react2.default.createElement(App, { props: _dummydata2.default }), document.getElementById('app'));
 

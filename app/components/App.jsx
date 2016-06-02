@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Users from './Users.jsx';
 import Chats from './Chats.jsx';
-// import test from './test.jsx';
+// : delete dummy data after connecting db
 import messagesData from '../data/dummydata.js';
 
 class App extends React.Component {
@@ -48,7 +48,7 @@ class App extends React.Component {
     console.log(user.message);
   }
 
-  handleMessageChange(e) {
+  handleChange(e) {
     this.setState({
       chat: {
         username: 'boo',
@@ -67,7 +67,7 @@ class App extends React.Component {
         message: this.state.chat.message
       },
       success: function(data) {
-        console.log('Successfully posted message');
+        console.log('Successfully posted message', data);
       }
     });
     this.setState({
@@ -78,16 +78,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          {/*<test test={ this.state.chats } />*/}
-        </div>
         <div className="col-md-6">
           <Users chats={ this.state.chats } click={ user => this.selectUser(user) } />
         </div>
         <div className="col-md-6">
           <Chats
             chats={ this.state.chats }
-            sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleMessageChange(event) }
+            sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
             currentChat={this.state.chat} />
         </div>
       </div>
@@ -95,4 +92,5 @@ class App extends React.Component {
   }
 }
 
+// TODO: replace 'messagesData' with fetched data
 ReactDOM.render(<App props={ messagesData } />, document.getElementById('app'));

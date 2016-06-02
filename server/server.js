@@ -21,8 +21,10 @@ app.use(express.static(__dirname + '/../public/'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+// GET request handling
 app.get('/messages', function(req, res) {
-  db.query('select * from users', function (err, results){
+  var queryString = 'SELECT * FROM users';
+  db.query(queryString, function (err, results){
     if (err) {
       console.error(err);
     } else {
@@ -31,15 +33,24 @@ app.get('/messages', function(req, res) {
   });
 });
 
-// handle post requests
+// POST request handling
 app.post('/messages', function(req, res) {
-  console.log("request has been sent: ", req.body);
+  var queryArgs = [req.body.username, req.body.message];
+  var queryString = 'INSERT INTO users (username, message) VALUES (?, ?)';
+  db.query(queryString, queryArgs, function(err, results) {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log('Data inserted: ', results);
+    }
+  });
   tone_analyzer.tone({ text: req.body.message },
     function(err, tone) {
       if (err) {
         console.log(err);
       } else {
-        res.send(tone);
+        console.log('Tone results: ', tone.document_tone.tone_categories);
+        res.json(tone.document_tone.tone_categories);
       }
     }
   );
@@ -50,7 +61,6 @@ var port = process.env.PORT || 8080;
 app.listen(port, function(){
   console.log('listening on port', port);
 });
-
 
 // io.on('connection', function(socket){
 //   console.log('a user connected');

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Users from './Users.jsx';
 import Chats from './Chats.jsx';
+import Chart from './PieChart.jsx';
 // : delete dummy data after connecting db
 import messagesData from '../data/dummydata.js';
 
@@ -9,10 +10,32 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chats:[
+      chats: [
         {
           username: 'someUserName',
-          message: 'some message yeah'
+          message: 'some message yeah',
+          tone: [
+            {
+              score: 0.028428,
+              tone_id: 'anger'
+            },
+            {
+              score: 0.00693,
+              tone_id: 'disgust'
+            },
+            {
+              score: 0.034893,
+              tone_id: 'fear'
+            },
+            {
+              score: 0.995658,
+              tone_id: 'joy'
+            },
+            {
+              score: 0.048616,
+              tone_id: 'sadness'
+            },
+          ]
         }
       ],
       chat: {
@@ -71,13 +94,18 @@ class App extends React.Component {
       }
     });
     this.setState({
-      chat: {message: ''}
+      chat: {
+        message: ''
+      }
     });
   }
 
   render() {
     return (
       <div>
+        <div>
+          <Chart />
+        </div>
         <div className="col-md-6">
           <Users chats={ this.state.chats } click={ user => this.selectUser(user) } />
         </div>

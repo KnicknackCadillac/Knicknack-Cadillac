@@ -22,38 +22,36 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // GET request handling
-app.get('/messages', function(req, res) {
-  var queryString = 'SELECT * FROM users';
-  db.query(queryString, function (err, results){
-    if (err) {
-      console.error(err);
-    } else {
-      res.json(results);
-    }
-  });
-});
+// app.get('/messages', function(req, res) {
+//   var queryString = 'SELECT * FROM users';
+//   db.query(queryString, function (err, results){
+//     if (err) {
+//       console.error(err);
+//     } else {
+//       res.json(results);
+//     }
+//   });
+// });
 
 // POST request handling
 app.post('/messages', function(req, res) {
-  var queryArgs = [req.body.username, req.body.message];
-  var queryString = 'INSERT INTO users (username, message) VALUES (?, ?)';
-  db.query(queryString, queryArgs, function(err, results) {
+  // var queryArgs = [req.body.username, req.body.message];
+  // var queryString = 'INSERT INTO users (username, message) VALUES (?, ?)';
+  // db.query(queryString, queryArgs, function(err, results) {
+  //   if (err) {
+  //     console.error(err);
+  //   } else {
+  //     console.log('Data inserted: ', results);
+  //   }
+  // });
+  tone_analyzer.tone({ text: req.body.inputText }, function(err, tone) {
     if (err) {
-      console.error(err);
+      console.log(err);
     } else {
-      console.log('Data inserted: ', results);
+      console.log('Tone results: ', tone);
+      res.json(tone.document_tone.tone_categories[0].tones);
     }
   });
-  tone_analyzer.tone({ text: req.body.message },
-    function(err, tone) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('Tone results: ', tone.document_tone.tone_categories);
-        res.json(tone.document_tone.tone_categories);
-      }
-    }
-  );
 });
 
 var port = process.env.PORT || 8080;

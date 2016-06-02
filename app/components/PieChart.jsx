@@ -7,27 +7,14 @@ class Chart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pieData: [
-        {
-          label: "Margarita",
-          value: 50.0
-        },
-        {
-          label: "John",
-          value: 55.0
-        },
-        {
-          label: "Tim",
-          value: 25.0
-        }
-      ]
+      pieData: []
     }
   }
 
   render() {
     return (
       <PieChart
-        data={this.state.pieData}
+        data={this.props.pieData.tone}
         width={450}
         height={400}
         radius={110}

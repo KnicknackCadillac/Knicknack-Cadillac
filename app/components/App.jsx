@@ -138,14 +138,16 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
+        <div className='chart'>
+          <form className='input'>
+          <Chats
+          sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
+          currentChat={ this.state.chat } />
+          </form>
           <Chart pieData={ this.state.chat } />
         </div>
 
         <div className="col-md-6">
-          <Chats
-            sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
-            currentChat={ this.state.chat } />
         </div>
       </div>
     );

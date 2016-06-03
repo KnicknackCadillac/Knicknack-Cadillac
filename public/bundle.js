@@ -20636,7 +20636,7 @@
 	var colorMap = ['#E80521', // 'Anger'
 	'#592684', // 'Disgust'
 	'#325E2B', // 'Fear'
-	'#FFD629', // 'Joy'
+	'red', // 'Joy'
 	'#086DB2'];
 	
 	// 'Sadness'

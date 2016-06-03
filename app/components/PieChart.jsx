@@ -8,7 +8,7 @@ let colorMap = [
   '#E80521', // 'Anger'
   '#592684', // 'Disgust'
   '#325E2B', // 'Fear'
-  '#FFD629', // 'Joy'
+  'red', // 'Joy'
   '#086DB2', // 'Sadness'
   // '#274b5f', // Language Style
   // '#1cb4a0', // Social Tendencies

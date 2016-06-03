@@ -75,10 +75,11 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var update = __webpack_require__(228);
 	// import Users from './Users.jsx';
 	
 	// TODO: delete dummy data after connecting db
-	
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -89,6 +90,9 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 	
 	    _this.state = {
+	      emotionClicked: true,
+	      languageClicked: false,
+	      socialClicked: false,
 	      chat: {
 	        // username: 'boo',
 	        inputText: '',
@@ -137,9 +141,7 @@
 	          height: 3,
 	          radius: 5.1,
 	          innerRadius: 4.1
-	
 	        }
-	
 	      },
 	      social_tone: {
 	        watsonData: [{
@@ -284,6 +286,20 @@
 	              };
 	              social_Arr.push(_obj2);
 	            }
+	
+	            // update(this.state.emotion_tone,
+	            //     watsonData: {$push: emotion_Arr}
+	            // );
+	            // update(this.state.language_tone, {
+	            //   language_tone: {
+	            //     watsonData: {$push: language_Arr}
+	            //   }
+	            // });
+	            // update(this.state.social_tone, {
+	            //   social_tone: {
+	            //     watsonData: {$push: social_Arr}
+	            //   }
+	            // });
 	          } catch (err) {
 	            _didIteratorError3 = true;
 	            _iteratorError3 = err;
@@ -300,39 +316,15 @@
 	          }
 	
 	          _this2.setState({
-	            // emotion_tone: { watsonData: emotion_Arr },
-	            // language_tone: { watsonData: language_Arr },
-	            // social_tone: { watsonData: social_Arr }
-	            emotion_tone: {
-	              watsonData: emotion_Arr,
-	              circleAttributes: {
-	                title: 'Emotional Tone',
-	                width: null,
-	                height: 2,
-	                radius: 4,
-	                innerRadius: 4
-	              }
-	            },
-	            language_tone: {
-	              watsonData: language_Arr,
-	              circleAttributes: {
-	                title: 'Language Tone',
-	                width: null,
-	                height: 3,
-	                radius: 5.1,
-	                innerRadius: 4.1
-	              }
-	            },
-	            social_tone: {
-	              watsonData: social_Arr,
-	              circleAttributes: {
-	                title: 'Social Tone',
-	                width: null,
-	                height: 2.2,
-	                radius: 8.2,
-	                innerRadius: 4.2
-	
-	              } }
+	            emotion_tone: update(_this2.state.emotion_tone, {
+	              watsonData: { $set: emotion_Arr }
+	            }),
+	            language_tone: update(_this2.state.language_tone, {
+	              watsonData: { $set: language_Arr }
+	            }),
+	            social_tone: update(_this2.state.social_tone, {
+	              watsonData: { $set: social_Arr }
+	            })
 	          });
 	
 	          console.log(emotion_Arr);
@@ -341,6 +333,10 @@
 	        }
 	      });
 	    }
+	    // { this.state.emotionClicked ? <Chart pieData={ this.state.emotion_tone } /> : null }
+	    // { this.state.languageClicked ? <Chart pieData={ this.state.language_tone } /> : null }
+	    // { this.state.socialClicked ? <Chart pieData={ this.state.social_tone } /> : null }
+	
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -20770,24 +20766,22 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(PieChart, {
+	
 	        data: this.props.pieData.watsonData,
-	        width: width,
-	        height: height / this.props.pieData.circleAttributes.height + 50,
-	        radius: height / this.props.pieData.circleAttributes.radius - 20,
-	        innerRadius: height / this.props.pieData.circleAttributes.innerRadius - 10
-	        // height={ (height / 2) + 50 }
-	        // radius={ (height / 4) - 20 }
-	        // innerRadius={ (height / 4) - 10 }
-	        , sectorBorderColor: 'black',
+	        width: width
+	        // height={ (height / this.props.pieData.circleAttributes.height) + 50}
+	        // radius={ (height / this.props.pieData.circleAttributes.radius) - 20}
+	        // innerRadius={ (height / this.props.pieData.circleAttributes.innerRadius) - 10}
+	        , height: height / 2 + 50,
+	        radius: height / 5 - 60,
+	        innerRadius: height / 5,
+	        sectorBorderColor: 'black',
 	        colors: function colors(d) {
 	          return colorMap[d];
 	        },
 	
-	        title: this.props.pieData.circleAttributes.title,
+	        title: this.props.pieData.circleAttributes.title
 	
-	        showInnerLabels: false,
-	
-	        showOuterLabels: false
 	      });
 	    }
 	  }]);
@@ -34270,6 +34264,130 @@
 	}];
 	
 	exports.default = messagesData;
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(229);
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule update
+	 */
+	
+	/* global hasOwnProperty:true */
+	
+	'use strict';
+	
+	var _assign = __webpack_require__(4);
+	
+	var keyOf = __webpack_require__(31);
+	var invariant = __webpack_require__(7);
+	var hasOwnProperty = {}.hasOwnProperty;
+	
+	function shallowCopy(x) {
+	  if (Array.isArray(x)) {
+	    return x.concat();
+	  } else if (x && typeof x === 'object') {
+	    return _assign(new x.constructor(), x);
+	  } else {
+	    return x;
+	  }
+	}
+	
+	var COMMAND_PUSH = keyOf({ $push: null });
+	var COMMAND_UNSHIFT = keyOf({ $unshift: null });
+	var COMMAND_SPLICE = keyOf({ $splice: null });
+	var COMMAND_SET = keyOf({ $set: null });
+	var COMMAND_MERGE = keyOf({ $merge: null });
+	var COMMAND_APPLY = keyOf({ $apply: null });
+	
+	var ALL_COMMANDS_LIST = [COMMAND_PUSH, COMMAND_UNSHIFT, COMMAND_SPLICE, COMMAND_SET, COMMAND_MERGE, COMMAND_APPLY];
+	
+	var ALL_COMMANDS_SET = {};
+	
+	ALL_COMMANDS_LIST.forEach(function (command) {
+	  ALL_COMMANDS_SET[command] = true;
+	});
+	
+	function invariantArrayCase(value, spec, command) {
+	  !Array.isArray(value) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'update(): expected target of %s to be an array; got %s.', command, value) : invariant(false) : void 0;
+	  var specValue = spec[command];
+	  !Array.isArray(specValue) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'update(): expected spec of %s to be an array; got %s. ' + 'Did you forget to wrap your parameter in an array?', command, specValue) : invariant(false) : void 0;
+	}
+	
+	/**
+	 * Returns a updated shallow copy of an object without mutating the original.
+	 * See https://facebook.github.io/react/docs/update.html for details.
+	 */
+	function update(value, spec) {
+	  !(typeof spec === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'update(): You provided a key path to update() that did not contain one ' + 'of %s. Did you forget to include {%s: ...}?', ALL_COMMANDS_LIST.join(', '), COMMAND_SET) : invariant(false) : void 0;
+	
+	  if (hasOwnProperty.call(spec, COMMAND_SET)) {
+	    !(Object.keys(spec).length === 1) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Cannot have more than one key in an object with %s', COMMAND_SET) : invariant(false) : void 0;
+	
+	    return spec[COMMAND_SET];
+	  }
+	
+	  var nextValue = shallowCopy(value);
+	
+	  if (hasOwnProperty.call(spec, COMMAND_MERGE)) {
+	    var mergeObj = spec[COMMAND_MERGE];
+	    !(mergeObj && typeof mergeObj === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'update(): %s expects a spec of type \'object\'; got %s', COMMAND_MERGE, mergeObj) : invariant(false) : void 0;
+	    !(nextValue && typeof nextValue === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'update(): %s expects a target of type \'object\'; got %s', COMMAND_MERGE, nextValue) : invariant(false) : void 0;
+	    _assign(nextValue, spec[COMMAND_MERGE]);
+	  }
+	
+	  if (hasOwnProperty.call(spec, COMMAND_PUSH)) {
+	    invariantArrayCase(value, spec, COMMAND_PUSH);
+	    spec[COMMAND_PUSH].forEach(function (item) {
+	      nextValue.push(item);
+	    });
+	  }
+	
+	  if (hasOwnProperty.call(spec, COMMAND_UNSHIFT)) {
+	    invariantArrayCase(value, spec, COMMAND_UNSHIFT);
+	    spec[COMMAND_UNSHIFT].forEach(function (item) {
+	      nextValue.unshift(item);
+	    });
+	  }
+	
+	  if (hasOwnProperty.call(spec, COMMAND_SPLICE)) {
+	    !Array.isArray(value) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Expected %s target to be an array; got %s', COMMAND_SPLICE, value) : invariant(false) : void 0;
+	    !Array.isArray(spec[COMMAND_SPLICE]) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'update(): expected spec of %s to be an array of arrays; got %s. ' + 'Did you forget to wrap your parameters in an array?', COMMAND_SPLICE, spec[COMMAND_SPLICE]) : invariant(false) : void 0;
+	    spec[COMMAND_SPLICE].forEach(function (args) {
+	      !Array.isArray(args) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'update(): expected spec of %s to be an array of arrays; got %s. ' + 'Did you forget to wrap your parameters in an array?', COMMAND_SPLICE, spec[COMMAND_SPLICE]) : invariant(false) : void 0;
+	      nextValue.splice.apply(nextValue, args);
+	    });
+	  }
+	
+	  if (hasOwnProperty.call(spec, COMMAND_APPLY)) {
+	    !(typeof spec[COMMAND_APPLY] === 'function') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'update(): expected spec of %s to be a function; got %s.', COMMAND_APPLY, spec[COMMAND_APPLY]) : invariant(false) : void 0;
+	    nextValue = spec[COMMAND_APPLY](nextValue);
+	  }
+	
+	  for (var k in spec) {
+	    if (!(ALL_COMMANDS_SET.hasOwnProperty(k) && ALL_COMMANDS_SET[k])) {
+	      nextValue[k] = update(value[k], spec[k]);
+	    }
+	  }
+	
+	  return nextValue;
+	}
+	
+	module.exports = update;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }
 /******/ ]);

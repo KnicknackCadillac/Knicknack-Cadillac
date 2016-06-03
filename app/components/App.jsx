@@ -125,6 +125,7 @@ class App extends React.Component {
             value: Math.floor(msg.score * 100)
           };
           toneArr.push(obj);
+          console.log("This is what is received from the server" , data);
         }
         this.setState({
           chat: {
@@ -134,6 +135,10 @@ class App extends React.Component {
       }
     });
   }
+            // <form className='input'>
+            //   <h1> Submit your message <h1/>
+            //   <textarea></textarea>
+            //   </form>
 
   render() {
     return (
@@ -151,8 +156,8 @@ class App extends React.Component {
         </div>
       </div>
     );
+
   }
-}
 
 // TODO: replace 'messagesData' with fetched data
 ReactDOM.render(<App props={ messagesData } />, document.getElementById('app'));

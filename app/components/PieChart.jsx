@@ -5,14 +5,15 @@ const PieChart = rd3.PieChart;
 const width = window.innerWidth;
 const height = window.innerWidth;
 let colorMap = [
-  '#E80521', // 'Anger'
-  '#592684', // 'Disgust'
-  '#325E2B', // 'Fear'
-  'red', // 'Joy'
-  '#086DB2', // 'Sadness'
+  '#C8020A', // 'Anger'
+  '#6EE017', // 'Disgust'
+  '#FF006A', // 'Fear'
+  '#FF7A06', // 'Joy'
+  '#0099FF', // 'Sadness'
   // '#274b5f', // Language Style
   // '#1cb4a0', // Social Tendencies
 ];
+
 
 class Chart extends React.Component {
   constructor(props) {
@@ -29,13 +30,21 @@ class Chart extends React.Component {
         width={ width }
         height={ (height / 2) + 50 }
         radius={ (height / 4) - 20 }
-        innerRadius={ (height / 4) - 50 }
-        sectorBorderColor="white"
+        innerRadius={ (height / 4) - 10 }
+        sectorBorderColor="black"
         colors={function(d) {
           return colorMap[d];
         }}
         title="Emotional Tone"
+        // labelTextFill= '#FF006A'
+  
+        showInnerLabels={false}
+
+        showOuterLabels={false}
       />
+
+
+
     );
   }
 }

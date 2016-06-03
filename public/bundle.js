@@ -245,20 +245,21 @@
 	        null,
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { className: 'chart' },
+	          _react2.default.createElement(
+	            'form',
+	            { className: 'input' },
+	            _react2.default.createElement(_Chats2.default, {
+	              sendMessage: function sendMessage(event) {
+	                return _this3.handleSubmit(event);
+	              }, handleMessageChange: function handleMessageChange(event) {
+	                return _this3.handleChange(event);
+	              },
+	              currentChat: this.state.chat })
+	          ),
 	          _react2.default.createElement(_PieChart2.default, { pieData: this.state.chat })
 	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-md-6' },
-	          _react2.default.createElement(_Chats2.default, {
-	            sendMessage: function sendMessage(event) {
-	              return _this3.handleSubmit(event);
-	            }, handleMessageChange: function handleMessageChange(event) {
-	              return _this3.handleChange(event);
-	            },
-	            currentChat: this.state.chat })
-	        )
+	        _react2.default.createElement('div', { className: 'col-md-6' })
 	      );
 	    }
 	  }]);
@@ -20568,7 +20569,7 @@
 	      { onSubmit: function onSubmit(e) {
 	          return props.sendMessage(e);
 	        } },
-	      _react2.default.createElement('input', { type: 'text', value: props.currentChat.inputText, onChange: function onChange(e) {
+	      _react2.default.createElement('textarea', { value: props.currentChat.inputText, onChange: function onChange(e) {
 	          return props.handleMessageChange(e);
 	        } }),
 	      _react2.default.createElement('input', { type: 'submit' })

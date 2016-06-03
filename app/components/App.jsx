@@ -13,8 +13,11 @@ class App extends React.Component {
       chat: {
         // username: 'boo',
         inputText: '',
-        message: '',
-        tone: [
+        message: ''
+      },
+      emotion_tone: {
+        watsonData:
+        [
           {
             label: 'Anger',
             value: 1
@@ -35,63 +38,81 @@ class App extends React.Component {
             label: 'Sadness',
             value: 1
           },
-        ]
+        ],
+        circleAttributes: {
+          title: 'Emotional Tone',
+          width: null,
+          height: 2,
+          radius: 4,
+          innerRadius: 4
+        }
+      },
+
+      language_tone:{
+        watsonData: 
+        [
+          {
+            label: 'Analytical',
+            value: 1
+          },
+          {
+            label: 'Confident',
+            value: 1
+          },
+          {
+            label: 'Tentative',
+            value: 1
+          },
+        ],
+        circleAttributes: {
+          title: 'Language Tone',
+          width: null,
+          height: 3,
+          radius: 5.1,
+          innerRadius: 4.1
+
+        }
+
+      },
+      social_tone:{
+        watsonData: 
+        [
+          {
+            label: 'Openness',
+            value: 1
+          },
+          {
+            label: 'Conscientiousness',
+            value: 1
+          },
+          {
+            label: 'Extraversion',
+            value: 1
+          },
+          {
+            label: 'Agreeableness',
+            value: 1
+          },
+          {
+            label: 'Emotional Range',
+            value: 1
+          },
+        ],
+        circleAttributes: {
+          title: 'Social Tone',
+          width: null,
+          height: 2.2,
+          radius: 8.2,
+          innerRadius: 4.2
+
+        }
+
       }
-      // chats: [
-      //   {
-      //     // username: 'someUserName',
-      //     message: 'some message yeah',
-      //     tone: [
-      //       {
-      //         score: 0.028428,
-      //         tone_id: 'anger'
-      //       },
-      //       {
-      //         score: 0.00693,
-      //         tone_id: 'disgust'
-      //       },
-      //       {
-      //         score: 0.034893,
-      //         tone_id: 'fear'
-      //       },
-      //       {
-      //         score: 0.995658,
-      //         tone_id: 'joy'
-      //       },
-      //       {
-      //         score: 0.048616,
-      //         tone_id: 'sadness'
-      //       },
-      //     ]
-      //   }
-      // ],
     };
   }
 
-  // getAllMessages(callback) {
-  //   $.ajax({
-  //     type: 'GET',
-  //     url: '/messages',
-  //     contentType: 'application/json',
-  //     success: function(data) {
-  //       callback(data);
-  //     },
-  //     error: function(err) {
-  //       console.log('Error fetching results: ', err);
-  //     }
-  //   });
-  // }
-  //
-  // componentDidMount() {
-  //   this.getAllMessages(items => {
-  //     this.setState({
-  //       chats: items
-  //     });
-  //   });
-  // }
 
-  // selectUser(user) {
-  //   console.log(user.message);
+
   // }
 
   handleChange(e) {
@@ -118,27 +139,81 @@ class App extends React.Component {
         inputText: this.state.chat.inputText
       },
       success: data => {
-        const toneArr = [];
-        for (let msg of data) {
+        const emotion_Arr = [];
+        const language_Arr = [];
+        const social_Arr = []
+
+        // populate emotion property
+        for (let watsonData of data.tone_categories[0].tones) {
           const obj = {
-            label: msg.tone_name,
-            value: Math.floor(msg.score * 100)
-          };
-          toneArr.push(obj);
-          console.log("This is what is received from the server" , data);
-        }
-        this.setState({
-          chat: {
-            tone: toneArr
+            label: watsonData.tone_name,
+            value: Math.floor(watsonData.score * 100)
           }
+          emotion_Arr.push(obj);
+        }
+
+
+        // populate language property
+        for (let watsonData of data.tone_categories[1].tones) {
+          const obj = {
+            label: watsonData.tone_name,
+            value: Math.floor(watsonData.score * 100)
+          }
+          language_Arr.push(obj);
+        }
+
+
+        // populate social property
+        for (let watsonData of data.tone_categories[2].tones) {
+          const obj = {
+            label: watsonData.tone_name,
+            value: Math.floor(watsonData.score * 100)
+          }
+          social_Arr.push(obj);
+        }
+
+        this.setState({
+          // emotion_tone: { watsonData: emotion_Arr },
+          // language_tone: { watsonData: language_Arr },
+          // social_tone: { watsonData: social_Arr }
+          emotion_tone: { 
+            watsonData: emotion_Arr, 
+            circleAttributes: {
+              title: 'Emotional Tone',
+              width: null,
+              height: 2,
+              radius: 4,
+              innerRadius: 4
+           } 
+        },
+          language_tone: { 
+            watsonData: language_Arr ,
+            circleAttributes: {
+              title: 'Language Tone',
+              width: null,
+              height: 3,
+              radius: 5.1,
+              innerRadius: 4.1
+              }
+        },
+          social_tone: { 
+            watsonData: social_Arr,
+            circleAttributes: {
+              title: 'Social Tone',
+              width: null,
+              height: 2.2,
+              radius: 8.2,
+              innerRadius: 4.2
+
+          } }
         });
+
+        console.log(emotion_Arr);
+        console.log(language_Arr);
+        console.log(social_Arr);
       }
     });
   }
-            // <form className='input'>
-            //   <h1> Submit your message <h1/>
-            //   <textarea></textarea>
-            //   </form>
 
   render() {
     return (
@@ -149,15 +224,17 @@ class App extends React.Component {
           sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
           currentChat={ this.state.chat } />
           </form>
-          <Chart pieData={ this.state.chat } />
+          <Chart pieData={ this.state.emotion_tone } />
+          <Chart pieData={ this.state.language_tone } />
+          <Chart pieData={ this.state.social_tone } />
         </div>
 
         <div className="col-md-6">
         </div>
       </div>
     );
-
   }
+}
 
 // TODO: replace 'messagesData' with fetched data
-ReactDOM.render(<App props={ messagesData } />, document.getElementById('app'));
+  ReactDOM.render(<App props={ messagesData } />, document.getElementById('app'));

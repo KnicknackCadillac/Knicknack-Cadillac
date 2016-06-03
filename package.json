@@ -6,8 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "build": "node_modules/.bin/webpack --watch --devtool source-map",
-    "postinstall": "curl -s https://raw.githubusercontent.com/hackreactor-labs/pomander/master/bin/install | bash"
+    "build": "node_modules/.bin/webpack --watch --devtool source-map"
   },
   "dependencies": {
     "body-parser": "^1.15.1",

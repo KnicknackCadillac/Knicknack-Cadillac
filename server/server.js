@@ -48,8 +48,7 @@ app.post('/messages', function(req, res) {
     if (err) {
       console.log(err);
     } else {
-      console.log('Tone results: ', tone);
-      res.json(tone.document_tone.tone_categories[0].tones);
+      res.json(tone.document_tone);    
     }
   });
 });

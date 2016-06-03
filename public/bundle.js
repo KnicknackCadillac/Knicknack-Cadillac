@@ -92,8 +92,10 @@
 	      chat: {
 	        // username: 'boo',
 	        inputText: '',
-	        message: '',
-	        tone: [{
+	        message: ''
+	      },
+	      emotion_tone: {
+	        watsonData: [{
 	          label: 'Anger',
 	          value: 1
 	        }, {
@@ -108,64 +110,68 @@
 	        }, {
 	          label: 'Sadness',
 	          value: 1
-	        }]
+	        }],
+	        circleAttributes: {
+	          title: 'Emotional Tone',
+	          width: null,
+	          height: 2,
+	          radius: 4,
+	          innerRadius: 4
+	        }
+	      },
+	
+	      language_tone: {
+	        watsonData: [{
+	          label: 'Analytical',
+	          value: 1
+	        }, {
+	          label: 'Confident',
+	          value: 1
+	        }, {
+	          label: 'Tentative',
+	          value: 1
+	        }],
+	        circleAttributes: {
+	          title: 'Language Tone',
+	          width: null,
+	          height: 3,
+	          radius: 5.1,
+	          innerRadius: 4.1
+	
+	        }
+	
+	      },
+	      social_tone: {
+	        watsonData: [{
+	          label: 'Openness',
+	          value: 1
+	        }, {
+	          label: 'Conscientiousness',
+	          value: 1
+	        }, {
+	          label: 'Extraversion',
+	          value: 1
+	        }, {
+	          label: 'Agreeableness',
+	          value: 1
+	        }, {
+	          label: 'Emotional Range',
+	          value: 1
+	        }],
+	        circleAttributes: {
+	          title: 'Social Tone',
+	          width: null,
+	          height: 2.2,
+	          radius: 8.2,
+	          innerRadius: 4.2
+	
+	        }
+	
 	      }
-	      // chats: [
-	      //   {
-	      //     // username: 'someUserName',
-	      //     message: 'some message yeah',
-	      //     tone: [
-	      //       {
-	      //         score: 0.028428,
-	      //         tone_id: 'anger'
-	      //       },
-	      //       {
-	      //         score: 0.00693,
-	      //         tone_id: 'disgust'
-	      //       },
-	      //       {
-	      //         score: 0.034893,
-	      //         tone_id: 'fear'
-	      //       },
-	      //       {
-	      //         score: 0.995658,
-	      //         tone_id: 'joy'
-	      //       },
-	      //       {
-	      //         score: 0.048616,
-	      //         tone_id: 'sadness'
-	      //       },
-	      //     ]
-	      //   }
-	      // ],
 	    };
 	    return _this;
 	  }
 	
-	  // getAllMessages(callback) {
-	  //   $.ajax({
-	  //     type: 'GET',
-	  //     url: '/messages',
-	  //     contentType: 'application/json',
-	  //     success: function(data) {
-	  //       callback(data);
-	  //     },
-	  //     error: function(err) {
-	  //       console.log('Error fetching results: ', err);
-	  //     }
-	  //   });
-	  // }
-	  //
-	  // componentDidMount() {
-	  //   this.getAllMessages(items => {
-	  //     this.setState({
-	  //       chats: items
-	  //     });
-	  //   });
-	  // }
-	
-	  // selectUser(user) {
-	  //   console.log(user.message);
 	  // }
 	
 	  _createClass(App, [{
@@ -197,21 +203,27 @@
 	          inputText: this.state.chat.inputText
 	        },
 	        success: function success(data) {
-	          var toneArr = [];
+	          var emotion_Arr = [];
+	          var language_Arr = [];
+	          var social_Arr = [];
+	
+	          // populate emotion property
 	          var _iteratorNormalCompletion = true;
 	          var _didIteratorError = false;
 	          var _iteratorError = undefined;
 	
 	          try {
-	            for (var _iterator = data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	              var msg = _step.value;
+	            for (var _iterator = data.tone_categories[0].tones[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	              var watsonData = _step.value;
 	
 	              var obj = {
-	                label: msg.tone_name,
-	                value: Math.floor(msg.score * 100)
+	                label: watsonData.tone_name,
+	                value: Math.floor(watsonData.score * 100)
 	              };
-	              toneArr.push(obj);
+	              emotion_Arr.push(obj);
 	            }
+	
+	            // populate language property
 	          } catch (err) {
 	            _didIteratorError = true;
 	            _iteratorError = err;
@@ -227,11 +239,105 @@
 	            }
 	          }
 	
-	          _this2.setState({
-	            chat: {
-	              tone: toneArr
+	          var _iteratorNormalCompletion2 = true;
+	          var _didIteratorError2 = false;
+	          var _iteratorError2 = undefined;
+	
+	          try {
+	            for (var _iterator2 = data.tone_categories[1].tones[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	              var _watsonData = _step2.value;
+	
+	              var _obj = {
+	                label: _watsonData.tone_name,
+	                value: Math.floor(_watsonData.score * 100)
+	              };
+	              language_Arr.push(_obj);
 	            }
+	
+	            // populate social property
+	          } catch (err) {
+	            _didIteratorError2 = true;
+	            _iteratorError2 = err;
+	          } finally {
+	            try {
+	              if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	                _iterator2.return();
+	              }
+	            } finally {
+	              if (_didIteratorError2) {
+	                throw _iteratorError2;
+	              }
+	            }
+	          }
+	
+	          var _iteratorNormalCompletion3 = true;
+	          var _didIteratorError3 = false;
+	          var _iteratorError3 = undefined;
+	
+	          try {
+	            for (var _iterator3 = data.tone_categories[2].tones[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+	              var _watsonData2 = _step3.value;
+	
+	              var _obj2 = {
+	                label: _watsonData2.tone_name,
+	                value: Math.floor(_watsonData2.score * 100)
+	              };
+	              social_Arr.push(_obj2);
+	            }
+	          } catch (err) {
+	            _didIteratorError3 = true;
+	            _iteratorError3 = err;
+	          } finally {
+	            try {
+	              if (!_iteratorNormalCompletion3 && _iterator3.return) {
+	                _iterator3.return();
+	              }
+	            } finally {
+	              if (_didIteratorError3) {
+	                throw _iteratorError3;
+	              }
+	            }
+	          }
+	
+	          _this2.setState({
+	            // emotion_tone: { watsonData: emotion_Arr },
+	            // language_tone: { watsonData: language_Arr },
+	            // social_tone: { watsonData: social_Arr }
+	            emotion_tone: {
+	              watsonData: emotion_Arr,
+	              circleAttributes: {
+	                title: 'Emotional Tone',
+	                width: null,
+	                height: 2,
+	                radius: 4,
+	                innerRadius: 4
+	              }
+	            },
+	            language_tone: {
+	              watsonData: language_Arr,
+	              circleAttributes: {
+	                title: 'Language Tone',
+	                width: null,
+	                height: 3,
+	                radius: 5.1,
+	                innerRadius: 4.1
+	              }
+	            },
+	            social_tone: {
+	              watsonData: social_Arr,
+	              circleAttributes: {
+	                title: 'Social Tone',
+	                width: null,
+	                height: 2.2,
+	                radius: 8.2,
+	                innerRadius: 4.2
+	
+	              } }
 	          });
+	
+	          console.log(emotion_Arr);
+	          console.log(language_Arr);
+	          console.log(social_Arr);
 	        }
 	      });
 	    }
@@ -245,20 +351,23 @@
 	        null,
 	        _react2.default.createElement(
 	          'div',
-	          null,
-	          _react2.default.createElement(_PieChart2.default, { pieData: this.state.chat })
+	          { className: 'chart' },
+	          _react2.default.createElement(
+	            'form',
+	            { className: 'input' },
+	            _react2.default.createElement(_Chats2.default, {
+	              sendMessage: function sendMessage(event) {
+	                return _this3.handleSubmit(event);
+	              }, handleMessageChange: function handleMessageChange(event) {
+	                return _this3.handleChange(event);
+	              },
+	              currentChat: this.state.chat })
+	          ),
+	          _react2.default.createElement(_PieChart2.default, { pieData: this.state.emotion_tone }),
+	          _react2.default.createElement(_PieChart2.default, { pieData: this.state.language_tone }),
+	          _react2.default.createElement(_PieChart2.default, { pieData: this.state.social_tone })
 	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-md-6' },
-	          _react2.default.createElement(_Chats2.default, {
-	            sendMessage: function sendMessage(event) {
-	              return _this3.handleSubmit(event);
-	            }, handleMessageChange: function handleMessageChange(event) {
-	              return _this3.handleChange(event);
-	            },
-	            currentChat: this.state.chat })
-	        )
+	        _react2.default.createElement('div', { className: 'col-md-6' })
 	      );
 	    }
 	  }]);
@@ -20568,7 +20677,7 @@
 	      { onSubmit: function onSubmit(e) {
 	          return props.sendMessage(e);
 	        } },
-	      _react2.default.createElement('input', { type: 'text', value: props.currentChat.inputText, onChange: function onChange(e) {
+	      _react2.default.createElement('textarea', { value: props.currentChat.inputText, onChange: function onChange(e) {
 	          return props.handleMessageChange(e);
 	        } }),
 	      _react2.default.createElement('input', { type: 'submit' })
@@ -20633,11 +20742,11 @@
 	var PieChart = rd3.PieChart;
 	var width = window.innerWidth;
 	var height = window.innerWidth;
-	var colorMap = ['#E80521', // 'Anger'
-	'#592684', // 'Disgust'
-	'#325E2B', // 'Fear'
-	'red', // 'Joy'
-	'#086DB2'];
+	var colorMap = ['#C8020A', // 'Anger'
+	'#6EE017', // 'Disgust'
+	'#FF006A', // 'Fear'
+	'#FF7A06', // 'Joy'
+	'#0099FF'];
 	
 	// 'Sadness'
 	// '#274b5f', // Language Style
@@ -20661,16 +20770,24 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(PieChart, {
-	        data: this.props.pieData.tone,
+	        data: this.props.pieData.watsonData,
 	        width: width,
-	        height: height / 2 + 50,
-	        radius: height / 4 - 20,
-	        innerRadius: height / 4 - 50,
-	        sectorBorderColor: 'white',
+	        height: height / this.props.pieData.circleAttributes.height + 50,
+	        radius: height / this.props.pieData.circleAttributes.radius - 20,
+	        innerRadius: height / this.props.pieData.circleAttributes.innerRadius - 10
+	        // height={ (height / 2) + 50 }
+	        // radius={ (height / 4) - 20 }
+	        // innerRadius={ (height / 4) - 10 }
+	        , sectorBorderColor: 'black',
 	        colors: function colors(d) {
 	          return colorMap[d];
 	        },
-	        title: 'Emotional Tone'
+	
+	        title: this.props.pieData.circleAttributes.title,
+	
+	        showInnerLabels: false,
+	
+	        showOuterLabels: false
 	      });
 	    }
 	  }]);

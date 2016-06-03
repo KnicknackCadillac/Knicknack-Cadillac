@@ -5,14 +5,15 @@ const PieChart = rd3.PieChart;
 const width = window.innerWidth;
 const height = window.innerWidth;
 let colorMap = [
-  '#E80521', // 'Anger'
-  '#592684', // 'Disgust'
-  '#325E2B', // 'Fear'
-  'red', // 'Joy'
-  '#086DB2', // 'Sadness'
+  '#C8020A', // 'Anger'
+  '#6EE017', // 'Disgust'
+  '#FF006A', // 'Fear'
+  '#FF7A06', // 'Joy'
+  '#0099FF', // 'Sadness'
   // '#274b5f', // Language Style
   // '#1cb4a0', // Social Tendencies
 ];
+
 
 class Chart extends React.Component {
   constructor(props) {
@@ -25,17 +26,28 @@ class Chart extends React.Component {
   render() {
     return (
       <PieChart
-        data={ this.props.pieData.tone }
+        data={ this.props.pieData.watsonData }
         width={ width }
-        height={ (height / 2) + 50 }
-        radius={ (height / 4) - 20 }
-        innerRadius={ (height / 4) - 50 }
-        sectorBorderColor="white"
+        height={ (height / this.props.pieData.circleAttributes.height) + 50}
+        radius={ (height / this.props.pieData.circleAttributes.radius) - 20}
+        innerRadius={ (height / this.props.pieData.circleAttributes.innerRadius) - 10}
+        // height={ (height / 2) + 50 }
+        // radius={ (height / 4) - 20 }
+        // innerRadius={ (height / 4) - 10 }
+        sectorBorderColor="black"
         colors={function(d) {
           return colorMap[d];
         }}
-        title="Emotional Tone"
+
+        title={this.props.pieData.circleAttributes.title}
+  
+        showInnerLabels={false}
+
+        showOuterLabels={false}
       />
+
+
+
     );
   }
 }

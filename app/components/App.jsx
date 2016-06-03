@@ -1,3 +1,4 @@
+var update = require('react-addons-update');
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import Users from './Users.jsx';
@@ -10,6 +11,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      emotionClicked: true,
+      languageClicked: false,
+      socialClicked: false,
       chat: {
         // username: 'boo',
         inputText: '',
@@ -70,9 +74,7 @@ class App extends React.Component {
           height: 3,
           radius: 5.1,
           innerRadius: 4.1
-
         }
-
       },
       social_tone:{
         watsonData: 
@@ -139,9 +141,9 @@ class App extends React.Component {
         inputText: this.state.chat.inputText
       },
       success: data => {
-        const emotion_Arr = [];
-        const language_Arr = [];
-        const social_Arr = []
+        let emotion_Arr = [];
+        let language_Arr = [];
+        let social_Arr = []
 
         // populate emotion property
         for (let watsonData of data.tone_categories[0].tones) {
@@ -172,40 +174,33 @@ class App extends React.Component {
           social_Arr.push(obj);
         }
 
-        this.setState({
-          // emotion_tone: { watsonData: emotion_Arr },
-          // language_tone: { watsonData: language_Arr },
-          // social_tone: { watsonData: social_Arr }
-          emotion_tone: { 
-            watsonData: emotion_Arr, 
-            circleAttributes: {
-              title: 'Emotional Tone',
-              width: null,
-              height: 2,
-              radius: 4,
-              innerRadius: 4
-           } 
-        },
-          language_tone: { 
-            watsonData: language_Arr ,
-            circleAttributes: {
-              title: 'Language Tone',
-              width: null,
-              height: 3,
-              radius: 5.1,
-              innerRadius: 4.1
-              }
-        },
-          social_tone: { 
-            watsonData: social_Arr,
-            circleAttributes: {
-              title: 'Social Tone',
-              width: null,
-              height: 2.2,
-              radius: 8.2,
-              innerRadius: 4.2
 
-          } }
+
+        // update(this.state.emotion_tone, 
+        //     watsonData: {$push: emotion_Arr}
+        // );
+        // update(this.state.language_tone, {
+        //   language_tone: {
+        //     watsonData: {$push: language_Arr}
+        //   }
+        // });
+        // update(this.state.social_tone, {
+        //   social_tone: {
+        //     watsonData: {$push: social_Arr}
+        //   }
+        // });
+
+
+        this.setState({
+          emotion_tone: update(this.state.emotion_tone, {
+            watsonData: {$set: emotion_Arr}
+            }),
+          language_tone: update(this.state.language_tone, {
+            watsonData: {$set: language_Arr}
+            }),
+          social_tone: update(this.state.social_tone, {
+            watsonData: {$set: social_Arr}
+            })
         });
 
         console.log(emotion_Arr);
@@ -214,20 +209,25 @@ class App extends React.Component {
       }
     });
   }
+          // { this.state.emotionClicked ? <Chart pieData={ this.state.emotion_tone } /> : null }
+          // { this.state.languageClicked ? <Chart pieData={ this.state.language_tone } /> : null }
+          // { this.state.socialClicked ? <Chart pieData={ this.state.social_tone } /> : null }
 
   render() {
     return (
       <div>
         <div className='chart'>
           <form className='input'>
-          <Chats
-          sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
-          currentChat={ this.state.chat } />
+            <Chats
+            sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
+            currentChat={ this.state.chat } />
           </form>
-          <Chart pieData={ this.state.emotion_tone } />
-          <Chart pieData={ this.state.language_tone } />
-          <Chart pieData={ this.state.social_tone } />
+          <Chart pieData={ this.state.emotion_tone }/>
+          <Chart pieData={ this.state.language_tone }/>
+          <Chart pieData={ this.state.social_tone }/>
         </div>
+
+
 
         <div className="col-md-6">
         </div>

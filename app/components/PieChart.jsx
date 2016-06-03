@@ -26,24 +26,23 @@ class Chart extends React.Component {
   render() {
     return (
       <PieChart
+
         data={ this.props.pieData.watsonData }
-        width={ width }
-        height={ (height / this.props.pieData.circleAttributes.height) + 50}
-        radius={ (height / this.props.pieData.circleAttributes.radius) - 20}
-        innerRadius={ (height / this.props.pieData.circleAttributes.innerRadius) - 10}
-        // height={ (height / 2) + 50 }
-        // radius={ (height / 4) - 20 }
-        // innerRadius={ (height / 4) - 10 }
+        width={ width  }
+        // height={ (height / this.props.pieData.circleAttributes.height) + 50}
+        // radius={ (height / this.props.pieData.circleAttributes.radius) - 20}
+        // innerRadius={ (height / this.props.pieData.circleAttributes.innerRadius) - 10}
+        height={ (height / 2) + 50 }
+        radius={ (height / 5) - 60 }
+        innerRadius={ (height / 5) }
         sectorBorderColor="black"
         colors={function(d) {
           return colorMap[d];
         }}
 
-        title={this.props.pieData.circleAttributes.title}
-  
-        showInnerLabels={false}
 
-        showOuterLabels={false}
+        title={this.props.pieData.circleAttributes.title}
+
       />
 
 

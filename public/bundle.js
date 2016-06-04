@@ -34301,11 +34301,14 @@
 	    value: function render() {
 	      return _react2.default.createElement(TreemapChart, {
 	        data: this.props.treemapData.watsonData,
-	        width: 450,
+	        width: width,
 	        height: 250,
 	        title: 'Treemap',
 	        textColor: '#484848',
-	        fontColor: '12px'
+	        fontColor: '12px',
+	        colors: function colors(d) {
+	          return colorMap[d];
+	        }
 	      });
 	    }
 	  }]);
@@ -34520,11 +34523,12 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(TreemapChart, {
-	        data: [{
-	          "values": this.props.barChartData.watsonData
-	        }],
-	        width: 450,
+	        data: [{ "values": this.props.barChartData.watsonData }],
+	        width: width,
 	        height: 250,
+	        colors: function colors(d) {
+	          return colorMap[d];
+	        },
 	        title: 'BarChart',
 	        textColor: '#484848',
 	        fontColor: '12px'

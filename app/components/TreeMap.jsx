@@ -25,11 +25,14 @@ class Treemap extends React.Component{
     return (
     	<TreemapChart
         data={this.props.treemapData.watsonData}
-        width={450}
+        width={width}
         height={250}
         title="Treemap"
         textColor="#484848"
         fontColor="12px"
+        colors={function(d) {
+          return colorMap[d];
+        }}
       />
 
     )

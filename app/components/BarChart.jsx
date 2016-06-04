@@ -24,16 +24,12 @@ class BarChart extends React.Component{
   render() {
     return (
     	<TreemapChart
-        data={
-       
-        	  [
-        	    {
-        	      "values": this.props.barChartData.watsonData
-        	    }
-        	  ]
-        	}
-        width={450}
+        data={[{"values": this.props.barChartData.watsonData}]}
+        width={width}
         height={250}
+        colors={function(d) {
+          return colorMap[d];
+        }}
         title="BarChart"
         textColor="#484848"
         fontColor="12px"

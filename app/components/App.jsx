@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 // import Users from './Users.jsx';
 import Chats from './Chats.jsx';
 import Chart from './PieChart.jsx';
+import BarChart from './BarChart.jsx';
 import Treemap from './Treemap.jsx';
 // TODO: delete dummy data after connecting db
 import messagesData from '../data/dummydata.js';
@@ -57,24 +58,24 @@ class App extends React.Component {
         watsonData: 
         [
           {
-            label: 'Analytical',
-            value: 1
+            x: 'Analytical',
+            y: 1
           },
           {
-            label: 'Confident',
-            value: 1
+            x: 'Confident',
+            y: 1
           },
           {
-            label: 'Tentative',
-            value: 1
+            x: 'Tentative',
+            y: 1
           },
         ],
         circleAttributes: {
-          title: 'Language Tone',
-          width: null,
-          height: 3,
-          radius: 5.1,
-          innerRadius: 4.1
+          // title: 'Language Tone',
+          // width: null,
+          // height: 3,
+          // radius: 5.1,
+          // innerRadius: 4.1
         }
       },
       social_tone:{
@@ -159,8 +160,8 @@ class App extends React.Component {
         // populate language property
         for (let watsonData of data.tone_categories[1].tones) {
           const obj = {
-            label: watsonData.tone_name,
-            value: Math.floor(watsonData.score * 100)
+            x: watsonData.tone_name,
+            y: Math.floor(watsonData.score * 100)
           }
           language_Arr.push(obj);
         }
@@ -224,7 +225,7 @@ class App extends React.Component {
             currentChat={ this.state.chat } />
           </form>
           <Chart pieData={ this.state.emotion_tone }/>
-          <Chart pieData={ this.state.language_tone }/>
+          <BarChart barChartData={ this.state.language_tone }/>
           <Treemap treemapData={ this.state.social_tone }/>
         </div>
 

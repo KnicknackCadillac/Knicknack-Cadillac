@@ -1,7 +1,7 @@
 import React from 'react'
 
 const rd3 = require('react-d3');
-const TreemapChart = rd3.Treemap;
+const TreemapChart = rd3.BarChart;
 const width = window.innerWidth;
 const height = window.innerWidth;
 let colorMap = [
@@ -13,21 +13,28 @@ let colorMap = [
 ];
 
 
-class Treemap extends React.Component{
+class BarChart extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      treemapData: []
+      barChartData: []
     }
   }
 
   render() {
     return (
     	<TreemapChart
-        data={this.props.treemapData.watsonData}
+        data={
+       
+        	  [
+        	    {
+        	      "values": this.props.barChartData.watsonData
+        	    }
+        	  ]
+        	}
         width={450}
         height={250}
-        title="Treemap"
+        title="BarChart"
         textColor="#484848"
         fontColor="12px"
       />
@@ -36,4 +43,4 @@ class Treemap extends React.Component{
   }
 };
 
-export default Treemap
+export default BarChart

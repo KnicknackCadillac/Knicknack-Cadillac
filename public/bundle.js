@@ -64,11 +64,15 @@
 	
 	var _PieChart2 = _interopRequireDefault(_PieChart);
 	
-	var _Treemap = __webpack_require__(230);
+	var _BarChart = __webpack_require__(231);
+	
+	var _BarChart2 = _interopRequireDefault(_BarChart);
+	
+	var _Treemap = __webpack_require__(227);
 	
 	var _Treemap2 = _interopRequireDefault(_Treemap);
 	
-	var _dummydata = __webpack_require__(227);
+	var _dummydata = __webpack_require__(228);
 	
 	var _dummydata2 = _interopRequireDefault(_dummydata);
 	
@@ -80,7 +84,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var update = __webpack_require__(228);
+	var update = __webpack_require__(229);
 	// import Users from './Users.jsx';
 	
 	// TODO: delete dummy data after connecting db
@@ -130,21 +134,21 @@
 	
 	      language_tone: {
 	        watsonData: [{
-	          label: 'Analytical',
-	          value: 1
+	          x: 'Analytical',
+	          y: 1
 	        }, {
-	          label: 'Confident',
-	          value: 1
+	          x: 'Confident',
+	          y: 1
 	        }, {
-	          label: 'Tentative',
-	          value: 1
+	          x: 'Tentative',
+	          y: 1
 	        }],
 	        circleAttributes: {
-	          title: 'Language Tone',
-	          width: null,
-	          height: 3,
-	          radius: 5.1,
-	          innerRadius: 4.1
+	          // title: 'Language Tone',
+	          // width: null,
+	          // height: 3,
+	          // radius: 5.1,
+	          // innerRadius: 4.1
 	        }
 	      },
 	      social_tone: {
@@ -254,8 +258,8 @@
 	              var _watsonData = _step2.value;
 	
 	              var _obj = {
-	                label: _watsonData.tone_name,
-	                value: Math.floor(_watsonData.score * 100)
+	                x: _watsonData.tone_name,
+	                y: Math.floor(_watsonData.score * 100)
 	              };
 	              language_Arr.push(_obj);
 	            }
@@ -364,7 +368,7 @@
 	              currentChat: this.state.chat })
 	          ),
 	          _react2.default.createElement(_PieChart2.default, { pieData: this.state.emotion_tone }),
-	          _react2.default.createElement(_PieChart2.default, { pieData: this.state.language_tone }),
+	          _react2.default.createElement(_BarChart2.default, { barChartData: this.state.language_tone }),
 	          _react2.default.createElement(_Treemap2.default, { treemapData: this.state.social_tone })
 	        ),
 	        _react2.default.createElement('div', { className: 'col-md-6' })
@@ -34244,6 +34248,77 @@
 
 /***/ },
 /* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var rd3 = __webpack_require__(171);
+	var TreemapChart = rd3.Treemap;
+	var width = window.innerWidth;
+	var height = window.innerWidth;
+	var colorMap = ['#C8020A', // 'Anger'
+	'#6EE017', // 'Disgust'
+	'#FF006A', // 'Fear'
+	'#FF7A06', // 'Joy'
+	'#0099FF'];
+	
+	// 'Sadness'
+	
+	var Treemap = function (_React$Component) {
+	  _inherits(Treemap, _React$Component);
+	
+	  function Treemap(props) {
+	    _classCallCheck(this, Treemap);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Treemap).call(this, props));
+	
+	    _this.state = {
+	      treemapData: []
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(Treemap, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(TreemapChart, {
+	        data: this.props.treemapData.watsonData,
+	        width: 450,
+	        height: 250,
+	        title: 'Treemap',
+	        textColor: '#484848',
+	        fontColor: '12px'
+	      });
+	    }
+	  }]);
+	
+	  return Treemap;
+	}(_react2.default.Component);
+	
+	;
+	
+	exports.default = Treemap;
+
+/***/ },
+/* 228 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -34268,13 +34343,13 @@
 	exports.default = messagesData;
 
 /***/ },
-/* 228 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(229);
+	module.exports = __webpack_require__(230);
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -34392,7 +34467,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34416,8 +34491,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var rd3 = __webpack_require__(171);
-	var TreemapChart = rd3.Treemap;
-	var treemapData = [{ label: 'China', value: 1364 }, { label: 'India', value: 1296 }, { label: 'United States', value: 318 }, { label: 'Indonesia', value: 251 }, { label: 'Brazil', value: 203 }];
+	var TreemapChart = rd3.BarChart;
 	var width = window.innerWidth;
 	var height = window.innerWidth;
 	var colorMap = ['#C8020A', // 'Anger'
@@ -34428,40 +34502,42 @@
 	
 	// 'Sadness'
 	
-	var Treemap = function (_React$Component) {
-	  _inherits(Treemap, _React$Component);
+	var BarChart = function (_React$Component) {
+	  _inherits(BarChart, _React$Component);
 	
-	  function Treemap(props) {
-	    _classCallCheck(this, Treemap);
+	  function BarChart(props) {
+	    _classCallCheck(this, BarChart);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Treemap).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BarChart).call(this, props));
 	
 	    _this.state = {
-	      treemapData: []
+	      barChartData: []
 	    };
 	    return _this;
 	  }
 	
-	  _createClass(Treemap, [{
+	  _createClass(BarChart, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(TreemapChart, {
-	        data: this.props.treemapData.watsonData,
+	        data: [{
+	          "values": this.props.barChartData.watsonData
+	        }],
 	        width: 450,
 	        height: 250,
-	        title: 'Treemap',
+	        title: 'BarChart',
 	        textColor: '#484848',
 	        fontColor: '12px'
 	      });
 	    }
 	  }]);
 	
-	  return Treemap;
+	  return BarChart;
 	}(_react2.default.Component);
 	
 	;
 	
-	exports.default = Treemap;
+	exports.default = BarChart;
 
 /***/ }
 /******/ ]);

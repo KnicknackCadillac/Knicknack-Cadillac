@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 // import Users from './Users.jsx';
 import Chats from './Chats.jsx';
 import Chart from './PieChart.jsx';
+import Treemap from './Treemap.jsx';
 // TODO: delete dummy data after connecting db
 import messagesData from '../data/dummydata.js';
 
@@ -224,7 +225,7 @@ class App extends React.Component {
           </form>
           <Chart pieData={ this.state.emotion_tone }/>
           <Chart pieData={ this.state.language_tone }/>
-          <Chart pieData={ this.state.social_tone }/>
+          <Treemap treemapData={ this.state.social_tone }/>
         </div>
 
 

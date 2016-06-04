@@ -64,6 +64,10 @@
 	
 	var _PieChart2 = _interopRequireDefault(_PieChart);
 	
+	var _Treemap = __webpack_require__(230);
+	
+	var _Treemap2 = _interopRequireDefault(_Treemap);
+	
 	var _dummydata = __webpack_require__(227);
 	
 	var _dummydata2 = _interopRequireDefault(_dummydata);
@@ -361,7 +365,7 @@
 	          ),
 	          _react2.default.createElement(_PieChart2.default, { pieData: this.state.emotion_tone }),
 	          _react2.default.createElement(_PieChart2.default, { pieData: this.state.language_tone }),
-	          _react2.default.createElement(_PieChart2.default, { pieData: this.state.social_tone })
+	          _react2.default.createElement(_Treemap2.default, { treemapData: this.state.social_tone })
 	        ),
 	        _react2.default.createElement('div', { className: 'col-md-6' })
 	      );
@@ -20745,8 +20749,6 @@
 	'#0099FF'];
 	
 	// 'Sadness'
-	// '#274b5f', // Language Style
-	// '#1cb4a0', // Social Tendencies
 	
 	var Chart = function (_React$Component) {
 	  _inherits(Chart, _React$Component);
@@ -34388,6 +34390,78 @@
 	
 	module.exports = update;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var rd3 = __webpack_require__(171);
+	var TreemapChart = rd3.Treemap;
+	var treemapData = [{ label: 'China', value: 1364 }, { label: 'India', value: 1296 }, { label: 'United States', value: 318 }, { label: 'Indonesia', value: 251 }, { label: 'Brazil', value: 203 }];
+	var width = window.innerWidth;
+	var height = window.innerWidth;
+	var colorMap = ['#C8020A', // 'Anger'
+	'#6EE017', // 'Disgust'
+	'#FF006A', // 'Fear'
+	'#FF7A06', // 'Joy'
+	'#0099FF'];
+	
+	// 'Sadness'
+	
+	var Treemap = function (_React$Component) {
+	  _inherits(Treemap, _React$Component);
+	
+	  function Treemap(props) {
+	    _classCallCheck(this, Treemap);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Treemap).call(this, props));
+	
+	    _this.state = {
+	      treemapData: []
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(Treemap, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(TreemapChart, {
+	        data: this.props.treemapData.watsonData,
+	        width: 450,
+	        height: 250,
+	        title: 'Treemap',
+	        textColor: '#484848',
+	        fontColor: '12px'
+	      });
+	    }
+	  }]);
+	
+	  return Treemap;
+	}(_react2.default.Component);
+	
+	;
+	
+	exports.default = Treemap;
 
 /***/ }
 /******/ ]);

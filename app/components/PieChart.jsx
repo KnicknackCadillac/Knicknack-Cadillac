@@ -10,8 +10,6 @@ let colorMap = [
   '#FF006A', // 'Fear'
   '#FF7A06', // 'Joy'
   '#0099FF', // 'Sadness'
-  // '#274b5f', // Language Style
-  // '#1cb4a0', // Social Tendencies
 ];
 
 

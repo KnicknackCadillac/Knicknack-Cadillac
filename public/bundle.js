@@ -72,9 +72,13 @@
 	
 	var _Treemap2 = _interopRequireDefault(_Treemap);
 	
-	var _initialData = __webpack_require__(229);
+	var _initialData = __webpack_require__(232);
 	
 	var _initialData2 = _interopRequireDefault(_initialData);
+	
+	var _wallpaperdata = __webpack_require__(233);
+	
+	var _wallpaperdata2 = _interopRequireDefault(_wallpaperdata);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -115,6 +119,9 @@
 	      social_tone: {
 	        watsonData: [],
 	        circleAttributes: {}
+	      },
+	      styles: {
+	        backgroundImage: ''
 	      }
 	    };
 	
@@ -326,10 +333,13 @@
 	              return lastEmote;
 	            }
 	          });
-	
 	          console.log(emotion_Arr);
 	          console.log(language_Arr);
 	          console.log(social_Arr);
+	          _this2.setState({
+	            styles: { backgroundImage: 'url(' + _wallpaperdata2.default[highestEmote.label] + ')' }
+	          });
+	          console.log(_this2.state.styles.backgroundImage);
 	        }
 	      });
 	    }
@@ -358,12 +368,12 @@
 	              currentChat: this.state.chat }),
 	            _react2.default.createElement(
 	              'div',
-	              { onClick: this.handlePieClick, className: 'large' },
+	              { onClick: this.handlePieClick, className: 'large', style: this.state.styles },
 	              _react2.default.createElement(_PieChart2.default, { pieData: this.state.emotion_tone, clicked: this.state.emotionClicked })
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { onClick: this.handleBarClick, className: 'shrink' },
+	              { onClick: this.handleBarClick, className: 'shrink', style: this.state.styles },
 	              _react2.default.createElement(_BarChart2.default, { barChartData: this.state.language_tone, clicked: this.state.languageClicked })
 	            ),
 	            _react2.default.createElement(
@@ -34493,100 +34503,7 @@
 	exports.default = Treemap;
 
 /***/ },
-/* 229 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var initialData = [{
-	  emotionClicked: true,
-	  languageClicked: false,
-	  socialClicked: false,
-	  chat: {
-	    // username: 'boo',
-	    inputText: '',
-	    message: ''
-	  },
-	
-	  emotion_tone: {
-	    watsonData: [{
-	      label: 'Anger',
-	      value: 1
-	    }, {
-	      label: 'Disgust',
-	      value: 1
-	    }, {
-	      label: 'Fear',
-	      value: 1
-	    }, {
-	      label: 'Joy',
-	      value: 1
-	    }, {
-	      label: 'Sadness',
-	      value: 1
-	    }],
-	    circleAttributes: {
-	      title: 'Emotional Tone',
-	      width: null,
-	      height: 2,
-	      radius: 4,
-	      innerRadius: 4
-	    }
-	  },
-	
-	  language_tone: {
-	    watsonData: [{
-	      x: 'Analytical',
-	      y: 1
-	    }, {
-	      x: 'Confident',
-	      y: 1
-	    }, {
-	      x: 'Tentative',
-	      y: 1
-	    }],
-	    circleAttributes: {
-	      // title: 'Language Tone',
-	      // width: null,
-	      // height: 3,
-	      // radius: 5.1,
-	      // innerRadius: 4.1
-	    }
-	  },
-	
-	  social_tone: {
-	    watsonData: [{
-	      label: 'Openness',
-	      value: 1
-	    }, {
-	      label: 'Conscientiousness',
-	      value: 1
-	    }, {
-	      label: 'Extraversion',
-	      value: 1
-	    }, {
-	      label: 'Agreeableness',
-	      value: 1
-	    }, {
-	      label: 'Emotional Range',
-	      value: 1
-	    }],
-	    circleAttributes: {
-	      title: 'Social Tone',
-	      width: null,
-	      height: 2.2,
-	      radius: 8.2,
-	      innerRadius: 4.2
-	    }
-	  }
-	}];
-	
-	exports.default = initialData;
-
-/***/ },
+/* 229 */,
 /* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -34709,6 +34626,119 @@
 	
 	module.exports = update;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 232 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var initialData = [{
+	  emotionClicked: true,
+	  languageClicked: false,
+	  socialClicked: false,
+	  chat: {
+	    // username: 'boo',
+	    inputText: '',
+	    message: ''
+	  },
+	
+	  emotion_tone: {
+	    watsonData: [{
+	      label: 'Anger',
+	      value: 1
+	    }, {
+	      label: 'Disgust',
+	      value: 1
+	    }, {
+	      label: 'Fear',
+	      value: 1
+	    }, {
+	      label: 'Joy',
+	      value: 1
+	    }, {
+	      label: 'Sadness',
+	      value: 1
+	    }],
+	    circleAttributes: {
+	      title: 'Emotional Tone',
+	      width: null,
+	      height: 2,
+	      radius: 4,
+	      innerRadius: 4
+	    }
+	  },
+	
+	  language_tone: {
+	    watsonData: [{
+	      x: 'Analytical',
+	      y: 1
+	    }, {
+	      x: 'Confident',
+	      y: 1
+	    }, {
+	      x: 'Tentative',
+	      y: 1
+	    }],
+	    circleAttributes: {
+	      // title: 'Language Tone',
+	      // width: null,
+	      // height: 3,
+	      // radius: 5.1,
+	      // innerRadius: 4.1
+	    }
+	  },
+	
+	  social_tone: {
+	    watsonData: [{
+	      label: 'Openness',
+	      value: 1
+	    }, {
+	      label: 'Conscientiousness',
+	      value: 1
+	    }, {
+	      label: 'Extraversion',
+	      value: 1
+	    }, {
+	      label: 'Agreeableness',
+	      value: 1
+	    }, {
+	      label: 'Emotional Range',
+	      value: 1
+	    }],
+	    circleAttributes: {
+	      title: 'Social Tone',
+	      width: null,
+	      height: 2.2,
+	      radius: 8.2,
+	      innerRadius: 4.2
+	    }
+	  }
+	}];
+	
+	exports.default = initialData;
+
+/***/ },
+/* 233 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var wallpaper = {
+	  Anger: 'http://themindunleashed.org/wp-content/uploads/2014/08/nightmaree.jpg',
+	  Disgust: 'http://themindunleashed.org/wp-content/uploads/2014/08/nightmaree.jpg',
+	  Fear: 'http://themindunleashed.org/wp-content/uploads/2014/08/nightmaree.jpg',
+	  Joy: 'http://themindunleashed.org/wp-content/uploads/2014/08/nightmaree.jpg',
+	  Sadness: 'http://www.cardloanhikakunavi.com/wp-content/uploads/2015/11/Quotes-help-sadness.jpg'
+	};
+	
+	exports.default = wallpaper;
 
 /***/ }
 /******/ ]);

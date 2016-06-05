@@ -7,6 +7,7 @@ import Chart from './PieChart.jsx';
 import BarChart from './BarChart.jsx';
 import Treemap from './Treemap.jsx';
 import initialData from '../data/initialData.js';
+import wallpaper from '../data/wallpaperdata.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -32,6 +33,9 @@ class App extends React.Component {
         watsonData: [],
         circleAttributes: {}
       },
+      styles: {
+        backgroundImage: ''
+      }
     };
 
     this.handlePieClick = this.handlePieClick.bind(this);
@@ -167,10 +171,13 @@ class App extends React.Component {
             return lastEmote;
           }
         });
-
         console.log(emotion_Arr);
         console.log(language_Arr);
         console.log(social_Arr);
+        this.setState({
+          styles: {backgroundImage: 'url(' + wallpaper[highestEmote.label] + ')'}
+        })
+        console.log(this.state.styles.backgroundImage);
       }
     });
   }
@@ -186,10 +193,10 @@ class App extends React.Component {
             <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } />
-            <div onClick={this.handlePieClick} className='large'>
+            <div onClick={this.handlePieClick} className='large' style={this.state.styles}>
               <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
             </div>
-            <div onClick={this.handleBarClick} className='shrink'>
+            <div onClick={this.handleBarClick} className='shrink' style={this.state.styles}>
               <BarChart barChartData={ this.state.language_tone } clicked={this.state.languageClicked}/>
             </div>
             <div onClick={this.handleTreeClick} className='shrink'>

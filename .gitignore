@@ -1,5 +1,6 @@
 # npm
 node_modules
+npm-debug.log
 
 # webpack template
 webpack.config-orig.js
@@ -12,4 +13,5 @@ webpack.config-orig.js
 config
 
 # public bundle
-public/bundle.*
+public/bundle.js
+public/bundle.js.map

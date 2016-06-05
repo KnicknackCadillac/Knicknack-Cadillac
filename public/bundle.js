@@ -30959,6 +30959,14 @@
 	  return ("#" +  red +  green +  blue);
 	
 	};
+	
+	exports.define = function(label){
+	  if(label === 'Emotional Range') {
+	    return label + " : The extent a person's emotion is sensitive to the environment";
+	  } else {
+	    return 'hello';
+	  }
+	}
 
 
 /***/ },
@@ -33266,6 +33274,7 @@
 	  },
 	
 	  getDefaultProps:function() {
+	    console.log('default props', this.props);
 	    return {
 	      hoverAnimation: true,
 	      data:           [],
@@ -33285,19 +33294,19 @@
 	
 	    return (
 	      React.createElement(Chart, {
-	        title: props.title, 
-	        width: props.width, 
+	        title: props.title,
+	        width: props.width,
 	        height: props.height
-	      }, 
-	        React.createElement("g", {className: "rd3-treemap"}, 
+	      },
+	        React.createElement("g", {className: "rd3-treemap"},
 	          React.createElement(DataSeries, {
-	            data: props.data, 
-	            width: props.width, 
-	            height: props.height, 
-	            colors: props.colors, 
-	            colorAccessor: props.colorAccessor, 
-	            textColor: props.textColor, 
-	            fontSize: props.fontSize, 
+	            data: props.data,
+	            width: props.width,
+	            height: props.height,
+	            colors: props.colors,
+	            colorAccessor: props.colorAccessor,
+	            textColor: props.textColor,
+	            fontSize: props.fontSize,
 	            hoverAnimation: props.hoverAnimation}
 	          )
 	        )
@@ -33387,6 +33396,7 @@
 	
 	var React = __webpack_require__(1);
 	var shade = __webpack_require__(178).shade;
+	var define = __webpack_require__(178).define;
 	var Cell = __webpack_require__(215);
 	
 	
@@ -33396,13 +33406,15 @@
 	
 	  propTypes: {
 	    fill: React.PropTypes.string,
+	    label: React.PropTypes.string
 	  },
 	
 	  getInitialState:function() {
 	    return {
 	      // fill is named as fill instead of initialFill to avoid
 	      // confusion when passing down props from top parent
-	      fill: this.props.fill
+	      fill: this.props.fill,
+	      label: this.props.label
 	    };
 	  },
 	
@@ -33412,10 +33424,10 @@
 	    var props = this.props;
 	
 	    return (
-	      React.createElement(Cell, React.__spread({},  
-	        props, 
-	        {fill: this.state.fill, 
-	        handleMouseOver: props.hoverAnimation ? this._animateCell : null, 
+	      React.createElement(Cell, React.__spread({},
+	        props,
+	        {fill: this.state.fill, label: this.state.label,
+	        handleMouseOver: props.hoverAnimation ? this._animateCell : null,
 	        handleMouseLeave: props.hoverAnimation ? this._restoreCell : null})
 	      )
 	    );
@@ -33423,13 +33435,17 @@
 	
 	  _animateCell:function() {
 	    this.setState({
-	      fill: shade(this.props.fill, 0.05)
+	      fill: shade(this.props.fill, 0.05),
+	      label: define(this.props.label)
 	    });
+	    console.log('props is: ', this.props);
+	    console.log('label is: ', this.props.label);
 	  },
 	
 	  _restoreCell:function() {
 	    this.setState({
-	      fill: this.props.fill
+	      fill: this.props.fill,
+	      label: this.props.label
 	    });
 	  }
 	});
@@ -33457,34 +33473,38 @@
 	  },
 	
 	  render:function() {
-	
 	    var props = this.props;
-	    
+	    var fontsize = "'"+ props.width/380 + 'em' + "'"
+	    if(props.width < 100){
+	      console.log('this is props.width in cell ', props.width)
+	      fontsize = '0em'
+	    }
+	    console.log('fontsize', fontsize)
 	    var textStyle = {
 	      'textAnchor': 'middle',
 	      'fill': props.textColor,
-	      'fontSize': props.fontSize
+	      'fontSize': fontsize
 	    };
 	
 	    var t = ("translate(" + props.x + ", " + props.y + "  )");
 	
 	    return (
-	      React.createElement("g", {transform: t}, 
+	      React.createElement("g", {transform: t},
 	        React.createElement("rect", {
-	          className: "rd3-treemap-cell", 
-	          width: props.width, 
-	          height: props.height, 
-	          fill: props.fill, 
-	          onMouseOver: props.handleMouseOver, 
+	          className: "rd3-treemap-cell",
+	          width: props.width,
+	          height: props.height,
+	          fill: props.fill,
+	          onMouseOver: props.handleMouseOver,
 	          onMouseLeave: props.handleMouseLeave}
-	        ), 
+	        ),
 	        React.createElement("text", {
-	          x: props.width / 2, 
-	          y: props.height / 2, 
-	          dy: ".35em", 
-	          style: textStyle, 
+	          x: props.width / 2,
+	          y: props.height / 2,
+	          dy: ".35em",
+	          style: textStyle,
 	          className: "rd3-treemap-cell-text"
-	        }, 
+	        },
 	          props.label
 	        )
 	      )
@@ -34404,9 +34424,7 @@
 	        colors: function colors(d) {
 	          return colorMap[d];
 	        },
-	        title: 'BarChart',
-	        textColor: '#484848',
-	        fontColor: '12px'
+	        title: 'BarChart'
 	      });
 	    }
 	  }]);
@@ -34445,13 +34463,13 @@
 	var rd3 = __webpack_require__(171);
 	var TreemapChart = rd3.Treemap;
 	
-	var colorMap = ['#C8020A', // 'Anger'
-	'#6EE017', // 'Disgust'
-	'#FF006A', // 'Fear'
-	'#FF7A06', // 'Joy'
-	'#0099FF'];
-	
-	// 'Sadness'
+	var colorMap = ['null', // 'skip
+	'#E3A4F8 ', // 'Emotion Range
+	'#EABB47 ', // 'Agreeableness'
+	'#3BA0E1 ', // 'Extraversion'
+	'#4DFF68 ', // 'Conscientiousness'
+	'#FD7B6B ' // 'Openness'
+	];
 	
 	var Treemap = function (_React$Component) {
 	  _inherits(Treemap, _React$Component);

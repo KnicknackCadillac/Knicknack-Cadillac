@@ -42,8 +42,6 @@ class BarChart extends React.Component{
           return colorMap[d];
         }}
         title="BarChart"
-        textColor="#484848"
-        fontColor="12px"
       />
 
     )

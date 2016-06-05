@@ -4,11 +4,12 @@ const rd3 = require('react-d3');
 const TreemapChart = rd3.Treemap;
 
 let colorMap = [
-  '#C8020A', // 'Anger'
-  '#6EE017', // 'Disgust'
-  '#FF006A', // 'Fear'
-  '#FF7A06', // 'Joy'
-  '#0099FF', // 'Sadness'
+ 'null', // 'skip
+ '#E3A4F8 ', // 'Emotion Range
+ '#EABB47 ', // 'Agreeableness'
+ '#3BA0E1 ', // 'Extraversion'
+ '#4DFF68 ', // 'Conscientiousness'
+ '#FD7B6B '  // 'Openness'
 ];
 
 

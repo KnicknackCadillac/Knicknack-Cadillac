@@ -60,23 +60,23 @@
 	
 	var _Chats2 = _interopRequireDefault(_Chats);
 	
-	var _PieChart = __webpack_require__(170);
+	var _PieChart = __webpack_require__(169);
 	
 	var _PieChart2 = _interopRequireDefault(_PieChart);
 	
-	var _BarChart = __webpack_require__(227);
+	var _BarChart = __webpack_require__(226);
 	
 	var _BarChart2 = _interopRequireDefault(_BarChart);
 	
-	var _Treemap = __webpack_require__(228);
+	var _Treemap = __webpack_require__(227);
 	
 	var _Treemap2 = _interopRequireDefault(_Treemap);
 	
-	var _initialData = __webpack_require__(232);
+	var _initialData = __webpack_require__(228);
 	
 	var _initialData2 = _interopRequireDefault(_initialData);
 	
-	var _wallpaperdata = __webpack_require__(233);
+	var _wallpaperdata = __webpack_require__(229);
 	
 	var _wallpaperdata2 = _interopRequireDefault(_wallpaperdata);
 	
@@ -20776,8 +20776,7 @@
 	exports.default = Chats;
 
 /***/ },
-/* 169 */,
-/* 170 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20800,7 +20799,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var rd3 = __webpack_require__(171);
+	var rd3 = __webpack_require__(170);
 	var PieChart = rd3.PieChart;
 	
 	var colorMap = ['#C8020A', // 'Anger'
@@ -20888,40 +20887,40 @@
 	// },
 
 /***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports.BarChart = __webpack_require__(171).BarChart;
+	exports.LineChart = __webpack_require__(194).LineChart;
+	exports.PieChart = __webpack_require__(200).PieChart;
+	exports.AreaChart = __webpack_require__(205).AreaChart;
+	exports.Treemap = __webpack_require__(210).Treemap;
+	exports.ScatterChart = __webpack_require__(215).ScatterChart;
+	exports.CandlestickChart = __webpack_require__(220).CandlestickChart;
+	
+
+
+/***/ },
 /* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports.BarChart = __webpack_require__(172).BarChart;
-	exports.LineChart = __webpack_require__(195).LineChart;
-	exports.PieChart = __webpack_require__(201).PieChart;
-	exports.AreaChart = __webpack_require__(206).AreaChart;
-	exports.Treemap = __webpack_require__(211).Treemap;
-	exports.ScatterChart = __webpack_require__(216).ScatterChart;
-	exports.CandlestickChart = __webpack_require__(221).CandlestickChart;
 	
+	exports.BarChart = __webpack_require__(172);
 
 
 /***/ },
 /* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
-	exports.BarChart = __webpack_require__(173);
-
-
-/***/ },
-/* 173 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var DataSeries = __webpack_require__(175);
-	var utils = __webpack_require__(178);
+	var d3 = __webpack_require__(173);
+	var DataSeries = __webpack_require__(174);
+	var utils = __webpack_require__(177);
 	
-	var $__0=      __webpack_require__(179),Chart=$__0.Chart,XAxis=$__0.XAxis,YAxis=$__0.YAxis;
-	var $__1=     __webpack_require__(188),CartesianChartPropsMixin=$__1.CartesianChartPropsMixin,ViewBoxMixin=$__1.ViewBoxMixin;
+	var $__0=      __webpack_require__(178),Chart=$__0.Chart,XAxis=$__0.XAxis,YAxis=$__0.YAxis;
+	var $__1=     __webpack_require__(187),CartesianChartPropsMixin=$__1.CartesianChartPropsMixin,ViewBoxMixin=$__1.ViewBoxMixin;
 	
 	module.exports = React.createClass({
 	
@@ -21077,7 +21076,7 @@
 
 
 /***/ },
-/* 174 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function() {
@@ -30636,14 +30635,14 @@
 	}();
 
 /***/ },
-/* 175 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var BarContainer = __webpack_require__(176);
+	var d3 = __webpack_require__(173);
+	var BarContainer = __webpack_require__(175);
 	
 	module.exports = React.createClass({
 	
@@ -30690,14 +30689,14 @@
 
 
 /***/ },
-/* 176 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var Bar = __webpack_require__(177);
-	var shade = __webpack_require__(178).shade;
+	var Bar = __webpack_require__(176);
+	var shade = __webpack_require__(177).shade;
 	
 	module.exports = React.createClass({displayName: "exports",
 	
@@ -30748,7 +30747,7 @@
 
 
 /***/ },
-/* 177 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30788,10 +30787,10 @@
 
 
 /***/ },
-/* 178 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	
 	
 	exports.calculateScales = function(chartWidth, chartHeight, xValues, yValues)  {
@@ -30943,6 +30942,33 @@
 	  return ("#" +  red +  green +  blue);
 	
 	};
+	
+	exports.define = function(label){
+	  if(label === 'Emotional Range') {
+	    return "sensitivity to the environment.";
+	  } if(label === 'Openness') {
+	    return "open to experience a variety of activities.";
+	  } if(label === 'Conscientiousness') {
+	      return "acting organized/thoughtful";
+	  } if(label === 'Extraversion') {
+	    return "seeking stimulation in the company of others.";
+	  } if( label === 'Agreeableness'){
+	    return "compassionate and cooperative"
+	  };
+	}
+
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	exports.XAxis = __webpack_require__(179).XAxis;
+	exports.YAxis = __webpack_require__(179).YAxis;
+	exports.Chart = __webpack_require__(185).Chart;
+	exports.LegendChart = __webpack_require__(185).LegendChart;
+	exports.Legend = __webpack_require__(192);
+	exports.Voronoi = __webpack_require__(193);
 
 
 /***/ },
@@ -30950,34 +30976,21 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	exports.XAxis = __webpack_require__(180).XAxis;
-	exports.YAxis = __webpack_require__(180).YAxis;
-	exports.Chart = __webpack_require__(186).Chart;
-	exports.LegendChart = __webpack_require__(186).LegendChart;
-	exports.Legend = __webpack_require__(193);
-	exports.Voronoi = __webpack_require__(194);
+	exports.XAxis = __webpack_require__(180);
+	exports.YAxis = __webpack_require__(184);
 
 
 /***/ },
 /* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
-	exports.XAxis = __webpack_require__(181);
-	exports.YAxis = __webpack_require__(185);
-
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var AxisTicks = __webpack_require__(182);
-	var AxisLine = __webpack_require__(183);
-	var Label = __webpack_require__(184);
+	var d3 = __webpack_require__(173);
+	var AxisTicks = __webpack_require__(181);
+	var AxisLine = __webpack_require__(182);
+	var Label = __webpack_require__(183);
 	
 	module.exports = React.createClass({
 	
@@ -31076,13 +31089,13 @@
 
 
 /***/ },
-/* 182 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	
 	module.exports = React.createClass({
 	
@@ -31271,13 +31284,13 @@
 
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	
 	module.exports = React.createClass({
 	
@@ -31347,7 +31360,7 @@
 
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31441,16 +31454,16 @@
 
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var AxisTicks = __webpack_require__(182);
-	var AxisLine = __webpack_require__(183);
-	var Label = __webpack_require__(184);
+	var d3 = __webpack_require__(173);
+	var AxisTicks = __webpack_require__(181);
+	var AxisLine = __webpack_require__(182);
+	var Label = __webpack_require__(183);
 	
 	module.exports = React.createClass({
 	
@@ -31554,23 +31567,23 @@
 
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	exports.BasicChart = __webpack_require__(187);
-	exports.Chart = __webpack_require__(191);
-	exports.LegendChart = __webpack_require__(192);
+	exports.BasicChart = __webpack_require__(186);
+	exports.Chart = __webpack_require__(190);
+	exports.LegendChart = __webpack_require__(191);
 
 
 /***/ },
-/* 187 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var mixins = __webpack_require__(188);
+	var mixins = __webpack_require__(187);
 	
 	module.exports = React.createClass({
 	
@@ -31641,22 +31654,22 @@
 
 
 /***/ },
-/* 188 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	exports.CartesianChartPropsMixin = __webpack_require__(189);
-	exports.ViewBoxMixin = __webpack_require__(190);
+	exports.CartesianChartPropsMixin = __webpack_require__(188);
+	exports.ViewBoxMixin = __webpack_require__(189);
 
 
 /***/ },
-/* 189 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	
 	module.exports =  {
 	
@@ -31720,7 +31733,7 @@
 
 
 /***/ },
-/* 190 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -31762,14 +31775,14 @@
 
 
 /***/ },
-/* 191 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var LegendChart = __webpack_require__(192);
-	var BasicChart = __webpack_require__(187);
+	var LegendChart = __webpack_require__(191);
+	var BasicChart = __webpack_require__(186);
 	
 	module.exports = React.createClass({
 	
@@ -31814,14 +31827,14 @@
 
 
 /***/ },
-/* 192 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var Legend = __webpack_require__(193);
-	var d3 = __webpack_require__(174);
+	var Legend = __webpack_require__(192);
+	var d3 = __webpack_require__(173);
 	
 	module.exports = React.createClass({
 	
@@ -31930,13 +31943,13 @@
 
 
 /***/ },
-/* 193 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	
 	module.exports = React.createClass({
 	
@@ -32023,13 +32036,13 @@
 
 
 /***/ },
-/* 194 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	
 	var Polygon = React.createClass({displayName: "Polygon",
 	
@@ -32090,25 +32103,25 @@
 
 
 /***/ },
-/* 195 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	exports.LineChart = __webpack_require__(196);
+	exports.LineChart = __webpack_require__(195);
 
 
 /***/ },
-/* 196 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var $__0=      __webpack_require__(179),Chart=$__0.Chart,XAxis=$__0.XAxis,YAxis=$__0.YAxis;
-	var DataSeries = __webpack_require__(197);
-	var utils = __webpack_require__(178);
-	var $__1=     __webpack_require__(188),CartesianChartPropsMixin=$__1.CartesianChartPropsMixin,ViewBoxMixin=$__1.ViewBoxMixin;
+	var d3 = __webpack_require__(173);
+	var $__0=      __webpack_require__(178),Chart=$__0.Chart,XAxis=$__0.XAxis,YAxis=$__0.YAxis;
+	var DataSeries = __webpack_require__(196);
+	var utils = __webpack_require__(177);
+	var $__1=     __webpack_require__(187),CartesianChartPropsMixin=$__1.CartesianChartPropsMixin,ViewBoxMixin=$__1.ViewBoxMixin;
 	
 	module.exports = React.createClass({
 	
@@ -32241,15 +32254,15 @@
 
 
 /***/ },
-/* 197 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var VoronoiCircleContainer = __webpack_require__(198);
-	var Line = __webpack_require__(200);
+	var d3 = __webpack_require__(173);
+	var VoronoiCircleContainer = __webpack_require__(197);
+	var Line = __webpack_require__(199);
 	
 	module.exports = React.createClass({
 	
@@ -32354,15 +32367,15 @@
 
 
 /***/ },
-/* 198 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var shade = __webpack_require__(178).shade;
-	var VoronoiCircle = __webpack_require__(199);
+	var d3 = __webpack_require__(173);
+	var shade = __webpack_require__(177).shade;
+	var VoronoiCircle = __webpack_require__(198);
 	
 	module.exports = React.createClass({
 	
@@ -32435,13 +32448,13 @@
 
 
 /***/ },
-/* 199 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	
 	module.exports = React.createClass({
 	
@@ -32479,7 +32492,7 @@
 
 
 /***/ },
-/* 200 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32526,23 +32539,23 @@
 
 
 /***/ },
-/* 201 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	exports.PieChart = __webpack_require__(202);
+	exports.PieChart = __webpack_require__(201);
 
 
 /***/ },
-/* 202 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	var React = __webpack_require__(1);
-	var DataSeries = __webpack_require__(203);
-	var Chart = __webpack_require__(179).Chart;
+	var DataSeries = __webpack_require__(202);
+	var Chart = __webpack_require__(178).Chart;
 	
 	module.exports = React.createClass({
 	
@@ -32619,14 +32632,14 @@
 
 
 /***/ },
-/* 203 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var ArcContainer = __webpack_require__(204);
+	var d3 = __webpack_require__(173);
+	var ArcContainer = __webpack_require__(203);
 	
 	
 	module.exports = React.createClass({
@@ -32698,14 +32711,14 @@
 
 
 /***/ },
-/* 204 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var shade = __webpack_require__(178).shade;
-	var Arc = __webpack_require__(205);
+	var shade = __webpack_require__(177).shade;
+	var Arc = __webpack_require__(204);
 	
 	module.exports = React.createClass({
 	
@@ -32752,13 +32765,13 @@
 
 
 /***/ },
-/* 205 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	
 	
 	module.exports = React.createClass({
@@ -32874,24 +32887,24 @@
 
 
 /***/ },
-/* 206 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	exports.AreaChart = __webpack_require__(207);
+	exports.AreaChart = __webpack_require__(206);
 
 
 /***/ },
-/* 207 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var DataSeries = __webpack_require__(208);
-	var $__0=      __webpack_require__(179),Chart=$__0.Chart,XAxis=$__0.XAxis,YAxis=$__0.YAxis;
-	var $__1=     __webpack_require__(188),CartesianChartPropsMixin=$__1.CartesianChartPropsMixin,ViewBoxMixin=$__1.ViewBoxMixin;
+	var d3 = __webpack_require__(173);
+	var DataSeries = __webpack_require__(207);
+	var $__0=      __webpack_require__(178),Chart=$__0.Chart,XAxis=$__0.XAxis,YAxis=$__0.YAxis;
+	var $__1=     __webpack_require__(187),CartesianChartPropsMixin=$__1.CartesianChartPropsMixin,ViewBoxMixin=$__1.ViewBoxMixin;
 	
 	module.exports = React.createClass({
 	
@@ -33054,14 +33067,14 @@
 
 
 /***/ },
-/* 208 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var AreaContainer = __webpack_require__(209);
+	var d3 = __webpack_require__(173);
+	var AreaContainer = __webpack_require__(208);
 	
 	module.exports = React.createClass({
 	
@@ -33103,15 +33116,15 @@
 
 
 /***/ },
-/* 209 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var shade = __webpack_require__(178).shade;
-	var Area = __webpack_require__(210);
+	var d3 = __webpack_require__(173);
+	var shade = __webpack_require__(177).shade;
+	var Area = __webpack_require__(209);
 	
 	module.exports = React.createClass({
 	
@@ -33172,7 +33185,7 @@
 
 
 /***/ },
-/* 210 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33211,23 +33224,23 @@
 
 
 /***/ },
-/* 211 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	exports.Treemap = __webpack_require__(212);
+	exports.Treemap = __webpack_require__(211);
 
 
 /***/ },
-/* 212 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	var React = __webpack_require__(1);
-	var Chart = __webpack_require__(179).Chart;
-	var DataSeries = __webpack_require__(213);
+	var Chart = __webpack_require__(178).Chart;
+	var DataSeries = __webpack_require__(212);
 	
 	module.exports = React.createClass({
 	
@@ -33250,6 +33263,7 @@
 	  },
 	
 	  getDefaultProps:function() {
+	    console.log('default props', this.props);
 	    return {
 	      hoverAnimation: true,
 	      data:           [],
@@ -33269,19 +33283,19 @@
 	
 	    return (
 	      React.createElement(Chart, {
-	        title: props.title, 
-	        width: props.width, 
+	        title: props.title,
+	        width: props.width,
 	        height: props.height
-	      }, 
-	        React.createElement("g", {className: "rd3-treemap"}, 
+	      },
+	        React.createElement("g", {className: "rd3-treemap"},
 	          React.createElement(DataSeries, {
-	            data: props.data, 
-	            width: props.width, 
-	            height: props.height, 
-	            colors: props.colors, 
-	            colorAccessor: props.colorAccessor, 
-	            textColor: props.textColor, 
-	            fontSize: props.fontSize, 
+	            data: props.data,
+	            width: props.width,
+	            height: props.height,
+	            colors: props.colors,
+	            colorAccessor: props.colorAccessor,
+	            textColor: props.textColor,
+	            fontSize: props.fontSize,
 	            hoverAnimation: props.hoverAnimation}
 	          )
 	        )
@@ -33293,14 +33307,14 @@
 
 
 /***/ },
-/* 213 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var CellContainer = __webpack_require__(214);
+	var d3 = __webpack_require__(173);
+	var CellContainer = __webpack_require__(213);
 	
 	
 	module.exports = React.createClass({
@@ -33364,14 +33378,15 @@
 
 
 /***/ },
-/* 214 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var shade = __webpack_require__(178).shade;
-	var Cell = __webpack_require__(215);
+	var shade = __webpack_require__(177).shade;
+	var define = __webpack_require__(177).define;
+	var Cell = __webpack_require__(214);
 	
 	
 	module.exports = React.createClass({
@@ -33380,13 +33395,15 @@
 	
 	  propTypes: {
 	    fill: React.PropTypes.string,
+	    label: React.PropTypes.string
 	  },
 	
 	  getInitialState:function() {
 	    return {
 	      // fill is named as fill instead of initialFill to avoid
 	      // confusion when passing down props from top parent
-	      fill: this.props.fill
+	      fill: this.props.fill,
+	      label: this.props.label
 	    };
 	  },
 	
@@ -33396,10 +33413,10 @@
 	    var props = this.props;
 	
 	    return (
-	      React.createElement(Cell, React.__spread({},  
-	        props, 
-	        {fill: this.state.fill, 
-	        handleMouseOver: props.hoverAnimation ? this._animateCell : null, 
+	      React.createElement(Cell, React.__spread({},
+	        props,
+	        {fill: this.state.fill, label: this.state.label,
+	        handleMouseOver: props.hoverAnimation ? this._animateCell : null,
 	        handleMouseLeave: props.hoverAnimation ? this._restoreCell : null})
 	      )
 	    );
@@ -33407,26 +33424,30 @@
 	
 	  _animateCell:function() {
 	    this.setState({
-	      fill: shade(this.props.fill, 0.05)
+	      fill: shade(this.props.fill, 0.05),
+	      label: define(this.props.label)
 	    });
+	    console.log('props is: ', this.props);
+	    console.log('label is: ', this.props.label);
 	  },
 	
 	  _restoreCell:function() {
 	    this.setState({
-	      fill: this.props.fill
+	      fill: this.props.fill,
+	      label: this.props.label
 	    });
 	  }
 	});
 
 
 /***/ },
-/* 215 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	
 	
 	module.exports = React.createClass({
@@ -33441,34 +33462,36 @@
 	  },
 	
 	  render:function() {
-	
 	    var props = this.props;
-	    
+	    var fontsize = "'"+ props.width/380 + 'em' + "'"
+	    if(props.width < 150){
+	      fontsize = '0em'
+	    }
 	    var textStyle = {
 	      'textAnchor': 'middle',
 	      'fill': props.textColor,
-	      'fontSize': props.fontSize
+	      'fontSize': fontsize
 	    };
 	
 	    var t = ("translate(" + props.x + ", " + props.y + "  )");
 	
 	    return (
-	      React.createElement("g", {transform: t}, 
+	      React.createElement("g", {transform: t},
 	        React.createElement("rect", {
-	          className: "rd3-treemap-cell", 
-	          width: props.width, 
-	          height: props.height, 
-	          fill: props.fill, 
-	          onMouseOver: props.handleMouseOver, 
+	          className: "rd3-treemap-cell",
+	          width: props.width,
+	          height: props.height,
+	          fill: props.fill,
+	          onMouseOver: props.handleMouseOver,
 	          onMouseLeave: props.handleMouseLeave}
-	        ), 
+	        ),
 	        React.createElement("text", {
-	          x: props.width / 2, 
-	          y: props.height / 2, 
-	          dy: ".35em", 
-	          style: textStyle, 
+	          x: props.width / 2,
+	          y: props.height / 2,
+	          dy: ".35em",
+	          style: textStyle,
 	          className: "rd3-treemap-cell-text"
-	        }, 
+	        },
 	          props.label
 	        )
 	      )
@@ -33478,25 +33501,25 @@
 
 
 /***/ },
-/* 216 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	exports.ScatterChart = __webpack_require__(217);
+	exports.ScatterChart = __webpack_require__(216);
 
 
 /***/ },
-/* 217 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var $__0=      __webpack_require__(179),Chart=$__0.Chart,XAxis=$__0.XAxis,YAxis=$__0.YAxis;
-	var DataSeries = __webpack_require__(218);
-	var utils = __webpack_require__(178);
-	var $__1=     __webpack_require__(188),CartesianChartPropsMixin=$__1.CartesianChartPropsMixin,ViewBoxMixin=$__1.ViewBoxMixin;
+	var d3 = __webpack_require__(173);
+	var $__0=      __webpack_require__(178),Chart=$__0.Chart,XAxis=$__0.XAxis,YAxis=$__0.YAxis;
+	var DataSeries = __webpack_require__(217);
+	var utils = __webpack_require__(177);
+	var $__1=     __webpack_require__(187),CartesianChartPropsMixin=$__1.CartesianChartPropsMixin,ViewBoxMixin=$__1.ViewBoxMixin;
 	
 	module.exports = React.createClass({
 	
@@ -33640,14 +33663,14 @@
 
 
 /***/ },
-/* 218 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var VoronoiCircleContainer = __webpack_require__(219);
+	var d3 = __webpack_require__(173);
+	var VoronoiCircleContainer = __webpack_require__(218);
 	
 	module.exports = React.createClass({
 	
@@ -33731,15 +33754,15 @@
 
 
 /***/ },
-/* 219 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var shade = __webpack_require__(178).shade;
-	var VoronoiCircle = __webpack_require__(220);
+	var d3 = __webpack_require__(173);
+	var shade = __webpack_require__(177).shade;
+	var VoronoiCircle = __webpack_require__(219);
 	
 	module.exports = React.createClass({
 	
@@ -33835,13 +33858,13 @@
 
 
 /***/ },
-/* 220 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
+	var d3 = __webpack_require__(173);
 	
 	module.exports = React.createClass({
 	
@@ -33893,24 +33916,24 @@
 
 
 /***/ },
-/* 221 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	exports.CandlestickChart = __webpack_require__(222);
+	exports.CandlestickChart = __webpack_require__(221);
 
 
 /***/ },
-/* 222 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var utils = __webpack_require__(178);
-	var DataSeries = __webpack_require__(223);
-	var $__0=      __webpack_require__(179),Chart=$__0.Chart,XAxis=$__0.XAxis,YAxis=$__0.YAxis;
+	var d3 = __webpack_require__(173);
+	var utils = __webpack_require__(177);
+	var DataSeries = __webpack_require__(222);
+	var $__0=      __webpack_require__(178),Chart=$__0.Chart,XAxis=$__0.XAxis,YAxis=$__0.YAxis;
 	
 	module.exports = React.createClass({
 	
@@ -34056,15 +34079,15 @@
 
 
 /***/ },
-/* 223 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var utils = __webpack_require__(178);
-	var CandlestickContainer = __webpack_require__(224);
+	var d3 = __webpack_require__(173);
+	var utils = __webpack_require__(177);
+	var CandlestickContainer = __webpack_require__(223);
 	
 	
 	module.exports = React.createClass({
@@ -34128,16 +34151,16 @@
 
 
 /***/ },
-/* 224 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(174);
-	var utils = __webpack_require__(178);
-	var Candle = __webpack_require__(225);
-	var Wick = __webpack_require__(226);
+	var d3 = __webpack_require__(173);
+	var utils = __webpack_require__(177);
+	var Candle = __webpack_require__(224);
+	var Wick = __webpack_require__(225);
 	
 	module.exports = React.createClass({
 	
@@ -34223,7 +34246,7 @@
 
 
 /***/ },
-/* 225 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34274,7 +34297,7 @@
 
 
 /***/ },
-/* 226 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34320,7 +34343,7 @@
 
 
 /***/ },
-/* 227 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34343,7 +34366,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var rd3 = __webpack_require__(171);
+	var rd3 = __webpack_require__(170);
 	var Bar = rd3.BarChart;
 	var width = window.innerWidth;
 	var height = window.innerWidth;
@@ -34401,7 +34424,7 @@
 	exports.default = BarChart;
 
 /***/ },
-/* 228 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34424,7 +34447,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var rd3 = __webpack_require__(171);
+	var rd3 = __webpack_require__(170);
 	var TreemapChart = rd3.Treemap;
 	
 	var colorMap = ['null', // 'skip
@@ -34485,7 +34508,119 @@
 	exports.default = Treemap;
 
 /***/ },
-/* 229 */,
+/* 228 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var initialData = [{
+	  emotionClicked: true,
+	  languageClicked: false,
+	  socialClicked: false,
+	  chat: {
+	    // username: 'boo',
+	    inputText: '',
+	    message: ''
+	  },
+	
+	  emotion_tone: {
+	    watsonData: [{
+	      label: 'Anger',
+	      value: 1
+	    }, {
+	      label: 'Disgust',
+	      value: 1
+	    }, {
+	      label: 'Fear',
+	      value: 1
+	    }, {
+	      label: 'Joy',
+	      value: 1
+	    }, {
+	      label: 'Sadness',
+	      value: 1
+	    }],
+	    circleAttributes: {
+	      title: 'Emotional Tone',
+	      width: null,
+	      height: 2,
+	      radius: 4,
+	      innerRadius: 4
+	    }
+	  },
+	
+	  language_tone: {
+	    watsonData: [{
+	      x: 'Analytical',
+	      y: 1
+	    }, {
+	      x: 'Confident',
+	      y: 1
+	    }, {
+	      x: 'Tentative',
+	      y: 1
+	    }],
+	    circleAttributes: {
+	      // title: 'Language Tone',
+	      // width: null,
+	      // height: 3,
+	      // radius: 5.1,
+	      // innerRadius: 4.1
+	    }
+	  },
+	
+	  social_tone: {
+	    watsonData: [{
+	      label: 'Openness',
+	      value: 1
+	    }, {
+	      label: 'Conscientiousness',
+	      value: 1
+	    }, {
+	      label: 'Extraversion',
+	      value: 1
+	    }, {
+	      label: 'Agreeableness',
+	      value: 1
+	    }, {
+	      label: 'Emotional Range',
+	      value: 1
+	    }],
+	    circleAttributes: {
+	      title: 'Social Tone',
+	      width: null,
+	      height: 2.2,
+	      radius: 8.2,
+	      innerRadius: 4.2
+	    }
+	  }
+	}];
+	
+	exports.default = initialData;
+
+/***/ },
+/* 229 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var wallpaper = {
+	  Anger: 'http://royalpurplenews.com/wp-content/uploads/2012/03/Anger-Management.jpg',
+	  Disgust: 'http://pre00.deviantart.net/7c4d/th/pre/i/2010/007/a/4/the_sickening___print_by_phlegeton.jpg',
+	  Fear: 'http://themindunleashed.org/wp-content/uploads/2014/08/nightmaree.jpg',
+	  Joy: 'http://www.artsfon.com/pic/201503/1920x1080/artsfon.com-68037.jpg',
+	  Sadness: 'http://www.cardloanhikakunavi.com/wp-content/uploads/2015/11/Quotes-help-sadness.jpg'
+	};
+	
+	exports.default = wallpaper;
+
+/***/ },
 /* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -34608,119 +34743,6 @@
 	
 	module.exports = update;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
-/* 232 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var initialData = [{
-	  emotionClicked: true,
-	  languageClicked: false,
-	  socialClicked: false,
-	  chat: {
-	    // username: 'boo',
-	    inputText: '',
-	    message: ''
-	  },
-	
-	  emotion_tone: {
-	    watsonData: [{
-	      label: 'Anger',
-	      value: 1
-	    }, {
-	      label: 'Disgust',
-	      value: 1
-	    }, {
-	      label: 'Fear',
-	      value: 1
-	    }, {
-	      label: 'Joy',
-	      value: 1
-	    }, {
-	      label: 'Sadness',
-	      value: 1
-	    }],
-	    circleAttributes: {
-	      title: 'Emotional Tone',
-	      width: null,
-	      height: 2,
-	      radius: 4,
-	      innerRadius: 4
-	    }
-	  },
-	
-	  language_tone: {
-	    watsonData: [{
-	      x: 'Analytical',
-	      y: 1
-	    }, {
-	      x: 'Confident',
-	      y: 1
-	    }, {
-	      x: 'Tentative',
-	      y: 1
-	    }],
-	    circleAttributes: {
-	      // title: 'Language Tone',
-	      // width: null,
-	      // height: 3,
-	      // radius: 5.1,
-	      // innerRadius: 4.1
-	    }
-	  },
-	
-	  social_tone: {
-	    watsonData: [{
-	      label: 'Openness',
-	      value: 1
-	    }, {
-	      label: 'Conscientiousness',
-	      value: 1
-	    }, {
-	      label: 'Extraversion',
-	      value: 1
-	    }, {
-	      label: 'Agreeableness',
-	      value: 1
-	    }, {
-	      label: 'Emotional Range',
-	      value: 1
-	    }],
-	    circleAttributes: {
-	      title: 'Social Tone',
-	      width: null,
-	      height: 2.2,
-	      radius: 8.2,
-	      innerRadius: 4.2
-	    }
-	  }
-	}];
-	
-	exports.default = initialData;
-
-/***/ },
-/* 233 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var wallpaper = {
-	  Anger: 'http://royalpurplenews.com/wp-content/uploads/2012/03/Anger-Management.jpg',
-	  Disgust: 'http://pre00.deviantart.net/7c4d/th/pre/i/2010/007/a/4/the_sickening___print_by_phlegeton.jpg',
-	  Fear: 'http://themindunleashed.org/wp-content/uploads/2014/08/nightmaree.jpg',
-	  Joy: 'http://www.artsfon.com/pic/201503/1920x1080/artsfon.com-68037.jpg',
-	  Sadness: 'http://www.cardloanhikakunavi.com/wp-content/uploads/2015/11/Quotes-help-sadness.jpg'
-	};
-	
-	exports.default = wallpaper;
 
 /***/ }
 /******/ ]);

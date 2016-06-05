@@ -1,5 +1,4 @@
 import React from 'react';
-import Chat from './Chat.jsx';
 
 const Chats = props => (
   <div>
@@ -7,8 +6,6 @@ const Chats = props => (
       <textarea value={ props.currentChat.inputText } onChange={ e => props.handleMessageChange(e) } />
       <input type="submit" />
     </form>
-
-    <Chat message={ props.currentChat.message } />
   </div>
 );
 

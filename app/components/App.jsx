@@ -175,7 +175,10 @@ class App extends React.Component {
         console.log(language_Arr);
         console.log(social_Arr);
         this.setState({
-          styles: {backgroundImage: 'url(' + wallpaper[highestEmote.label] + ')'}
+          styles: {
+            backgroundImage: 'url(' + wallpaper[highestEmote.label] + ')'
+
+          }
         })
         console.log(this.state.styles.backgroundImage);
       }
@@ -196,7 +199,7 @@ class App extends React.Component {
             <div onClick={this.handlePieClick} className='large' style={this.state.styles}>
               <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
             </div>
-            <div onClick={this.handleBarClick} className='shrink' style={this.state.styles}>
+            <div onClick={this.handleBarClick} className='shrink'>
               <BarChart barChartData={ this.state.language_tone } clicked={this.state.languageClicked}/>
             </div>
             <div onClick={this.handleTreeClick} className='shrink'>

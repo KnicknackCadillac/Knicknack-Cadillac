@@ -337,7 +337,10 @@
 	          console.log(language_Arr);
 	          console.log(social_Arr);
 	          _this2.setState({
-	            styles: { backgroundImage: 'url(' + _wallpaperdata2.default[highestEmote.label] + ')' }
+	            styles: {
+	              backgroundImage: 'url(' + _wallpaperdata2.default[highestEmote.label] + ')'
+	
+	            }
 	          });
 	          console.log(_this2.state.styles.backgroundImage);
 	        }
@@ -373,7 +376,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { onClick: this.handleBarClick, className: 'shrink', style: this.state.styles },
+	              { onClick: this.handleBarClick, className: 'shrink' },
 	              _react2.default.createElement(_BarChart2.default, { barChartData: this.state.language_tone, clicked: this.state.languageClicked })
 	            ),
 	            _react2.default.createElement(
@@ -20730,7 +20733,7 @@
 /* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -20740,59 +20743,29 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Chat = __webpack_require__(169);
-	
-	var _Chat2 = _interopRequireDefault(_Chat);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Chats = function Chats(props) {
 	  return _react2.default.createElement(
-	    'div',
+	    "div",
 	    null,
 	    _react2.default.createElement(
-	      'form',
+	      "form",
 	      { onSubmit: function onSubmit(e) {
 	          return props.sendMessage(e);
 	        } },
-	      _react2.default.createElement('textarea', { value: props.currentChat.inputText, onChange: function onChange(e) {
+	      _react2.default.createElement("textarea", { value: props.currentChat.inputText, onChange: function onChange(e) {
 	          return props.handleMessageChange(e);
 	        } }),
-	      _react2.default.createElement('input', { type: 'submit' })
-	    ),
-	    _react2.default.createElement(_Chat2.default, { message: props.currentChat.message })
+	      _react2.default.createElement("input", { type: "submit" })
+	    )
 	  );
 	};
 	
 	exports.default = Chats;
 
 /***/ },
-/* 169 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Chat = function Chat(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    props.message
-	  );
-	};
-	
-	exports.default = Chat;
-
-/***/ },
+/* 169 */,
 /* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -30959,14 +30932,6 @@
 	  return ("#" +  red +  green +  blue);
 	
 	};
-	
-	exports.define = function(label){
-	  if(label === 'Emotional Range') {
-	    return label + " : The extent a person's emotion is sensitive to the environment";
-	  } else {
-	    return 'hello';
-	  }
-	}
 
 
 /***/ },
@@ -33274,7 +33239,6 @@
 	  },
 	
 	  getDefaultProps:function() {
-	    console.log('default props', this.props);
 	    return {
 	      hoverAnimation: true,
 	      data:           [],
@@ -33294,19 +33258,19 @@
 	
 	    return (
 	      React.createElement(Chart, {
-	        title: props.title,
-	        width: props.width,
+	        title: props.title, 
+	        width: props.width, 
 	        height: props.height
-	      },
-	        React.createElement("g", {className: "rd3-treemap"},
+	      }, 
+	        React.createElement("g", {className: "rd3-treemap"}, 
 	          React.createElement(DataSeries, {
-	            data: props.data,
-	            width: props.width,
-	            height: props.height,
-	            colors: props.colors,
-	            colorAccessor: props.colorAccessor,
-	            textColor: props.textColor,
-	            fontSize: props.fontSize,
+	            data: props.data, 
+	            width: props.width, 
+	            height: props.height, 
+	            colors: props.colors, 
+	            colorAccessor: props.colorAccessor, 
+	            textColor: props.textColor, 
+	            fontSize: props.fontSize, 
 	            hoverAnimation: props.hoverAnimation}
 	          )
 	        )
@@ -33396,7 +33360,6 @@
 	
 	var React = __webpack_require__(1);
 	var shade = __webpack_require__(178).shade;
-	var define = __webpack_require__(178).define;
 	var Cell = __webpack_require__(215);
 	
 	
@@ -33406,15 +33369,13 @@
 	
 	  propTypes: {
 	    fill: React.PropTypes.string,
-	    label: React.PropTypes.string
 	  },
 	
 	  getInitialState:function() {
 	    return {
 	      // fill is named as fill instead of initialFill to avoid
 	      // confusion when passing down props from top parent
-	      fill: this.props.fill,
-	      label: this.props.label
+	      fill: this.props.fill
 	    };
 	  },
 	
@@ -33424,10 +33385,10 @@
 	    var props = this.props;
 	
 	    return (
-	      React.createElement(Cell, React.__spread({},
-	        props,
-	        {fill: this.state.fill, label: this.state.label,
-	        handleMouseOver: props.hoverAnimation ? this._animateCell : null,
+	      React.createElement(Cell, React.__spread({},  
+	        props, 
+	        {fill: this.state.fill, 
+	        handleMouseOver: props.hoverAnimation ? this._animateCell : null, 
 	        handleMouseLeave: props.hoverAnimation ? this._restoreCell : null})
 	      )
 	    );
@@ -33435,17 +33396,13 @@
 	
 	  _animateCell:function() {
 	    this.setState({
-	      fill: shade(this.props.fill, 0.05),
-	      label: define(this.props.label)
+	      fill: shade(this.props.fill, 0.05)
 	    });
-	    console.log('props is: ', this.props);
-	    console.log('label is: ', this.props.label);
 	  },
 	
 	  _restoreCell:function() {
 	    this.setState({
-	      fill: this.props.fill,
-	      label: this.props.label
+	      fill: this.props.fill
 	    });
 	  }
 	});
@@ -33473,38 +33430,34 @@
 	  },
 	
 	  render:function() {
+	
 	    var props = this.props;
-	    var fontsize = "'"+ props.width/380 + 'em' + "'"
-	    if(props.width < 100){
-	      console.log('this is props.width in cell ', props.width)
-	      fontsize = '0em'
-	    }
-	    console.log('fontsize', fontsize)
+	    
 	    var textStyle = {
 	      'textAnchor': 'middle',
 	      'fill': props.textColor,
-	      'fontSize': fontsize
+	      'fontSize': props.fontSize
 	    };
 	
 	    var t = ("translate(" + props.x + ", " + props.y + "  )");
 	
 	    return (
-	      React.createElement("g", {transform: t},
+	      React.createElement("g", {transform: t}, 
 	        React.createElement("rect", {
-	          className: "rd3-treemap-cell",
-	          width: props.width,
-	          height: props.height,
-	          fill: props.fill,
-	          onMouseOver: props.handleMouseOver,
+	          className: "rd3-treemap-cell", 
+	          width: props.width, 
+	          height: props.height, 
+	          fill: props.fill, 
+	          onMouseOver: props.handleMouseOver, 
 	          onMouseLeave: props.handleMouseLeave}
-	        ),
+	        ), 
 	        React.createElement("text", {
-	          x: props.width / 2,
-	          y: props.height / 2,
-	          dy: ".35em",
-	          style: textStyle,
+	          x: props.width / 2, 
+	          y: props.height / 2, 
+	          dy: ".35em", 
+	          style: textStyle, 
 	          className: "rd3-treemap-cell-text"
-	        },
+	        }, 
 	          props.label
 	        )
 	      )
@@ -34749,10 +34702,10 @@
 	  value: true
 	});
 	var wallpaper = {
-	  Anger: 'http://themindunleashed.org/wp-content/uploads/2014/08/nightmaree.jpg',
-	  Disgust: 'http://themindunleashed.org/wp-content/uploads/2014/08/nightmaree.jpg',
+	  Anger: 'http://royalpurplenews.com/wp-content/uploads/2012/03/Anger-Management.jpg',
+	  Disgust: 'http://pre00.deviantart.net/7c4d/th/pre/i/2010/007/a/4/the_sickening___print_by_phlegeton.jpg',
 	  Fear: 'http://themindunleashed.org/wp-content/uploads/2014/08/nightmaree.jpg',
-	  Joy: 'http://themindunleashed.org/wp-content/uploads/2014/08/nightmaree.jpg',
+	  Joy: 'http://www.artsfon.com/pic/201503/1920x1080/artsfon.com-68037.jpg',
 	  Sadness: 'http://www.cardloanhikakunavi.com/wp-content/uploads/2015/11/Quotes-help-sadness.jpg'
 	};
 	

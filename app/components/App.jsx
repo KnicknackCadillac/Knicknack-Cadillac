@@ -6,8 +6,7 @@ import Chats from './Chats.jsx';
 import Chart from './PieChart.jsx';
 import BarChart from './BarChart.jsx';
 import Treemap from './Treemap.jsx';
-// TODO: delete dummy data after connecting db
-import messagesData from '../data/dummydata.js';
+import initialData from '../data/initialData.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,101 +20,34 @@ class App extends React.Component {
         inputText: '',
         message: ''
       },
+
       emotion_tone: {
-        watsonData:
-        [
-          {
-            label: 'Anger',
-            value: 1
-          },
-          {
-            label: 'Disgust',
-            value: 1
-          },
-          {
-            label: 'Fear',
-            value: 1
-          },
-          {
-            label: 'Joy',
-            value: 1
-          },
-          {
-            label: 'Sadness',
-            value: 1
-          },
-        ],
-        circleAttributes: {
-          title: 'Emotional Tone',
-          width: null,
-          height: 2,
-          radius: 4,
-          innerRadius: 4
-        }
+        watsonData: [],
+        circleAttributes: {}
       },
 
       language_tone:{
-        watsonData:
-        [
-          {
-            x: 'Analytical',
-            y: 1
-          },
-          {
-            x: 'Confident',
-            y: 1
-          },
-          {
-            x: 'Tentative',
-            y: 1
-          },
-        ],
-        circleAttributes: {
-          // title: 'Language Tone',
-          // width: null,
-          // height: 3,
-          // radius: 5.1,
-          // innerRadius: 4.1
-        }
+        watsonData: [],
+        circleAttributes: {}
       },
+
       social_tone:{
-        watsonData:
-        [
-          {
-            label: 'Openness',
-            value: 1
-          },
-          {
-            label: 'Conscientiousness',
-            value: 1
-          },
-          {
-            label: 'Extraversion',
-            value: 1
-          },
-          {
-            label: 'Agreeableness',
-            value: 1
-          },
-          {
-            label: 'Emotional Range',
-            value: 1
-          },
-        ],
-        circleAttributes: {
-          title: 'Social Tone',
-          width: null,
-          height: 2.2,
-          radius: 8.2,
-          innerRadius: 4.2
-
-        }
-
-      }
+        watsonData: [],
+        circleAttributes: {}
+      },
     };
+    
     this.handlePieClick = this.handlePieClick.bind(this);
     this.handleBarClick = this.handleBarClick.bind(this);
     this.handleTreeClick = this.handleTreeClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      emotion_tone: initialData[0].emotion_tone,
+      language_tone: initialData[0].language_tone,
+      social_tone: initialData[0].social_tone,
+    });
   }
 
   //handle clicks
@@ -245,11 +177,9 @@ class App extends React.Component {
       return (
         <div>
           <div className='chart'>
-            <form className='input'>
-              <Chats
+            <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } />
-            </form>
             <div onClick={this.handlePieClick} className='large'>
               <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
             </div>
@@ -269,11 +199,9 @@ class App extends React.Component {
       return (
         <div>
           <div className='chart'>
-            <form className='input'>
-              <Chats
+            <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } />
-            </form>
             <div onClick={this.handleBarClick} className='large'>
               <BarChart barChartData={ this.state.language_tone } clicked={this.state.languageClicked}/>
             </div>
@@ -293,11 +221,9 @@ class App extends React.Component {
       return (
         <div>
           <div className='chart'>
-            <form className='input'>
-              <Chats
+            <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } />
-            </form>
             <div onClick={this.handleTreeClick} className='large'>
               <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
             </div>
@@ -317,5 +243,4 @@ class App extends React.Component {
   }
 }
 
-// TODO: replace 'messagesData' with fetched data
-  ReactDOM.render(<App props={ messagesData } />, document.getElementById('app'));
+ReactDOM.render(<App props={ initialData[0] } />, document.getElementById('app'));

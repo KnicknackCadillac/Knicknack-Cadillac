@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Shinji Furuya
+  - __Scrum Master__: Daniel Vu
+  - __Development Team Members__: Shams Ali, Arthur Livingston
 
 ## Table of Contents
 

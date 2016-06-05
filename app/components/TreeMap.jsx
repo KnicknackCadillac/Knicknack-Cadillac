@@ -2,8 +2,7 @@ import React from 'react'
 
 const rd3 = require('react-d3');
 const TreemapChart = rd3.Treemap;
-const width = window.innerWidth;
-const height = window.innerWidth;
+
 let colorMap = [
   '#C8020A', // 'Anger'
   '#6EE017', // 'Disgust'
@@ -22,17 +21,28 @@ class Treemap extends React.Component{
   }
 
   render() {
+    if(this.props.clicked){
+      var width = window.innerWidth;
+      var height = 250;
+      var labels = true;
+    }else{
+       var width = window.innerWidth/5;
+       var height = window.innerWidth/5;
+       var labels = false;
+    }
     return (
     	<TreemapChart
         data={this.props.treemapData.watsonData}
         width={width}
-        height={250}
+        height={height}
         title="Treemap"
         textColor="#484848"
         fontColor="12px"
         colors={function(d) {
           return colorMap[d];
         }}
+        showInnerLabels={labels}
+        showOuterLabels={labels}
       />
 
     )

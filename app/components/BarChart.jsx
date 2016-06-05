@@ -1,6 +1,5 @@
 
 import React from 'react';
-
 const rd3 = require('react-d3');
 const Bar = rd3.BarChart;
 const width = window.innerWidth;

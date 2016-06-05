@@ -72,9 +72,9 @@
 	
 	var _Treemap2 = _interopRequireDefault(_Treemap);
 	
-	var _dummydata = __webpack_require__(229);
+	var _initialData = __webpack_require__(232);
 	
-	var _dummydata2 = _interopRequireDefault(_dummydata);
+	var _initialData2 = _interopRequireDefault(_initialData);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -86,8 +86,6 @@
 	
 	var update = __webpack_require__(230);
 	// import Users from './Users.jsx';
-	
-	// TODO: delete dummy data after connecting db
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -107,88 +105,38 @@
 	        message: ''
 	      },
 	      emotion_tone: {
-	        watsonData: [{
-	          label: 'Anger',
-	          value: 1
-	        }, {
-	          label: 'Disgust',
-	          value: 1
-	        }, {
-	          label: 'Fear',
-	          value: 1
-	        }, {
-	          label: 'Joy',
-	          value: 1
-	        }, {
-	          label: 'Sadness',
-	          value: 1
-	        }],
-	        circleAttributes: {
-	          title: 'Emotional Tone',
-	          width: null,
-	          height: 2,
-	          radius: 4,
-	          innerRadius: 4
-	        }
+	        watsonData: [],
+	        circleAttributes: {}
 	      },
-	
 	      language_tone: {
-	        watsonData: [{
-	          x: 'Analytical',
-	          y: 1
-	        }, {
-	          x: 'Confident',
-	          y: 1
-	        }, {
-	          x: 'Tentative',
-	          y: 1
-	        }],
-	        circleAttributes: {
-	          // title: 'Language Tone',
-	          // width: null,
-	          // height: 3,
-	          // radius: 5.1,
-	          // innerRadius: 4.1
-	        }
+	        watsonData: [],
+	        circleAttributes: {}
 	      },
 	      social_tone: {
-	        watsonData: [{
-	          label: 'Openness',
-	          value: 1
-	        }, {
-	          label: 'Conscientiousness',
-	          value: 1
-	        }, {
-	          label: 'Extraversion',
-	          value: 1
-	        }, {
-	          label: 'Agreeableness',
-	          value: 1
-	        }, {
-	          label: 'Emotional Range',
-	          value: 1
-	        }],
-	        circleAttributes: {
-	          title: 'Social Tone',
-	          width: null,
-	          height: 2.2,
-	          radius: 8.2,
-	          innerRadius: 4.2
-	
-	        }
-	
+	        watsonData: [],
+	        circleAttributes: {}
 	      }
 	    };
+	
 	    _this.handlePieClick = _this.handlePieClick.bind(_this);
 	    _this.handleBarClick = _this.handleBarClick.bind(_this);
 	    _this.handleTreeClick = _this.handleTreeClick.bind(_this);
 	    return _this;
 	  }
 	
-	  //handle clicks
-	
-	
 	  _createClass(App, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.setState({
+	        emotion_tone: _initialData2.default[0].emotion_tone,
+	        language_tone: _initialData2.default[0].language_tone,
+	        social_tone: _initialData2.default[0].social_tone
+	      });
+	    }
+	
+	    //handle clicks
+	
+	  }, {
 	    key: 'handlePieClick',
 	    value: function handlePieClick() {
 	      console.log('handle pie used');
@@ -392,17 +340,13 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'chart' },
-	            _react2.default.createElement(
-	              'form',
-	              { className: 'input' },
-	              _react2.default.createElement(_Chats2.default, {
-	                sendMessage: function sendMessage(event) {
-	                  return _this3.handleSubmit(event);
-	                }, handleMessageChange: function handleMessageChange(event) {
-	                  return _this3.handleChange(event);
-	                },
-	                currentChat: this.state.chat })
-	            ),
+	            _react2.default.createElement(_Chats2.default, {
+	              sendMessage: function sendMessage(event) {
+	                return _this3.handleSubmit(event);
+	              }, handleMessageChange: function handleMessageChange(event) {
+	                return _this3.handleChange(event);
+	              },
+	              currentChat: this.state.chat }),
 	            _react2.default.createElement(
 	              'div',
 	              { onClick: this.handlePieClick, className: 'large' },
@@ -428,17 +372,13 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'chart' },
-	            _react2.default.createElement(
-	              'form',
-	              { className: 'input' },
-	              _react2.default.createElement(_Chats2.default, {
-	                sendMessage: function sendMessage(event) {
-	                  return _this3.handleSubmit(event);
-	                }, handleMessageChange: function handleMessageChange(event) {
-	                  return _this3.handleChange(event);
-	                },
-	                currentChat: this.state.chat })
-	            ),
+	            _react2.default.createElement(_Chats2.default, {
+	              sendMessage: function sendMessage(event) {
+	                return _this3.handleSubmit(event);
+	              }, handleMessageChange: function handleMessageChange(event) {
+	                return _this3.handleChange(event);
+	              },
+	              currentChat: this.state.chat }),
 	            _react2.default.createElement(
 	              'div',
 	              { onClick: this.handleBarClick, className: 'large' },
@@ -464,17 +404,13 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'chart' },
-	            _react2.default.createElement(
-	              'form',
-	              { className: 'input' },
-	              _react2.default.createElement(_Chats2.default, {
-	                sendMessage: function sendMessage(event) {
-	                  return _this3.handleSubmit(event);
-	                }, handleMessageChange: function handleMessageChange(event) {
-	                  return _this3.handleChange(event);
-	                },
-	                currentChat: this.state.chat })
-	            ),
+	            _react2.default.createElement(_Chats2.default, {
+	              sendMessage: function sendMessage(event) {
+	                return _this3.handleSubmit(event);
+	              }, handleMessageChange: function handleMessageChange(event) {
+	                return _this3.handleChange(event);
+	              },
+	              currentChat: this.state.chat }),
 	            _react2.default.createElement(
 	              'div',
 	              { onClick: this.handleTreeClick, className: 'large' },
@@ -500,10 +436,8 @@
 	  return App;
 	}(_react2.default.Component);
 	
+	_reactDom2.default.render(_react2.default.createElement(App, { props: _initialData2.default[0] }), document.getElementById('app'));
 	// TODO: replace 'messagesData' with fetched data
-	
-	
-	_reactDom2.default.render(_react2.default.createElement(App, { props: _dummydata2.default }), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -34407,7 +34341,9 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var rd3 = __webpack_require__(171);
-	var TreemapChart = rd3.BarChart;
+	var Bar = rd3.BarChart;
+	var width = window.innerWidth;
+	var height = window.innerWidth;
 	var colorMap = ['#C8020A', // 'Anger'
 	'#6EE017', // 'Disgust'
 	'#FF006A', // 'Fear'
@@ -34442,7 +34378,7 @@
 	        var height = window.innerWidth / 8;
 	        var labels = false;
 	      }
-	      return _react2.default.createElement(TreemapChart, {
+	      return _react2.default.createElement(Bar, {
 	        data: [{ "values": this.props.barChartData.watsonData }],
 	        width: width,
 	        height: height,
@@ -34548,31 +34484,7 @@
 	exports.default = Treemap;
 
 /***/ },
-/* 229 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var messagesData = [{
-	  username: 'Daniel',
-	  message: 'hello'
-	}, {
-	  username: 'Arthur',
-	  message: 'bye'
-	}, {
-	  username: 'Ali',
-	  message: 'what'
-	}, {
-	  username: 'Shinji',
-	  message: 'yolo'
-	}];
-	
-	exports.default = messagesData;
-
-/***/ },
+/* 229 */,
 /* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -34695,6 +34607,100 @@
 	
 	module.exports = update;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 232 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var initialData = [{
+	  emotionClicked: true,
+	  languageClicked: false,
+	  socialClicked: false,
+	  chat: {
+	    // username: 'boo',
+	    inputText: '',
+	    message: ''
+	  },
+	
+	  emotion_tone: {
+	    watsonData: [{
+	      label: 'Anger',
+	      value: 1
+	    }, {
+	      label: 'Disgust',
+	      value: 1
+	    }, {
+	      label: 'Fear',
+	      value: 1
+	    }, {
+	      label: 'Joy',
+	      value: 1
+	    }, {
+	      label: 'Sadness',
+	      value: 1
+	    }],
+	    circleAttributes: {
+	      title: 'Emotional Tone',
+	      width: null,
+	      height: 2,
+	      radius: 4,
+	      innerRadius: 4
+	    }
+	  },
+	
+	  language_tone: {
+	    watsonData: [{
+	      x: 'Analytical',
+	      y: 1
+	    }, {
+	      x: 'Confident',
+	      y: 1
+	    }, {
+	      x: 'Tentative',
+	      y: 1
+	    }],
+	    circleAttributes: {
+	      // title: 'Language Tone',
+	      // width: null,
+	      // height: 3,
+	      // radius: 5.1,
+	      // innerRadius: 4.1
+	    }
+	  },
+	
+	  social_tone: {
+	    watsonData: [{
+	      label: 'Openness',
+	      value: 1
+	    }, {
+	      label: 'Conscientiousness',
+	      value: 1
+	    }, {
+	      label: 'Extraversion',
+	      value: 1
+	    }, {
+	      label: 'Agreeableness',
+	      value: 1
+	    }, {
+	      label: 'Emotional Range',
+	      value: 1
+	    }],
+	    circleAttributes: {
+	      title: 'Social Tone',
+	      width: null,
+	      height: 2.2,
+	      radius: 8.2,
+	      innerRadius: 4.2
+	    }
+	  }
+	}];
+	
+	exports.default = initialData;
 
 /***/ }
 /******/ ]);

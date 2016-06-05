@@ -20,23 +20,20 @@ class App extends React.Component {
         inputText: '',
         message: ''
       },
-
       emotion_tone: {
         watsonData: [],
         circleAttributes: {}
       },
-
       language_tone:{
         watsonData: [],
         circleAttributes: {}
       },
-
       social_tone:{
         watsonData: [],
         circleAttributes: {}
       },
     };
-    
+
     this.handlePieClick = this.handlePieClick.bind(this);
     this.handleBarClick = this.handleBarClick.bind(this);
     this.handleTreeClick = this.handleTreeClick.bind(this);
@@ -242,5 +239,5 @@ class App extends React.Component {
     }
   }
 }
-
 ReactDOM.render(<App props={ initialData[0] } />, document.getElementById('app'));
+// TODO: replace 'messagesData' with fetched data

@@ -20,34 +20,31 @@ class App extends React.Component {
         inputText: '',
         message: ''
       },
-
       emotion_tone: {
         watsonData: [],
         circleAttributes: {}
       },
-
       language_tone:{
         watsonData: [],
         circleAttributes: {}
       },
-
       social_tone:{
         watsonData: [],
         circleAttributes: {}
       },
     };
-    
+
     this.handlePieClick = this.handlePieClick.bind(this);
     this.handleBarClick = this.handleBarClick.bind(this);
     this.handleTreeClick = this.handleTreeClick.bind(this);
   }
 
   componentDidMount() {
-    this.setState({
-      emotion_tone: initialData[0].emotion_tone,
-      language_tone: initialData[0].language_tone,
-      social_tone: initialData[0].social_tone,
-    });
+    // this.setState({
+    //   emotion_tone: initialData[0].emotion_tone,
+    //   language_tone: initialData[0].language_tone,
+    //   social_tone: initialData[0].social_tone,
+    // });
   }
 
   //handle clicks
@@ -162,6 +159,15 @@ class App extends React.Component {
             })
         });
 
+        var highestEmote = this.state.emotion_tone.watsonData.reduce(function(lastEmote, currEmote) {
+          console.log('checking!')
+          if (lastEmote.value < currEmote.value) {
+            return currEmote;
+          } else {
+            return lastEmote;
+          }
+        });
+
         console.log(emotion_Arr);
         console.log(language_Arr);
         console.log(social_Arr);
@@ -242,5 +248,5 @@ class App extends React.Component {
     }
   }
 }
-
 ReactDOM.render(<App props={ initialData[0] } />, document.getElementById('app'));
+// TODO: replace 'messagesData' with fetched data

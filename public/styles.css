@@ -43,3 +43,8 @@ body {
   display: block;
   position: relative;
 }*/
+
+.piechart {
+	width:25%;
+	height: 25%;
+}

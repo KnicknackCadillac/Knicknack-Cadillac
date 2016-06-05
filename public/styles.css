@@ -4,7 +4,7 @@ body {
 }
 
 .input {
-  position: fixed;
+  position: relative;
   resize: none;
   width: 32%;
   height: 65%;
@@ -29,7 +29,17 @@ body {
 
 }
 
-.rd3-chart {
-
+.shrink {
+  display: block;
+  position: relative;
 }
 
+/*.rd3-chart-title{
+  display:block;
+  position: relative;
+}
+
+.rd3-basic-chart {
+  display: block;
+  position: relative;
+}*/

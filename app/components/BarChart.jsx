@@ -2,8 +2,6 @@ import React from 'react'
 
 const rd3 = require('react-d3');
 const TreemapChart = rd3.BarChart;
-const width = window.innerWidth;
-const height = window.innerWidth;
 let colorMap = [
   '#C8020A', // 'Anger'
   '#6EE017', // 'Disgust'
@@ -22,11 +20,20 @@ class BarChart extends React.Component{
   }
 
   render() {
+    if(this.props.clicked){
+      var width = window.innerWidth;
+      var height = 250;
+      var labels = true;
+    }else{
+       var width = window.innerWidth/5;
+       var height = window.innerWidth/8;
+       var labels= false;
+    }
     return (
     	<TreemapChart
         data={[{"values": this.props.barChartData.watsonData}]}
         width={width}
-        height={250}
+        height={height}
         colors={function(d) {
           return colorMap[d];
         }}

@@ -55,7 +55,7 @@ class App extends React.Component {
       },
 
       language_tone:{
-        watsonData: 
+        watsonData:
         [
           {
             x: 'Analytical',
@@ -79,7 +79,7 @@ class App extends React.Component {
         }
       },
       social_tone:{
-        watsonData: 
+        watsonData:
         [
           {
             label: 'Openness',
@@ -113,8 +113,33 @@ class App extends React.Component {
 
       }
     };
+    this.handlePieClick = this.handlePieClick.bind(this);
+    this.handleBarClick = this.handleBarClick.bind(this);
+    this.handleTreeClick = this.handleTreeClick.bind(this);
   }
 
+  //handle clicks
+  handlePieClick() {
+    console.log('handle pie used');
+    this.state.emotionClicked ? true : this.setState({
+      emotionClicked: true,
+
+    });
+    this.state.languageClicked ? this.setState({languageClicked: false}) : false;
+    this.state.socialClicked ? this.setState({socialClicked: false}) : false;
+  };
+  handleBarClick() {
+    console.log('handle bar used')
+    this.state.emotionClicked ? this.setState({emotionClicked: false}) : false;
+    this.state.languageClicked ? true : this.setState({languageClicked: true});
+    this.state.socialClicked ? this.setState({socialClicked: false}) : false;
+  };
+  handleTreeClick() {
+    console.log('handle tree used');
+    this.state.emotionClicked ? this.setState({emotionClicked: false}) : false;
+    this.state.languageClicked ? this.setState({languageClicked: false}) : false;
+    this.state.socialClicked ? true : this.setState({socialClicked: true});
+  };
 
 
   // }
@@ -132,7 +157,7 @@ class App extends React.Component {
     e.preventDefault();
     this.setState({
       chat: {
-        message: this.state.chat.inputText,
+        message: this.state.chat.inputText
       }
     });
     $.ajax({
@@ -178,7 +203,7 @@ class App extends React.Component {
 
 
 
-        // update(this.state.emotion_tone, 
+        // update(this.state.emotion_tone,
         //     watsonData: {$push: emotion_Arr}
         // );
         // update(this.state.language_tone, {
@@ -216,25 +241,79 @@ class App extends React.Component {
           // { this.state.socialClicked ? <Chart pieData={ this.state.social_tone } /> : null }
 
   render() {
-    return (
-      <div>
-        <div className='chart'>
-          <form className='input'>
-            <Chats
-            sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
-            currentChat={ this.state.chat } />
-          </form>
-          <Chart pieData={ this.state.emotion_tone }/>
-          <BarChart barChartData={ this.state.language_tone }/>
-          <Treemap treemapData={ this.state.social_tone }/>
+    if(this.state.emotionClicked){
+      return (
+        <div>
+          <div className='chart'>
+            <form className='input'>
+              <Chats
+              sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
+              currentChat={ this.state.chat } />
+            </form>
+            <div onClick={this.handlePieClick} className='large'>
+              <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
+            </div>
+            <div onClick={this.handleBarClick} className='shrink'>
+              <BarChart barChartData={ this.state.language_tone } clicked={this.state.languageClicked}/>
+            </div>
+            <div onClick={this.handleTreeClick} className='shrink'>
+              <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
+            </div>
+          </div>
+
+          <div className="col-md-6">
+          </div>
         </div>
+      );
+    } else if (this.state.languageClicked) {
+      return (
+        <div>
+          <div className='chart'>
+            <form className='input'>
+              <Chats
+              sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
+              currentChat={ this.state.chat } />
+            </form>
+            <div onClick={this.handleBarClick} className='large'>
+              <BarChart barChartData={ this.state.language_tone } clicked={this.state.languageClicked}/>
+            </div>
+            <div onClick={this.handlePieClick} className='shrink' >
+              <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
+            </div>
+            <div onClick={this.handleTreeClick} className='shrink'>
+              <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
+            </div>
+          </div>
 
-
-
-        <div className="col-md-6">
+          <div className="col-md-6">
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else if (this.state.socialClicked) {
+      return (
+        <div>
+          <div className='chart'>
+            <form className='input'>
+              <Chats
+              sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
+              currentChat={ this.state.chat } />
+            </form>
+            <div onClick={this.handleTreeClick} className='large'>
+              <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
+            </div>
+            <div onClick={this.handlePieClick} className='shrink'>
+              <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
+            </div>
+            <div onClick={this.handleBarClick} className='shrink'>
+              <BarChart barChartData={ this.state.language_tone } clicked={this.state.languageClicked}/>
+            </div>
+          </div>
+
+          <div className="col-md-6">
+          </div>
+        </div>
+      );
+    }
   }
 }
 

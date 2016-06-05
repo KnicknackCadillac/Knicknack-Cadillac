@@ -40,11 +40,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.setState({
-    //   emotion_tone: initialData[0].emotion_tone,
-    //   language_tone: initialData[0].language_tone,
-    //   social_tone: initialData[0].social_tone,
-    // });
+    this.setState({
+      emotion_tone: initialData[0].emotion_tone,
+      language_tone: initialData[0].language_tone,
+      social_tone: initialData[0].social_tone,
+    });
   }
 
   //handle clicks

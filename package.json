@@ -6,17 +6,21 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "build": "node_modules/.bin/webpack --watch --devtool source-map"
+    "build": "node_modules/.bin/webpack --watch --devtool source-map",
+    "test": "mocha --compilers .jsx:spec/compiler.js spec/*Spec.js"
   },
   "dependencies": {
+    "babel-polyfill": "^6.9.1",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "jquery": "^2.2.4",
+    "jsdom": "^9.2.1",
     "mysql": "^2.10.2",
     "react": "^15.1.0",
     "react-addons-update": "^15.1.0",
     "react-d3": "^0.4.0",
     "react-dom": "^15.1.0",
+    "react-tools": "^0.13.3",
     "socket.io": "^1.4.6",
     "watson-developer-cloud": "^1.9.2"
   },

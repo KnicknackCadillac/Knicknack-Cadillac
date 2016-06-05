@@ -29,9 +29,27 @@ body {
 
 }
 
-.shrink {
+.shrink.animate {
+	animation-name: shrinkdown;
+	animation-duration: 3s;
+	animation-iteration-count: 1;
+	animation-direction: normal;
+	animation-delay: 0;
+	animation-play-state: running;
+	animation-fill-mode: forwards;
   display: block;
   position: relative;
+}
+
+@keyframes shrinkdown {
+	0% {
+		bottom: 0;
+		left:99%;
+	}
+	100% {
+		bottom: 50%;
+		left: 50%;
+	}
 }
 
 /*.rd3-chart-title{

@@ -442,7 +442,7 @@
 	          null,
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'chart' },
+	            { className: 'chart', style: this.state.styles.language },
 	            _react2.default.createElement(_Chats2.default, {
 	              sendMessage: function sendMessage(event) {
 	                return _this3.handleSubmit(event);
@@ -455,7 +455,7 @@
 	              { transitionName: 'bar', transitionEnterTimeout: 300, transitionLeaveTimeout: 300 },
 	              _react2.default.createElement(
 	                'div',
-	                { key: 1, onClick: this.handleBarClick, className: 'large', style: this.state.styles.language },
+	                { key: 1, onClick: this.handleBarClick, className: 'large' },
 	                bar
 	              ),
 	              _react2.default.createElement(
@@ -20881,8 +20881,8 @@
 	    key: 'render',
 	    value: function render() {
 	      if (this.props.clicked) {
-	        var width = window.innerWidth;
-	        var height = window.innerWidth;
+	        var width = window.innerWidth / 1.5;
+	        var height = window.innerWidth / 1.5;
 	        var labels = true;
 	      } else {
 	        var width = window.innerWidth / 3;
@@ -20906,7 +20906,8 @@
 	          },
 	          title: this.props.pieData.circleAttributes.title,
 	          showInnerLabels: labels,
-	          showOuterLabels: labels
+	          showOuterLabels: labels,
+	          labelTextFill: '#ffffff'
 	        })
 	      );
 	    }
@@ -30723,11 +30724,12 @@
 	    var $__0=         this.props,colors=$__0.colors,colorAccessor=$__0.colorAccessor,height=$__0.height,hoverAnimation=$__0.hoverAnimation,xScale=$__0.xScale,yScale=$__0.yScale;
 	    return (
 	      React.createElement(BarContainer, {
-	        height: height - yScale(segment.y), 
-	        width: xScale.rangeBand(), 
-	        x: xScale(segment.x), 
-	        y: yScale( segment.y0 + segment.y), 
-	        fill: colors(colorAccessor(segment, seriesIdx)), 
+	        height: height - yScale(segment.y),
+	        width: xScale.rangeBand(),
+	        x: xScale(segment.x),
+	        y: yScale( segment.y0 + segment.y),
+	        // fill: colors(colorAccessor(segment, seriesIdx)),
+	        fill: '#64b9d8',
 	        hoverAnimation: hoverAnimation}
 	      )
 	    )
@@ -31067,9 +31069,9 @@
 	  getDefaultProps:function() {
 	    return {
 	      fill:            'none',
-	      stroke:          'none',
+	      stroke:          '#ffffff',
 	      strokeWidth:     '1',
-	      tickStroke:      '#000',
+	      tickStroke:      '#ffffff',
 	      xAxisClassName:  'rd3-x-axis',
 	      xAxisLabel:      '',
 	      xAxisLabelOffset: 10,
@@ -31095,38 +31097,38 @@
 	
 	    return (
 	      React.createElement("g", {
-	        className: props.xAxisClassName, 
+	        className: props.xAxisClassName,
 	        transform: t
-	      }, 
+	      },
 	        React.createElement(AxisTicks, {
-	          tickValues: props.xAxisTickValues, 
-	          tickFormatting: props.tickFormatting, 
-	          tickArguments: tickArguments, 
-	          tickStroke: props.tickStroke, 
-	          tickTextStroke: props.tickTextStroke, 
-	          innerTickSize: props.tickSize, 
-	          scale: props.xScale, 
-	          orient: props.xOrient, 
-	          orient2nd: props.yOrient, 
-	          height: props.height, 
-	          width: props.width, 
-	          gridVertical: props.gridVertical, 
-	          gridVerticalStroke: props.gridVerticalStroke, 
-	          gridVerticalStrokeWidth: props.gridVerticalStrokeWidth, 
+	          tickValues: props.xAxisTickValues,
+	          tickFormatting: props.tickFormatting,
+	          tickArguments: tickArguments,
+	          tickStroke: props.tickStroke,
+	          tickTextStroke: props.tickTextStroke,
+	          innerTickSize: props.tickSize,
+	          scale: props.xScale,
+	          orient: props.xOrient,
+	          orient2nd: props.yOrient,
+	          height: props.height,
+	          width: props.width,
+	          gridVertical: props.gridVertical,
+	          gridVerticalStroke: props.gridVerticalStroke,
+	          gridVerticalStrokeWidth: props.gridVerticalStrokeWidth,
 	          gridVerticalStrokeDash: props.gridVerticalStrokeDash}
-	        ), 
+	        ),
 	        React.createElement(AxisLine, React.__spread({
-	          scale: props.xScale, 
-	          stroke: props.stroke, 
-	          orient: props.xOrient, 
-	          outerTickSize: props.tickSize}, 
+	          scale: props.xScale,
+	          stroke: props.stroke,
+	          orient: props.xOrient,
+	          outerTickSize: props.tickSize},
 	          props)
-	        ), 
+	        ),
 	        React.createElement(Label, {
-	          label: props.xAxisLabel, 
-	          offset: props.xAxisLabelOffset, 
-	          orient: props.xOrient, 
-	          margins: props.margins, 
+	          label: props.xAxisLabel,
+	          offset: props.xAxisLabelOffset,
+	          orient: props.xOrient,
+	          margins: props.margins,
 	          width: props.width}
 	          )
 	      )
@@ -31175,7 +31177,7 @@
 	    return {
 	      innerTickSize: 6,
 	      outerTickSize: 6,
-	      tickStroke: '#000',
+	      tickStroke: '#ffffff',
 	      tickPadding: 3,
 	      tickArguments: [10],
 	      tickValues: null,
@@ -31305,25 +31307,25 @@
 	    }
 	
 	    return (
-	    React.createElement("g", null, 
+	    React.createElement("g", null,
 	      ticks.map( function(tick, idx)  {
 	        return (
-	          React.createElement("g", {key: idx, className: "tick", transform: tr(tick)}, 
-	            gridLine(adjustedScale(tick)), 
+	          React.createElement("g", {key: idx, className: "tick", transform: tr(tick)},
+	            gridLine(adjustedScale(tick)),
 	            React.createElement("line", {style: {shapeRendering:'crispEdges',opacity:'1',stroke:props.tickStroke}, x2: x2, y2: y2}
-	            ), 
+	            ),
 	            React.createElement("text", {
-	              strokeWidth: "0.01", 
-	              dy: dy, x: x1, y: y1, 
-	              style: {stroke:props.tickTextStroke, fill:props.tickTextStroke}, 
+	              strokeWidth: "0.01",
+	              dy: dy, x: x1, y: y1,
+	              style: {stroke:props.tickTextStroke, fill:props.tickTextStroke},
 	              textAnchor: textAnchor
-	            }, 
+	            },
 	              tickFormat(tick)
 	            )
 	          )
 	        );
 	        })
-	      
+	
 	    )
 	    );
 	  }
@@ -31359,10 +31361,10 @@
 	      innerTickSize: 6,
 	      outerTickSize: 6,
 	      tickPadding: 3,
-	      fill: 'none',
+	      fill: '#ffffff',
 	      tickArguments: [10],
 	      tickValues: null,
-	      tickFormat: null 
+	      tickFormat: null
 	    };
 	  },
 	
@@ -31394,11 +31396,11 @@
 	
 	    return (
 	      React.createElement("path", {
-	        className: "domain", 
-	        d: d, 
-	        style: {'shapeRendering':'crispEdges'}, 
-	        fill: props.fill, 
-	        stroke: props.stroke, 
+	        className: "domain",
+	        d: d,
+	        style: {'shapeRendering':'crispEdges'},
+	        fill: props.fill,
+	        stroke: props.stroke,
 	        strokeWidth: props.strokeWidth
 	      }
 	      )
@@ -31427,7 +31429,8 @@
 	    width:               React.PropTypes.number,
 	    strokeWidth:         React.PropTypes.number,
 	    textAnchor:          React.PropTypes.string,
-	    verticalTransform:   React.PropTypes.string
+	    verticalTransform:   React.PropTypes.string,
+	    textColor:           React.PropTypes.string
 	  },
 	
 	  getDefaultProps:function() {
@@ -31435,7 +31438,8 @@
 	      horizontalTransform: 'rotate(270)',
 	      strokeWidth:         0.01,
 	      textAnchor:          'middle',
-	      verticalTransform:   'rotate(0)'
+	      verticalTransform:   'rotate(0)',
+	      textColor:           '#ffffff'
 	    };
 	  },
 	
@@ -31448,48 +31452,48 @@
 	        case 'top':
 	          return (
 	            React.createElement("text", {
-	              strokeWidth: props.strokeWidth.toString(), 
-	              textAnchor: props.textAnchor, 
-	              transform: props.verticalTransform, 
-	              x: props.width / 2, 
+	              strokeWidth: props.strokeWidth.toString(),
+	              textAnchor: props.textAnchor,
+	              transform: props.verticalTransform,
+	              x: props.width / 2,
 	              y: props.offset
-	            }, 
+	            },
 	              props.label
 	            )
 	          );
 	        case 'bottom':
 	          return (
 	            React.createElement("text", {
-	              strokeWidth: props.strokeWidth.toString(), 
-	              textAnchor: props.textAnchor, 
-	              transform: props.verticalTransform, 
-	              x: props.width / 2, 
+	              strokeWidth: props.strokeWidth.toString(),
+	              textAnchor: props.textAnchor,
+	              transform: props.verticalTransform,
+	              x: props.width / 2,
 	              y: props.offset
-	            }, 
+	            },
 	              props.label
 	            )
 	          );
 	        case 'left':
 	          return (
 	            React.createElement("text", {
-	              strokeWidth: props.strokeWidth.toString(), 
-	              textAnchor: props.textAnchor, 
-	              transform: props.horizontalTransform, 
-	              y: -props.offset, 
+	              strokeWidth: props.strokeWidth.toString(),
+	              textAnchor: props.textAnchor,
+	              transform: props.horizontalTransform,
+	              y: -props.offset,
 	              x: -props.height / 2
-	            }, 
+	            },
 	              props.label
 	            )
 	          );
 	        case 'right':
 	          return (
 	            React.createElement("text", {
-	              strokeWidth: props.strokeWidth.toString(), 
-	              textAnchor: props.textAnchor, 
-	              transform: props.horizontalTransform, 
-	              y: props.offset, 
+	              strokeWidth: props.strokeWidth.toString(),
+	              textAnchor: props.textAnchor,
+	              transform: props.horizontalTransform,
+	              y: props.offset,
 	              x: -props.height / 2
-	            }, 
+	            },
 	              props.label
 	            )
 	          );
@@ -31540,9 +31544,9 @@
 	  getDefaultProps:function() {
 	    return {
 	      fill:           'none',
-	      stroke:         '#000',
+	      stroke:         '#ffffff',
 	      strokeWidth:    '1',
-	      tickStroke:     '#000',
+	      tickStroke:     '#ffffff',
 	      yAxisClassName: 'rd3-y-axis',
 	      yAxisLabel:     '',
 	      yAxisOffset:    0,
@@ -31573,38 +31577,38 @@
 	
 	    return (
 	      React.createElement("g", {
-	        className: props.yAxisClassName, 
+	        className: props.yAxisClassName,
 	        transform: t
-	      }, 
+	      },
 	        React.createElement(AxisTicks, {
-	          innerTickSize: props.tickSize, 
-	          orient: props.yOrient, 
-	          orient2nd: props.xOrient, 
-	          tickArguments: tickArguments, 
-	          tickFormatting: props.tickFormatting, 
-	          tickStroke: props.tickStroke, 
-	          tickTextStroke: props.tickTextStroke, 
-	          tickValues: props.yAxisTickValues, 
-	          scale: props.yScale, 
-	          height: props.height, 
-	          width: props.width, 
-	          gridHorizontal: props.gridHorizontal, 
-	          gridHorizontalStroke: props.gridHorizontalStroke, 
-	          gridHorizontalStrokeWidth: props.gridHorizontalStrokeWidth, 
+	          innerTickSize: props.tickSize,
+	          orient: props.yOrient,
+	          orient2nd: props.xOrient,
+	          tickArguments: tickArguments,
+	          tickFormatting: props.tickFormatting,
+	          tickStroke: props.tickStroke,
+	          tickTextStroke: props.tickTextStroke,
+	          tickValues: props.yAxisTickValues,
+	          scale: props.yScale,
+	          height: props.height,
+	          width: props.width,
+	          gridHorizontal: props.gridHorizontal,
+	          gridHorizontalStroke: props.gridHorizontalStroke,
+	          gridHorizontalStrokeWidth: props.gridHorizontalStrokeWidth,
 	          gridHorizontalStrokeDash: props.gridHorizontalStrokeDash}
-	        ), 
+	        ),
 	        React.createElement(AxisLine, React.__spread({
-	          orient: props.yOrient, 
-	          outerTickSize: props.tickSize, 
-	          scale: props.yScale, 
-	          stroke: props.stroke}, 
+	          orient: props.yOrient,
+	          outerTickSize: props.tickSize,
+	          scale: props.yScale,
+	          stroke: props.stroke},
 	          props)
-	        ), 
+	        ),
 	        React.createElement(Label, {
-	          height: props.height, 
-	          label: props.yAxisLabel, 
-	          margins: props.margins, 
-	          offset: props.yAxisLabelOffset, 
+	          height: props.height,
+	          label: props.yAxisLabel,
+	          margins: props.margins,
+	          offset: props.yAxisLabelOffset,
 	          orient: props.yOrient}
 	        )
 	      )
@@ -34460,7 +34464,8 @@
 	        colors: function colors(d) {
 	          return colorMap[d];
 	        },
-	        title: 'BarChart'
+	        title: 'BarChart',
+	        textColor: '#ffffff'
 	      });
 	    }
 	  }]);
@@ -34540,8 +34545,7 @@
 	        width: width,
 	        height: height,
 	        title: 'Treemap',
-	        textColor: '#484848',
-	        fontColor: '12px',
+	        textColor: '#ffffff',
 	        colors: function colors(d) {
 	          return colorMap[d];
 	        },

@@ -1,30 +1,38 @@
 body {
-	background: linear-gradient(white, black);
-	position: absolute;
+	background: url("blackbackground.jpg");
+	position: static;
 	background-repeat: no-repeat;
 	background-size: cover;
 	width:100%;
 	height: 100%;
-
-	font-color: black;
 }
 
 
 .rd3-chart{
-  display: block;
+  background-color: inherit
+
 }
 
 .shrink {
   display: inline-block;
+  background-color: inherit;
 }
 
 .rd3-basic-chart{
   display: block;
+  background-color: inherit;
 }
 
 .chart{
-  background: linear-gradient(white, black);
+  background: url("blackbackground.jpg");
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width:100%;
+  height: 100%;
 }
+
+
 
 .form-horizontal {
 	text-align: center;
@@ -92,4 +100,16 @@ body {
 .tree-leave.tree-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
+}
+
+.rd3-piechart-label {
+  fill: #ffffff;
+}
+
+.rd3-chart-title{
+  color: #ffffff;
+}
+
+text{
+  fill: #ffffff;
 }

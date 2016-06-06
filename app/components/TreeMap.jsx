@@ -37,8 +37,7 @@ class Treemap extends React.Component{
         width={width}
         height={height}
         title="Treemap"
-        textColor="#484848"
-        fontColor="12px"
+        textColor='#ffffff'
         colors={function(d) {
           return colorMap[d];
         }}

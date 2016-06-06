@@ -1,10 +1,15 @@
 var images = {
   emotions: {
-    Anger: 'http://i.imgur.com/wGc3Mjy.jpg',
-    Disgust: 'http://i.imgur.com/YiVyJi8.jpg',
-    Fear: 'http://i.imgur.com/z5SIkWX.jpg',
-    Joy: 'http://i.imgur.com/GrOiIbP.jpg',
-    Sadness: 'http://i.imgur.com/UmtUicC.jpg',
+    Anger: 'http://i.imgur.com/vDCJKJq.jpg',
+    Disgust: 'http://i.imgur.com/BNoLU65.jpg',
+    Fear: 'http://i.imgur.com/vGVN9Ge.jpg',
+    Joy: 'http://i.imgur.com/WRBG1aP.jpg',
+    Sadness: 'http://i.imgur.com/asGWBvT.jpg',
+    // Anger: 'http://i.imgur.com/wGc3Mjy.jpg',
+    // Disgust: 'http://i.imgur.com/YiVyJi8.jpg',
+    // Fear: 'http://i.imgur.com/z5SIkWX.jpg',
+    // Joy: 'http://i.imgur.com/GrOiIbP.jpg',
+    // Sadness: 'http://i.imgur.com/UmtUicC.jpg',
   },
   social: {
     'Emotional Range': 'http://autismteachingstrategies.com/wp-content/uploads/2013/11/IMG_0899.jpg',

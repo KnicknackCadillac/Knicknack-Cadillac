@@ -220,7 +220,7 @@ class App extends React.Component {
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } />
             <ReactCSSTransitionGroup transitionName="pie" transitionEnterTimeout={300} transitionLeaveTimeout={300} transitionAppear={true} transitionAppearTimeout={500}>
-              <div onClick={this.handlePieClick} className='large' style={this.state.styles}>
+              <div onClick={this.handlePieClick} className='large' style={this.state.styles.emotions}>
                 <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
               </div>
               <div onClick={this.handleBarClick} className='shrink'>

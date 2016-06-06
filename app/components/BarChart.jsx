@@ -1,4 +1,4 @@
-
+var _ = require('underscore')
 import React from 'react';
 const rd3 = require('react-d3');
 const Bar = rd3.BarChart;
@@ -32,8 +32,11 @@ class BarChart extends React.Component{
        var width = window.innerWidth/5;
        var height = window.innerWidth/8;
        var labels= false;
+       //console.log('this is bar data: ', this.props.barChartData.watsonData)
+
     }
     return (
+
     	<Bar
         data={[{"values": this.props.barChartData.watsonData}]}
         width={width}

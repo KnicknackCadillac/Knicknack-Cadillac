@@ -22,7 +22,6 @@ class Chart extends React.Component {
   }
 
   render() {
-    console.log(this.props.clicked);
     if(this.props.clicked){
       var width = window.innerWidth;
       var height = window.innerWidth;

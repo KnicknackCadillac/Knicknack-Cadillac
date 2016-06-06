@@ -25,11 +25,11 @@ class Treemap extends React.Component{
     console.log(this.props.treemapData.watsonData);
     if(this.props.clicked){
       var width = window.innerWidth/1.4;
-      var height = 250;
+      var height = 400;
       var labels = true;
     }else{
-       var width = window.innerWidth/10;
-       var height = window.innerWidth/10;
+       var width = window.innerWidth/3;
+       var height = window.innerWidth/12;
        var labels = false;
     }
     return (
@@ -37,7 +37,7 @@ class Treemap extends React.Component{
         data={this.props.treemapData.watsonData}
         width={width}
         height={height}
-        title="Treemap"
+        title="Social Tendencies"
         textColor='#ffffff'
         colors={function(d) {
           return colorMap[d];

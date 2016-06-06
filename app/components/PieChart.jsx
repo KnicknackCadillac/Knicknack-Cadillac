@@ -40,7 +40,7 @@ class Chart extends React.Component {
             width={(width)}
             height={ (height / 2)}
             radius={ (height / 6)}
-            innerRadius={ (height / 5) }
+            innerRadius={ (height / 4)  }
             sectorBorderColor="black"
             colors={function(d) {
               return colorMap[d];

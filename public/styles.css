@@ -7,11 +7,22 @@ body {
 	height: 100%;
 
 }
+::-webkit-input-placeholder {
+   color: red;
+	 font-size: 30px
+	 text-align: center;
+}
+
+
+
+.form-control {
+	background-color: grey;
+	color: white;
+}
 .rd3-chart{
 	position: relative;
-	left: 12em;
+	left: 17em;
 	bottom: 2em;
-  display: inline;
 }
 
 .shrink1 {
@@ -22,10 +33,10 @@ body {
 
 }
 .shrink2 {
-	position: absolute;
+	position: relative;
   display: inline-block;
   background: inherit;
-	left: 2em;
+	right: 15em;
 }
 
 .rd3-basic-chart{
@@ -35,7 +46,7 @@ body {
 }
 
 .chart{
-  background: url("blackbackground.jpg");
+  background: url("http://payload350.cargocollective.com/1/0/1371/9319384/IBM_WatsonCIC_JdF-Mirada_168_1000.jpg");
   position: absolute;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,8 +54,14 @@ body {
   height: 100%;
 }
 
+.large {
+	margin-bottom: 1em;
+}
 
-
+.rd3-treemap {
+	position: relative;
+	right: 10em;
+}
 .form-horizontal {
 	text-align: center;
 	width: 100%;
@@ -118,8 +135,13 @@ body {
 }
 
 .rd3-chart-title{
+	position: relative;
   color: #ffffff;
+	left: 14em;
+	bottom: 2em;
 }
+
+
 
 text{
   fill: #ffffff;

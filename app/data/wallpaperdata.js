@@ -1,6 +1,6 @@
 var images = {
   emotions: {
-    Anger: 'http://i.imgur.com/vDCJKJq.jpg',
+    Anger: 'http://i.imgur.com/tEp5PTz.jpg',
     Disgust: 'http://i.imgur.com/BNoLU65.jpg',
     Fear: 'http://i.imgur.com/vGVN9Ge.jpg',
     Joy: 'http://i.imgur.com/WRBG1aP.jpg',

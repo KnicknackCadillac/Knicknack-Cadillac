@@ -60,7 +60,7 @@
 	
 	var _Chats2 = _interopRequireDefault(_Chats);
 	
-	var _PieChart = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./PieChart.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _PieChart = __webpack_require__(170);
 	
 	var _PieChart2 = _interopRequireDefault(_PieChart);
 	
@@ -358,7 +358,7 @@
 	                backgroundSize: 'cover',
 	                backgroundPosition: 'center',
 	                opacity: '1',
-	                position: 'relative'
+	                position: 'absolute'
 	              },
 	              social: {
 	                backgroundImage: 'url(' + _wallpaperdata2.default.social[highestSocial.label] + ')',
@@ -368,7 +368,7 @@
 	                backgroundSize: 'cover',
 	                backgroundPosition: 'center',
 	                opacity: '1',
-	                position: 'relative'
+	                position: 'absolute'
 	              },
 	              language: {
 	                backgroundImage: 'url(' + _wallpaperdata2.default.language[highestLang.x] + ')',
@@ -378,12 +378,12 @@
 	                backgroundSize: 'cover',
 	                backgroundPosition: 'center',
 	                opacity: '1',
-	                position: 'relative'
+	                position: 'absolute'
 	              }
 	            }
 	          });
 	
-	          console.log(_this2.state.styles.language);
+	          console.log(_this2.state.styles.emotions);
 	        }
 	      });
 	    }
@@ -425,12 +425,12 @@
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { onClick: this.handleBarClick, className: 'shrink' },
+	                { onClick: this.handleBarClick, className: 'shrink1' },
 	                bar
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { onClick: this.handleTreeClick, className: 'shrink' },
+	                { onClick: this.handleTreeClick, className: 'shrink2' },
 	                _react2.default.createElement(_Treemap2.default, { treemapData: this.state.social_tone, clicked: this.state.socialClicked })
 	              )
 	            )
@@ -460,12 +460,12 @@
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { key: 2, onClick: this.handlePieClick, className: 'shrink' },
+	                { key: 2, onClick: this.handlePieClick, className: 'shrink1' },
 	                _react2.default.createElement(_PieChart2.default, { pieData: this.state.emotion_tone, clicked: this.state.emotionClicked })
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { key: 3, onClick: this.handleTreeClick, className: 'shrink' },
+	                { key: 3, onClick: this.handleTreeClick, className: 'shrink2' },
 	                _react2.default.createElement(_Treemap2.default, { treemapData: this.state.social_tone, clicked: this.state.socialClicked })
 	              )
 	            )
@@ -499,12 +499,12 @@
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { key: 2, onClick: this.handlePieClick, className: 'shrink' },
+	                { key: 2, onClick: this.handlePieClick, className: 'shrink1' },
 	                _react2.default.createElement(_PieChart2.default, { pieData: this.state.emotion_tone, clicked: this.state.emotionClicked })
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { key: 3, onClick: this.handleBarClick, className: 'shrink' },
+	                { key: 3, onClick: this.handleBarClick, className: 'shrink2' },
 	                bar
 	              )
 	            )
@@ -20829,7 +20829,114 @@
 
 /***/ },
 /* 169 */,
-/* 170 */,
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var rd3 = __webpack_require__(171);
+	var PieChart = rd3.PieChart;
+	
+	var colorMap = ['#C8020A', // 'Anger'
+	'#6EE017', // 'Disgust'
+	'#FF006A', // 'Fear'
+	'#FF7A06', // 'Joy'
+	'#0099FF'];
+	
+	// 'Sadness'
+	
+	var Chart = function (_React$Component) {
+	  _inherits(Chart, _React$Component);
+	
+	  function Chart(props) {
+	    _classCallCheck(this, Chart);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Chart).call(this, props));
+	
+	    _this.state = {
+	      pieData: []
+	    };
+	
+	    return _this;
+	  }
+	
+	  _createClass(Chart, [{
+	    key: 'render',
+	    value: function render() {
+	      if (this.props.clicked) {
+	        var width = window.innerWidth / 1.5;
+	        var height = window.innerWidth / 1.5;
+	        var labels = true;
+	      } else {
+	        var width = window.innerWidth / 3;
+	        var height = window.innerWidth / 3;
+	        var labels = false;
+	      }
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(PieChart, {
+	
+	          data: this.props.pieData.watsonData,
+	          width: width,
+	          height: height / 2,
+	          radius: height / 6,
+	          innerRadius: height / 5,
+	          sectorBorderColor: 'black',
+	          colors: function colors(d) {
+	            return colorMap[d];
+	          },
+	          title: this.props.pieData.circleAttributes.title,
+	          showInnerLabels: labels,
+	          showOuterLabels: labels,
+	          labelTextFill: '#ffffff'
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return Chart;
+	}(_react2.default.Component);
+	
+	exports.default = Chart;
+	
+	// propTypes: {
+	//   data:               React.PropTypes.array,
+	//   radius:             React.PropTypes.number,
+	//   cx:                 React.PropTypes.number,
+	//   cy:                 React.PropTypes.number,
+	//   labelTextFill:      React.PropTypes.string,
+	//   valueTextFill:      React.PropTypes.string,
+	//   valueTextFormatter: React.PropTypes.func,
+	//   colors:             React.PropTypes.func,
+	//   colorAccessor:      React.PropTypes.func,
+	//   title:              React.PropTypes.string,
+	//   showInnerLabels:    React.PropTypes.bool,
+	//   showOuterLabels:    React.PropTypes.bool,
+	//   sectorBorderColor:  React.PropTypes.string,
+	//   hoverAnimation:     React.PropTypes.bool
+	// },
+
+/***/ },
 /* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -34342,12 +34449,12 @@
 	    key: 'render',
 	    value: function render() {
 	      if (this.props.clicked) {
-	        var width = window.innerWidth;
+	        var width = window.innerWidth / 1.3;
 	        var height = 250;
 	        var labels = true;
 	      } else {
 	        var width = window.innerWidth / 5;
-	        var height = window.innerWidth / 8;
+	        var height = window.innerWidth / 10;
 	        var labels = false;
 	        //console.log('this is bar data: ', this.props.barChartData.watsonData)
 	      }
@@ -34426,12 +34533,12 @@
 	    key: 'render',
 	    value: function render() {
 	      if (this.props.clicked) {
-	        var width = window.innerWidth;
+	        var width = window.innerWidth / 1.4;
 	        var height = 250;
 	        var labels = true;
 	      } else {
-	        var width = window.innerWidth / 9;
-	        var height = window.innerWidth / 9;
+	        var width = window.innerWidth / 10;
+	        var height = window.innerWidth / 10;
 	        var labels = false;
 	      }
 	      return _react2.default.createElement(TreemapChart, {

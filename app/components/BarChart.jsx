@@ -25,12 +25,12 @@ class BarChart extends React.Component{
 
   render() {
     if(this.props.clicked){
-      var width = window.innerWidth;
+      var width = window.innerWidth/1.3;
       var height = 250;
       var labels = true;
     }else{
        var width = window.innerWidth/5;
-       var height = window.innerWidth/8;
+       var height = window.innerWidth/10;
        var labels= false;
        //console.log('this is bar data: ', this.props.barChartData.watsonData)
 

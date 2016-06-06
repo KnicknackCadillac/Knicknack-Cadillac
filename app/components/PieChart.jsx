@@ -23,11 +23,7 @@ class Chart extends React.Component {
 
   render() {
     if(this.props.clicked){
-<<<<<<< 30d14bd235ceb25f0b3cbe2982fff87bc8246f7d
       var width = window.innerWidth/1.5;
-=======
-      var width = window.innerWidth /1.5;
->>>>>>> update to background and styling
       var height = window.innerWidth/1.5;
       var labels = true;
     }else{

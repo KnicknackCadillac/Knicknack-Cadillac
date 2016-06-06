@@ -42,6 +42,9 @@ class App extends React.Component {
         social: {
           backgroundImage: ''
         },
+        language: {
+          backgroundImage: ''
+        }
       }
     };
 
@@ -157,22 +160,29 @@ class App extends React.Component {
           }
         });
         var highestSocial = this.state.social_tone.watsonData.reduce(function(lastEmote, currEmote) {
-          console.log('lastEmote: ', lastEmote);
-          console.log('currEmote: ', currEmote);
           if (lastEmote.value < currEmote.value) {
             return currEmote;
           } else {
             return lastEmote;
           }
         });
-        var highestLang = this.state.emotion_tone.watsonData.reduce(function(lastEmote, currEmote) {
+        var highestLang = this.state.language_tone.watsonData.reduce(function(lastEmote, currEmote) {
+          console.log('lastEmote', lastEmote);
+          console.log('currEmote', currEmote);
+            if (lastEmote === undefined ) {
+              lastEmote.y = 1;
+            }
+            if (currEmote === undefined ) {
+              currEmote.y = 1;
+            }
+          if (lastEmote.y <= currEmote.y) {
 
-          if (lastEmote.value < currEmote.value) {
             return currEmote;
           } else {
             return lastEmote;
           }
         });
+        console.log(highestLang.x);
 
         this.setState({
           styles: {
@@ -186,20 +196,30 @@ class App extends React.Component {
             opacity: '1',
             position: 'absolute'
           },
-          social: {
-          backgroundImage: 'url(' + wallpaper.social[highestSocial.label] + ')',
-          backgroundRepeat: 'no-repeat',
-          width: '100%',
-          height: '100%',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: '1',
-          position: 'absolute'
-        }
+            social: {
+            backgroundImage: 'url(' + wallpaper.social[highestSocial.label] + ')',
+            backgroundRepeat: 'no-repeat',
+            width: '100%',
+            height: '100%',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: '1',
+            position: 'absolute'
+          },
+            language: {
+              backgroundImage: 'url(' + wallpaper.language[highestLang.x] + ')',
+              backgroundRepeat: 'no-repeat',
+              width: '100%',
+              height: '100%',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: '1',
+              position: 'absolute'
+            }
           }
         })
 
-        console.log(this.state.styles.social);
+        console.log(this.state.styles.language);
       }
     });
   }
@@ -242,7 +262,7 @@ class App extends React.Component {
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } key={this.state.chat}/>
             <ReactCSSTransitionGroup transitionName="bar" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
-            <div key={1} onClick={this.handleBarClick} className='large'>
+            <div key={1} onClick={this.handleBarClick} className='large' style={this.state.styles.language}>
               {bar}
             </div>
             <div key={2} onClick={this.handlePieClick} className='shrink' >

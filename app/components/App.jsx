@@ -1,4 +1,5 @@
 var update = require('react-addons-update');
+var _ = require('underscore')
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import Users from './Users.jsx';
@@ -182,7 +183,7 @@ class App extends React.Component {
             height: '100%',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            opacity: '0',
+            opacity: '1',
             position: 'absolute'
 
           }
@@ -196,6 +197,13 @@ class App extends React.Component {
           // { this.state.socialClicked ? <Chart pieData={ this.state.social_tone } /> : null }
 
   render() {
+    //console.log('this is language_tone.watsondata: ', this.state.language_tone.watsonData);
+    var checkBar = _.every(this.state.language_tone.watsonData, function(num) { return num.y === 0;  })
+    var bar = <BarChart barChartData={ this.state.language_tone } clicked={this.state.languageClicked}/>
+    if(checkBar){
+      bar = null
+    }
+
     if(this.state.emotionClicked){
       return (
         <div>
@@ -207,7 +215,7 @@ class App extends React.Component {
               <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
             </div>
             <div onClick={this.handleBarClick} className='shrink'>
-              <BarChart barChartData={ this.state.language_tone } clicked={this.state.languageClicked}/>
+              {bar}
             </div>
             <div onClick={this.handleTreeClick} className='shrink'>
               <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
@@ -226,7 +234,7 @@ class App extends React.Component {
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } />
             <div onClick={this.handleBarClick} className='large'>
-              <BarChart barChartData={ this.state.language_tone } clicked={this.state.languageClicked}/>
+              {bar}
             </div>
             <div onClick={this.handlePieClick} className='shrink' >
               <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
@@ -254,7 +262,7 @@ class App extends React.Component {
               <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
             </div>
             <div onClick={this.handleBarClick} className='shrink'>
-              <BarChart barChartData={ this.state.language_tone } clicked={this.state.languageClicked}/>
+              {bar}
             </div>
           </div>
 

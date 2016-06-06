@@ -16,7 +16,7 @@ body {
 
 
 .form-control {
-	background-color: grey;
+	background-color: black;
 	color: white;
 }
 .rd3-chart{
@@ -130,8 +130,8 @@ body {
   transition: opacity 300ms ease-in;
 }
 
-.rd3-piechart-label {
-  fill: #ffffff;
+textarea.form-control::placeholder{
+	font-size: 20px;
 }
 
 .rd3-chart-title{
@@ -141,8 +141,7 @@ body {
 	bottom: 2em;
 }
 
-
-
 text{
   fill: #ffffff;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }

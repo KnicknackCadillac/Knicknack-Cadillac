@@ -3,53 +3,17 @@ body {
 	font-color: black;
 }
 
-.input {
-  position: relative;
-  resize: none;
-  width: 32%;
-  height: 65%;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
-}
 
-.input textarea{
-	font-size: 20  px;
-	text-align: center;
-	background: transparent;
-	color: black ;
-	resize: none;
-	width: 100%;
-  height: 100%;
-  border: none;
-  overflow: auto;
-  outline: none;
-
-
-}
-
-.shrink.animate {
-	animation-name: shrinkdown;
-	animation-duration: 3s;
-	animation-iteration-count: 1;
-	animation-direction: normal;
-	animation-delay: 0;
-	animation-play-state: running;
-	animation-fill-mode: forwards;
+.shrink {
   display: block;
   position: relative;
 }
 
-@keyframes shrinkdown {
-	0% {
-		bottom: 0;
-		left:99%;
-	}
-	100% {
-		bottom: 50%;
-		left: 50%;
-	}
+
+.form-horizontal {
+	text-align: center;
+	width: 100%;
+	position: relative;
 }
 
 /*.rd3-chart-title{

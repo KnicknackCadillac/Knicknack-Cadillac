@@ -7,6 +7,12 @@ body {
 	height: 100%;
 
 }
+
+
+.form-control {
+	background-color: grey;
+	color: white;
+}
 .rd3-chart{
 	position: relative;
 	left: 12em;

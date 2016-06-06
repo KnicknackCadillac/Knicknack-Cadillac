@@ -247,7 +247,7 @@ class App extends React.Component {
               <div onClick={this.handleBarClick} className='shrink1'>
                 {bar}
               </div>
-              <div onClick={this.handleTreeClick} className='shrink2'>
+              <div onClick={this.handleTreeClick} className='shrink'>
                 <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
               </div>
             </ReactCSSTransitionGroup>
@@ -258,7 +258,7 @@ class App extends React.Component {
     } else if (this.state.languageClicked) {
       return (
         <div>
-          <div className='chart' style={this.state.styles.language}>
+          <div className='chart'>
             <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } key={this.state.chat}/>
@@ -279,7 +279,7 @@ class App extends React.Component {
     } else if (this.state.socialClicked) {
       return (
         <div>
-          <div className='chart' style={this.state.styles.social}>
+          <div className='chart'>
             <div>
             <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }

@@ -14,8 +14,10 @@ social: {
   Agreeableness: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Jacobite_broadside_-_Agreeable_Contrast.jpg',
 },
 language: {
-
-}
+  Analytical: 'http://www.expressexpertise.com/wp-content/uploads/2015/06/thinking-1400x864.jpg',
+  Confident: 'https://cdn.theatlantic.com/assets/media/img/2015/08/26/opener_option2/1920.jpg?1440631999',
+  Tentative: 'http://www.michaelmitchellcharleston.com/wp-content/uploads/2012/07/Scrimshaw-Sailor-Of-The-Depths-36x60.jpg'
+},
 };
 
 

@@ -128,6 +128,9 @@
 	        },
 	        social: {
 	          backgroundImage: ''
+	        },
+	        language: {
+	          backgroundImage: ''
 	        }
 	      }
 	    };
@@ -321,22 +324,29 @@
 	            }
 	          });
 	          var highestSocial = _this2.state.social_tone.watsonData.reduce(function (lastEmote, currEmote) {
-	            console.log('lastEmote: ', lastEmote);
-	            console.log('currEmote: ', currEmote);
 	            if (lastEmote.value < currEmote.value) {
 	              return currEmote;
 	            } else {
 	              return lastEmote;
 	            }
 	          });
-	          var highestLang = _this2.state.emotion_tone.watsonData.reduce(function (lastEmote, currEmote) {
+	          var highestLang = _this2.state.language_tone.watsonData.reduce(function (lastEmote, currEmote) {
+	            console.log('lastEmote', lastEmote);
+	            console.log('currEmote', currEmote);
+	            if (lastEmote === undefined) {
+	              lastEmote.y = 1;
+	            }
+	            if (currEmote === undefined) {
+	              currEmote.y = 1;
+	            }
+	            if (lastEmote.y <= currEmote.y) {
 	
-	            if (lastEmote.value < currEmote.value) {
 	              return currEmote;
 	            } else {
 	              return lastEmote;
 	            }
 	          });
+	          console.log(highestLang.x);
 	
 	          _this2.setState({
 	            styles: {
@@ -359,11 +369,21 @@
 	                backgroundPosition: 'center',
 	                opacity: '1',
 	                position: 'absolute'
+	              },
+	              language: {
+	                backgroundImage: 'url(' + _wallpaperdata2.default.language[highestLang.x] + ')',
+	                backgroundRepeat: 'no-repeat',
+	                width: '100%',
+	                height: '100%',
+	                backgroundSize: 'cover',
+	                backgroundPosition: 'center',
+	                opacity: '1',
+	                position: 'absolute'
 	              }
 	            }
 	          });
 	
-	          console.log(_this2.state.styles.social);
+	          console.log(_this2.state.styles.language);
 	        }
 	      });
 	    }
@@ -435,7 +455,7 @@
 	              { transitionName: 'bar', transitionEnterTimeout: 300, transitionLeaveTimeout: 300 },
 	              _react2.default.createElement(
 	                'div',
-	                { key: 1, onClick: this.handleBarClick, className: 'large' },
+	                { key: 1, onClick: this.handleBarClick, className: 'large', style: this.state.styles.language },
 	                bar
 	              ),
 	              _react2.default.createElement(
@@ -34785,7 +34805,11 @@
 	    Extraversion: 'http://4.bp.blogspot.com/-wfbJSYeekTo/T9d7qXD7CnI/AAAAAAAAAKQ/G8KTgxBoHjQ/s1600/introvert-pic-goldfish.jpg',
 	    Agreeableness: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Jacobite_broadside_-_Agreeable_Contrast.jpg'
 	  },
-	  language: {}
+	  language: {
+	    Analytical: 'http://www.expressexpertise.com/wp-content/uploads/2015/06/thinking-1400x864.jpg',
+	    Confident: 'https://cdn.theatlantic.com/assets/media/img/2015/08/26/opener_option2/1920.jpg?1440631999',
+	    Tentative: 'http://www.michaelmitchellcharleston.com/wp-content/uploads/2012/07/Scrimshaw-Sailor-Of-The-Depths-36x60.jpg'
+	  }
 	};
 	
 	exports.default = images;

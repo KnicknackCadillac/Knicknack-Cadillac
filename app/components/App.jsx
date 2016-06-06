@@ -36,7 +36,12 @@ class App extends React.Component {
         circleAttributes: {}
       },
       styles: {
+        emotions: {
         backgroundImage: ''
+      },
+        social: {
+          backgroundImage: ''
+        },
       }
     };
 
@@ -145,19 +150,34 @@ class App extends React.Component {
         });
 
         var highestEmote = this.state.emotion_tone.watsonData.reduce(function(lastEmote, currEmote) {
-          console.log('checking!')
           if (lastEmote.value < currEmote.value) {
             return currEmote;
           } else {
             return lastEmote;
           }
         });
-        console.log(emotion_Arr);
-        console.log(language_Arr);
-        console.log(social_Arr);
+        var highestSocial = this.state.social_tone.watsonData.reduce(function(lastEmote, currEmote) {
+          console.log('lastEmote: ', lastEmote);
+          console.log('currEmote: ', currEmote);
+          if (lastEmote.value < currEmote.value) {
+            return currEmote;
+          } else {
+            return lastEmote;
+          }
+        });
+        var highestLang = this.state.emotion_tone.watsonData.reduce(function(lastEmote, currEmote) {
+
+          if (lastEmote.value < currEmote.value) {
+            return currEmote;
+          } else {
+            return lastEmote;
+          }
+        });
+
         this.setState({
           styles: {
-            backgroundImage: 'url(' + wallpaper[highestEmote.label] + ')',
+            emotions: {
+            backgroundImage: 'url(' + wallpaper.emotions[highestEmote.label] + ')',
             backgroundRepeat: 'no-repeat',
             width: '100%',
             height: '100%',
@@ -165,10 +185,21 @@ class App extends React.Component {
             backgroundPosition: 'center',
             opacity: '1',
             position: 'absolute'
-
+          },
+          social: {
+          backgroundImage: 'url(' + wallpaper.social[highestSocial.label] + ')',
+          backgroundRepeat: 'no-repeat',
+          width: '100%',
+          height: '100%',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: '1',
+          position: 'absolute'
+        }
           }
         })
-        console.log(this.state.styles.backgroundImage);
+
+        console.log(this.state.styles.social);
       }
     });
   }
@@ -234,7 +265,7 @@ class App extends React.Component {
               currentChat={ this.state.chat } />
             </div>
             <ReactCSSTransitionGroup transitionName="tree" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
-              <div key={1} onClick={this.handleTreeClick} className='large'>
+              <div key={1} onClick={this.handleTreeClick} className='large' style={this.state.styles.social}>
                 <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
               </div>
               <div key={2} onClick={this.handlePieClick} className='shrink'>

@@ -7,10 +7,11 @@ var images = {
   Sadness:'http://www.cardloanhikakunavi.com/wp-content/uploads/2015/11/Quotes-help-sadness.jpg',
 },
 social: {
-  Conscientiousness:
-  Openness:
-  Extraversion:
-  Agreeableness:
+  'Emotional Range': 'http://autismteachingstrategies.com/wp-content/uploads/2013/11/IMG_0899.jpg',
+  Conscientiousness: 'http://www.iflscience.com/sites/www.iflscience.com/files/blog/%5Bnid%5D/t79mzzj5-1456884486.jpg',
+  Openness: 'https://ablersite.files.wordpress.com/2012/03/map-sci_collabo2.jpg',
+  Extraversion: 'http://4.bp.blogspot.com/-wfbJSYeekTo/T9d7qXD7CnI/AAAAAAAAAKQ/G8KTgxBoHjQ/s1600/introvert-pic-goldfish.jpg',
+  Agreeableness: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Jacobite_broadside_-_Agreeable_Contrast.jpg',
 },
 language: {
 

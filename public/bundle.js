@@ -76,7 +76,7 @@
 	
 	var _initialData2 = _interopRequireDefault(_initialData);
 	
-	var _wallpaperdata = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../data/wallpaperdata.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _wallpaperdata = __webpack_require__(233);
 	
 	var _wallpaperdata2 = _interopRequireDefault(_wallpaperdata);
 	
@@ -123,7 +123,12 @@
 	        circleAttributes: {}
 	      },
 	      styles: {
-	        backgroundImage: ''
+	        emotions: {
+	          backgroundImage: ''
+	        },
+	        social: {
+	          backgroundImage: ''
+	        }
 	      }
 	    };
 	
@@ -309,30 +314,56 @@
 	          });
 	
 	          var highestEmote = _this2.state.emotion_tone.watsonData.reduce(function (lastEmote, currEmote) {
-	            console.log('checking!');
 	            if (lastEmote.value < currEmote.value) {
 	              return currEmote;
 	            } else {
 	              return lastEmote;
 	            }
 	          });
-	          console.log(emotion_Arr);
-	          console.log(language_Arr);
-	          console.log(social_Arr);
-	          _this2.setState({
-	            styles: {
-	              backgroundImage: 'url(' + _wallpaperdata2.default[highestEmote.label] + ')',
-	              backgroundRepeat: 'no-repeat',
-	              width: '100%',
-	              height: '100%',
-	              backgroundSize: 'cover',
-	              backgroundPosition: 'center',
-	              opacity: '1',
-	              position: 'absolute'
-	
+	          var highestSocial = _this2.state.social_tone.watsonData.reduce(function (lastEmote, currEmote) {
+	            console.log('lastEmote: ', lastEmote);
+	            console.log('currEmote: ', currEmote);
+	            if (lastEmote.value < currEmote.value) {
+	              return currEmote;
+	            } else {
+	              return lastEmote;
 	            }
 	          });
-	          console.log(_this2.state.styles.backgroundImage);
+	          var highestLang = _this2.state.emotion_tone.watsonData.reduce(function (lastEmote, currEmote) {
+	
+	            if (lastEmote.value < currEmote.value) {
+	              return currEmote;
+	            } else {
+	              return lastEmote;
+	            }
+	          });
+	
+	          _this2.setState({
+	            styles: {
+	              emotions: {
+	                backgroundImage: 'url(' + _wallpaperdata2.default.emotions[highestEmote.label] + ')',
+	                backgroundRepeat: 'no-repeat',
+	                width: '100%',
+	                height: '100%',
+	                backgroundSize: 'cover',
+	                backgroundPosition: 'center',
+	                opacity: '1',
+	                position: 'absolute'
+	              },
+	              social: {
+	                backgroundImage: 'url(' + _wallpaperdata2.default.social[highestSocial.label] + ')',
+	                backgroundRepeat: 'no-repeat',
+	                width: '100%',
+	                height: '100%',
+	                backgroundSize: 'cover',
+	                backgroundPosition: 'center',
+	                opacity: '1',
+	                position: 'absolute'
+	              }
+	            }
+	          });
+	
+	          console.log(_this2.state.styles.social);
 	        }
 	      });
 	    }
@@ -443,7 +474,7 @@
 	              { transitionName: 'tree', transitionEnterTimeout: 300, transitionLeaveTimeout: 300 },
 	              _react2.default.createElement(
 	                'div',
-	                { key: 1, onClick: this.handleTreeClick, className: 'large' },
+	                { key: 1, onClick: this.handleTreeClick, className: 'large', style: this.state.styles.social },
 	                _react2.default.createElement(_Treemap2.default, { treemapData: this.state.social_tone, clicked: this.state.socialClicked })
 	              ),
 	              _react2.default.createElement(
@@ -20762,7 +20793,7 @@
 	      { onSubmit: function onSubmit(e) {
 	          return props.sendMessage(e);
 	        } },
-	      _react2.default.createElement('textarea', { value: props.currentChat.inputText, onChange: function onChange(e) {
+	      _react2.default.createElement('textarea', { placeholder: 'Enter text to be analyzed', value: props.currentChat.inputText, onChange: function onChange(e) {
 	          return props.handleMessageChange(e);
 	        }, className: 'form-control', rows: '3' }),
 	      _react2.default.createElement(
@@ -34731,7 +34762,35 @@
 	exports.default = initialData;
 
 /***/ },
-/* 233 */,
+/* 233 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var images = {
+	  emotions: {
+	    Anger: 'http://royalpurplenews.com/wp-content/uploads/2012/03/Anger-Management.jpg',
+	    Disgust: 'http://pre00.deviantart.net/7c4d/th/pre/i/2010/007/a/4/the_sickening___print_by_phlegeton.jpg',
+	    Fear: 'http://themindunleashed.org/wp-content/uploads/2014/08/nightmaree.jpg',
+	    Joy: 'http://www.artsfon.com/pic/201503/1920x1080/artsfon.com-68037.jpg',
+	    Sadness: 'http://www.cardloanhikakunavi.com/wp-content/uploads/2015/11/Quotes-help-sadness.jpg'
+	  },
+	  social: {
+	    'Emotional Range': 'http://autismteachingstrategies.com/wp-content/uploads/2013/11/IMG_0899.jpg',
+	    Conscientiousness: 'http://www.iflscience.com/sites/www.iflscience.com/files/blog/%5Bnid%5D/t79mzzj5-1456884486.jpg',
+	    Openness: 'https://ablersite.files.wordpress.com/2012/03/map-sci_collabo2.jpg',
+	    Extraversion: 'http://4.bp.blogspot.com/-wfbJSYeekTo/T9d7qXD7CnI/AAAAAAAAAKQ/G8KTgxBoHjQ/s1600/introvert-pic-goldfish.jpg',
+	    Agreeableness: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Jacobite_broadside_-_Agreeable_Contrast.jpg'
+	  },
+	  language: {}
+	};
+	
+	exports.default = images;
+
+/***/ },
 /* 234 */
 /***/ function(module, exports, __webpack_require__) {
 

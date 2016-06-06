@@ -431,7 +431,7 @@
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { onClick: this.handleTreeClick, className: 'shrink' },
+	                { onClick: this.handleTreeClick, className: 'shrink2' },
 	                _react2.default.createElement(_Treemap2.default, { treemapData: this.state.social_tone, clicked: this.state.socialClicked })
 	              )
 	            )
@@ -33529,6 +33529,7 @@
 	
 	      fontsize = '0em'
 	    }
+	
 	    var textStyle = {
 	      'textAnchor': 'middle',
 	      'fill': props.textColor,
@@ -34459,7 +34460,7 @@
 	    value: function render() {
 	      if (this.props.clicked) {
 	        var width = window.innerWidth / 1.3;
-	        var height = 450;
+	        var height = 400;
 	        var labels = true;
 	      } else {
 	        var width = window.innerWidth / 5;
@@ -34545,7 +34546,7 @@
 	      console.log(this.props.treemapData.watsonData);
 	      if (this.props.clicked) {
 	        var width = window.innerWidth / 1.4;
-	        var height = 450;
+	        var height = 400;
 	        var labels = true;
 	      } else {
 	        var width = window.innerWidth / 3;

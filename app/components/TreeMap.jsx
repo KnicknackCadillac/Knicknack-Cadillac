@@ -25,7 +25,7 @@ class Treemap extends React.Component{
     console.log(this.props.treemapData.watsonData);
     if(this.props.clicked){
       var width = window.innerWidth/1.4;
-      var height = 450;
+      var height = 400;
       var labels = true;
     }else{
        var width = window.innerWidth/3;

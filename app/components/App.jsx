@@ -247,7 +247,7 @@ class App extends React.Component {
               <div onClick={this.handleBarClick} className='shrink1'>
                 {bar}
               </div>
-              <div onClick={this.handleTreeClick} className='shrink'>
+              <div onClick={this.handleTreeClick} className='shrink2'>
                 <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
               </div>
             </ReactCSSTransitionGroup>

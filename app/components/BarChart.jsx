@@ -26,7 +26,7 @@ class BarChart extends React.Component{
   render() {
     if(this.props.clicked){
       var width = window.innerWidth/1.3;
-      var height = 450;
+      var height = 400;
       var labels = true;
     }else{
        var width = window.innerWidth/5;

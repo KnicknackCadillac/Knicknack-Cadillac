@@ -194,7 +194,7 @@ class App extends React.Component {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: '1',
-            position: 'relative'
+            position: 'absolute'
           },
             social: {
             backgroundImage: 'url(' + wallpaper.social[highestSocial.label] + ')',
@@ -204,7 +204,7 @@ class App extends React.Component {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: '1',
-            position: 'relative'
+            position: 'absolute'
           },
             language: {
               backgroundImage: 'url(' + wallpaper.language[highestLang.x] + ')',
@@ -214,12 +214,12 @@ class App extends React.Component {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               opacity: '1',
-              position: 'relative'
+              position: 'absolute'
             }
           }
         })
 
-        console.log(this.state.styles.language);
+        console.log(this.state.styles.emotions);
       }
     });
   }
@@ -243,10 +243,10 @@ class App extends React.Component {
               <div onClick={this.handlePieClick} className='large' >
                 <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
               </div>
-              <div onClick={this.handleBarClick} className='shrink'>
+              <div onClick={this.handleBarClick} className='shrink1'>
                 {bar}
               </div>
-              <div onClick={this.handleTreeClick} className='shrink'>
+              <div onClick={this.handleTreeClick} className='shrink2'>
                 <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
               </div>
             </ReactCSSTransitionGroup>
@@ -265,10 +265,10 @@ class App extends React.Component {
             <div key={1} onClick={this.handleBarClick} className='large' >
               {bar}
             </div>
-            <div key={2} onClick={this.handlePieClick} className='shrink' >
+            <div key={2} onClick={this.handlePieClick} className='shrink1' >
               <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
             </div>
-            <div key={3} onClick={this.handleTreeClick} className='shrink'>
+            <div key={3} onClick={this.handleTreeClick} className='shrink2'>
               <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
             </div>
             </ReactCSSTransitionGroup>
@@ -288,10 +288,10 @@ class App extends React.Component {
               <div key={1} onClick={this.handleTreeClick} className='large' >
                 <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
               </div>
-              <div key={2} onClick={this.handlePieClick} className='shrink'>
+              <div key={2} onClick={this.handlePieClick} className='shrink1'>
                 <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
               </div>
-              <div key={3} onClick={this.handleBarClick} className='shrink'>
+              <div key={3} onClick={this.handleBarClick} className='shrink2'>
                 {bar}
               </div>
             </ReactCSSTransitionGroup>

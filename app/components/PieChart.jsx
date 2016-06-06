@@ -37,7 +37,7 @@ class Chart extends React.Component {
           <PieChart
 
             data={ this.props.pieData.watsonData }
-            width={width}
+            width={(width)}
             height={ (height / 2)}
             radius={ (height / 6)}
             innerRadius={ (height / 5) }

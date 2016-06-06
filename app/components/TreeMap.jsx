@@ -23,12 +23,12 @@ class Treemap extends React.Component{
 
   render() {
     if(this.props.clicked){
-      var width = window.innerWidth;
+      var width = window.innerWidth/1.4;
       var height = 250;
       var labels = true;
     }else{
-       var width = window.innerWidth/9;
-       var height = window.innerWidth/9;
+       var width = window.innerWidth/10;
+       var height = window.innerWidth/10;
        var labels = false;
     }
     return (

@@ -1,6 +1,6 @@
 body {
 	background: linear-gradient(white, black);
-	position: fixed;
+	position: absolute;
 	background-repeat: no-repeat;
 	background-size: cover;
 	width:100%;
@@ -9,21 +9,21 @@ body {
 	font-color: black;
 }
 
-.title {
-	color: white;
+
+.rd3-chart{
+  position: relative;
 }
 
 .shrink {
   position: relative;
 }
 
-.large {
-	background: linear-gradient(black, white);
-	background-repeat: no-repeat;
-	background-size: cover;
-	width:100%;
-	height: 100%;
-	position: fixed;
+.rd3-basic-chart{
+  display: inline-block;
+}
+
+.chart{
+  background: linear-gradient(white, black);
 }
 
 .form-horizontal {

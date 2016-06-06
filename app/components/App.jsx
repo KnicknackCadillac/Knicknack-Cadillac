@@ -134,9 +134,10 @@ class App extends React.Component {
         // populate social property
         for (let watsonData of data.tone_categories[2].tones) {
           const obj = {
-            label: watsonData.tone_name,
+            label: watsonData.tone_name + " " + Math.floor(watsonData.score * 100) + "%",
             value: Math.floor(watsonData.score * 100)
           }
+          console.log('this is label!!!!!!!!!!!!!!!!!!!!!!!!!!!!:',  obj.label);
           social_Arr.push(obj);
         }
 
@@ -183,7 +184,7 @@ class App extends React.Component {
           }
         });
         console.log(highestLang.x);
-
+        let fixedLabel = highestSocial.label.split(' ')[0]
         this.setState({
           styles: {
             emotions: {
@@ -197,7 +198,7 @@ class App extends React.Component {
             position: 'absolute'
           },
             social: {
-            backgroundImage: 'url(' + wallpaper.social[highestSocial.label] + ')',
+            backgroundImage: 'url(' + wallpaper.social[fixedLabel] + ')',
             backgroundRepeat: 'no-repeat',
             width: '100%',
             height: '100%',

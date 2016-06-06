@@ -23,8 +23,8 @@ class Chart extends React.Component {
 
   render() {
     if(this.props.clicked){
-      var width = window.innerWidth;
-      var height = window.innerWidth;
+      var width = window.innerWidth/1.5;
+      var height = window.innerWidth/1.5;
       var labels = true;
     }else{
        var width = window.innerWidth/3;
@@ -48,6 +48,7 @@ class Chart extends React.Component {
             title={this.props.pieData.circleAttributes.title}
             showInnerLabels={labels}
             showOuterLabels={labels}
+            labelTextFill='#ffffff'
           />
       </div>
       );

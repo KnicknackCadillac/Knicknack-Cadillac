@@ -257,12 +257,12 @@ class App extends React.Component {
     } else if (this.state.languageClicked) {
       return (
         <div>
-          <div className='chart'>
+          <div className='chart' style={this.state.styles.language}>
             <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } key={this.state.chat}/>
             <ReactCSSTransitionGroup transitionName="bar" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
-            <div key={1} onClick={this.handleBarClick} className='large' style={this.state.styles.language}>
+            <div key={1} onClick={this.handleBarClick} className='large' >
               {bar}
             </div>
             <div key={2} onClick={this.handlePieClick} className='shrink' >

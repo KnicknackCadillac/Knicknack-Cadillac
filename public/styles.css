@@ -1,6 +1,6 @@
 body {
 	background: linear-gradient(white, black);
-	position: fixed;
+	position: absolute;
 	background-repeat: no-repeat;
 	background-size: cover;
 	width:100%;
@@ -9,21 +9,21 @@ body {
 	font-color: black;
 }
 
-.title {
-	color: white;
+
+.rd3-chart{
+  display: block;
 }
 
 .shrink {
-  position: relative;
+  display: inline-block;
 }
 
-.large {
-	background: linear-gradient(black, white);
-	background-repeat: no-repeat;
-	background-size: cover;
-	width:100%;
-	height: 100%;
-	position: fixed;
+.rd3-basic-chart{
+  display: block;
+}
+
+.chart{
+  background: linear-gradient(white, black);
 }
 
 .form-horizontal {
@@ -92,9 +92,4 @@ body {
 .tree-leave.tree-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
-}
-
-.piechart {
-	width:25%;
-	height: 25%;
 }

@@ -194,7 +194,7 @@ class App extends React.Component {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: '1',
-            position: 'absolute'
+            position: 'relative'
           },
             social: {
             backgroundImage: 'url(' + wallpaper.social[highestSocial.label] + ')',
@@ -204,7 +204,7 @@ class App extends React.Component {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: '1',
-            position: 'absolute'
+            position: 'relative'
           },
             language: {
               backgroundImage: 'url(' + wallpaper.language[highestLang.x] + ')',
@@ -214,7 +214,7 @@ class App extends React.Component {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               opacity: '1',
-              position: 'absolute'
+              position: 'relative'
             }
           }
         })
@@ -235,12 +235,12 @@ class App extends React.Component {
     if(this.state.emotionClicked){
       return (
         <div>
-          <div className='chart'>
+          <div className='chart' style={this.state.styles.emotions}>
             <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } />
             <ReactCSSTransitionGroup transitionName="pie" transitionEnterTimeout={300} transitionLeaveTimeout={300} transitionAppear={true} transitionAppearTimeout={500}>
-              <div onClick={this.handlePieClick} className='large' style={this.state.styles.emotions}>
+              <div onClick={this.handlePieClick} className='large' >
                 <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
               </div>
               <div onClick={this.handleBarClick} className='shrink'>
@@ -278,14 +278,14 @@ class App extends React.Component {
     } else if (this.state.socialClicked) {
       return (
         <div>
-          <div className='chart'>
+          <div className='chart' style={this.state.styles.social}>
             <div>
             <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } />
             </div>
             <ReactCSSTransitionGroup transitionName="tree" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
-              <div key={1} onClick={this.handleTreeClick} className='large' style={this.state.styles.social}>
+              <div key={1} onClick={this.handleTreeClick} className='large' >
                 <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
               </div>
               <div key={2} onClick={this.handlePieClick} className='shrink'>

@@ -37,7 +37,7 @@ const initialData =
       circleAttributes: {
         title: 'Emotional Tone',
         width: null,
-        height: 2,
+        height: 1,
         radius: 4,
         innerRadius: 4
       }
@@ -59,13 +59,7 @@ const initialData =
           y: 1
         },
       ],
-      circleAttributes: {
-        // title: 'Language Tone',
-        // width: null,
-        // height: 3,
-        // radius: 5.1,
-        // innerRadius: 4.1
-      }
+
     },
 
     social_tone: {

@@ -26,7 +26,7 @@
 
 - Node 5.9.x
 - MySQL 14.x
-- Watson Developer API Key (https://console.ng.bluemix.net/)
+- Watson Developer API Key (register here for a key: https://console.ng.bluemix.net/)
 
 ## Development
 
@@ -34,7 +34,9 @@
 
 From within the root directory:
 
+```sh
 npm install
+```
 
 ### Roadmap
 

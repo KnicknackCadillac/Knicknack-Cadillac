@@ -1,4 +1,4 @@
-import React from 'react'
+;import React from 'react'
 
 const rd3 = require('react-d3');
 const TreemapChart = rd3.Treemap;
@@ -50,4 +50,4 @@ class Treemap extends React.Component{
   }
 };
 
-export default Treemap
+export default Treemap;

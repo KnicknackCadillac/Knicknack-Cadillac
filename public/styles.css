@@ -15,7 +15,68 @@ body {
 	width: 100%;
 	position: relative;
 }
+.pie-appear {
+  opacity: 0.01;
+}
 
+.pie-appear.initialLoad-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.pie-enter {
+  opacity: 0.01;
+}
+
+.pie-enter.pie-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.pie-leave {
+  opacity: 1;
+}
+
+.pie-leave.pie-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.bar-enter {
+  opacity: 0.01;
+}
+
+.bar-enter.bar-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.bar-leave {
+  opacity: 1;
+}
+
+.bar-leave.bar-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.tree-enter {
+  opacity: 0.01;
+}
+
+.tree-enter.tree-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.tree-leave {
+  opacity: 1;
+}
+
+.tree-leave.tree-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
 /*.rd3-chart-title{
   display:block;
   position: relative;

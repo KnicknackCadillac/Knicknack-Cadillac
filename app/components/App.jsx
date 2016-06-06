@@ -1,3 +1,4 @@
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var update = require('react-addons-update');
 var _ = require('underscore')
 import React from 'react';
@@ -75,13 +76,9 @@ class App extends React.Component {
     this.state.socialClicked ? true : this.setState({socialClicked: true});
   };
 
-
-  // }
-
   handleChange(e) {
     this.setState({
       chat: {
-        // username: 'boo',
         inputText: e.target.value
       }
     });
@@ -135,23 +132,6 @@ class App extends React.Component {
           social_Arr.push(obj);
         }
 
-
-
-        // update(this.state.emotion_tone,
-        //     watsonData: {$push: emotion_Arr}
-        // );
-        // update(this.state.language_tone, {
-        //   language_tone: {
-        //     watsonData: {$push: language_Arr}
-        //   }
-        // });
-        // update(this.state.social_tone, {
-        //   social_tone: {
-        //     watsonData: {$push: social_Arr}
-        //   }
-        // });
-
-
         this.setState({
           emotion_tone: update(this.state.emotion_tone, {
             watsonData: {$set: emotion_Arr}
@@ -192,9 +172,6 @@ class App extends React.Component {
       }
     });
   }
-          // { this.state.emotionClicked ? <Chart pieData={ this.state.emotion_tone } /> : null }
-          // { this.state.languageClicked ? <Chart pieData={ this.state.language_tone } /> : null }
-          // { this.state.socialClicked ? <Chart pieData={ this.state.social_tone } /> : null }
 
   render() {
     //console.log('this is language_tone.watsondata: ', this.state.language_tone.watsonData);
@@ -211,19 +188,19 @@ class App extends React.Component {
             <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } />
-            <div onClick={this.handlePieClick} className='large' style={this.state.styles}>
-              <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
-            </div>
-            <div onClick={this.handleBarClick} className='shrink'>
-              {bar}
-            </div>
-            <div onClick={this.handleTreeClick} className='shrink'>
-              <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
-            </div>
+            <ReactCSSTransitionGroup transitionName="pie" transitionEnterTimeout={300} transitionLeaveTimeout={300} transitionAppear={true} transitionAppearTimeout={500}>
+              <div onClick={this.handlePieClick} className='large' style={this.state.styles}>
+                <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
+              </div>
+              <div onClick={this.handleBarClick} className='shrink'>
+                {bar}
+              </div>
+              <div onClick={this.handleTreeClick} className='shrink'>
+                <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
+              </div>
+            </ReactCSSTransitionGroup>
           </div>
 
-          <div className="col-md-6">
-          </div>
         </div>
       );
     } else if (this.state.languageClicked) {
@@ -232,19 +209,18 @@ class App extends React.Component {
           <div className='chart'>
             <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
-              currentChat={ this.state.chat } />
-            <div onClick={this.handleBarClick} className='large'>
+              currentChat={ this.state.chat } key={this.state.chat}/>
+            <ReactCSSTransitionGroup transitionName="bar" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
+            <div key={1} onClick={this.handleBarClick} className='large'>
               {bar}
             </div>
-            <div onClick={this.handlePieClick} className='shrink' >
+            <div key={2} onClick={this.handlePieClick} className='shrink' >
               <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
             </div>
-            <div onClick={this.handleTreeClick} className='shrink'>
+            <div key={3} onClick={this.handleTreeClick} className='shrink'>
               <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
             </div>
-          </div>
-
-          <div className="col-md-6">
+            </ReactCSSTransitionGroup>
           </div>
         </div>
       );
@@ -252,21 +228,22 @@ class App extends React.Component {
       return (
         <div>
           <div className='chart'>
+            <div>
             <Chats
               sendMessage={ event => this.handleSubmit(event) } handleMessageChange={ event => this.handleChange(event) }
               currentChat={ this.state.chat } />
-            <div onClick={this.handleTreeClick} className='large'>
-              <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
             </div>
-            <div onClick={this.handlePieClick} className='shrink'>
-              <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
-            </div>
-            <div onClick={this.handleBarClick} className='shrink'>
-              {bar}
-            </div>
-          </div>
-
-          <div className="col-md-6">
+            <ReactCSSTransitionGroup transitionName="tree" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
+              <div key={1} onClick={this.handleTreeClick} className='large'>
+                <Treemap treemapData={ this.state.social_tone } clicked={this.state.socialClicked}/>
+              </div>
+              <div key={2} onClick={this.handlePieClick} className='shrink'>
+                <Chart pieData={ this.state.emotion_tone } clicked={this.state.emotionClicked}/>
+              </div>
+              <div key={3} onClick={this.handleBarClick} className='shrink'>
+                {bar}
+              </div>
+            </ReactCSSTransitionGroup>
           </div>
         </div>
       );

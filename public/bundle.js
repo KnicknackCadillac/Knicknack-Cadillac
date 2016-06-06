@@ -338,7 +338,14 @@
 	          console.log(social_Arr);
 	          _this2.setState({
 	            styles: {
-	              backgroundImage: 'url(' + _wallpaperdata2.default[highestEmote.label] + ')'
+	              backgroundImage: 'url(' + _wallpaperdata2.default[highestEmote.label] + ')',
+	              backgroundRepeat: 'no-repeat',
+	              width: '100%',
+	              height: '100%',
+	              backgroundSize: 'cover',
+	              backgroundPosition: 'center',
+	              opacity: '0',
+	              position: 'absolute'
 	
 	            }
 	          });
@@ -20733,7 +20740,7 @@
 /* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -20747,17 +20754,21 @@
 	
 	var Chats = function Chats(props) {
 	  return _react2.default.createElement(
-	    "div",
-	    null,
+	    'div',
+	    { className: 'form-horizontal' },
 	    _react2.default.createElement(
-	      "form",
+	      'form',
 	      { onSubmit: function onSubmit(e) {
 	          return props.sendMessage(e);
 	        } },
-	      _react2.default.createElement("textarea", { value: props.currentChat.inputText, onChange: function onChange(e) {
+	      _react2.default.createElement('textarea', { value: props.currentChat.inputText, onChange: function onChange(e) {
 	          return props.handleMessageChange(e);
-	        } }),
-	      _react2.default.createElement("input", { type: "submit" })
+	        }, className: 'form-control', rows: '3' }),
+	      _react2.default.createElement(
+	        'button',
+	        { type: 'submit', 'class': 'btn btn-primary btn-lg btn-block' },
+	        'Submit'
+	      )
 	    )
 	  );
 	};

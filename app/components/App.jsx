@@ -176,7 +176,14 @@ class App extends React.Component {
         console.log(social_Arr);
         this.setState({
           styles: {
-            backgroundImage: 'url(' + wallpaper[highestEmote.label] + ')'
+            backgroundImage: 'url(' + wallpaper[highestEmote.label] + ')',
+            backgroundRepeat: 'no-repeat',
+            width: '100%',
+            height: '100%',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: '0',
+            position: 'absolute'
 
           }
         })

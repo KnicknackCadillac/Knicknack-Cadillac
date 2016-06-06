@@ -20896,12 +20896,9 @@
 	        _react2.default.createElement(PieChart, {
 	
 	          data: this.props.pieData.watsonData,
-	          width: width
-	          // height={ (height / this.props.pieData.circleAttributes.height) + 50}
-	          // radius={ (height / this.props.pieData.circleAttributes.radius) - 20}
-	          // innerRadius={ (height / this.props.pieData.circleAttributes.innerRadius) - 10}
-	          , height: height / 2 + 50,
-	          radius: height / 5 - 60,
+	          width: width,
+	          height: height / 2,
+	          radius: height / 6,
 	          innerRadius: height / 5,
 	          sectorBorderColor: 'black',
 	          colors: function colors(d) {
@@ -34534,8 +34531,8 @@
 	        var height = 250;
 	        var labels = true;
 	      } else {
-	        var width = window.innerWidth / 5;
-	        var height = window.innerWidth / 5;
+	        var width = window.innerWidth / 9;
+	        var height = window.innerWidth / 9;
 	        var labels = false;
 	      }
 	      return _react2.default.createElement(TreemapChart, {
@@ -34600,7 +34597,7 @@
 	    circleAttributes: {
 	      title: 'Emotional Tone',
 	      width: null,
-	      height: 2,
+	      height: 1,
 	      radius: 4,
 	      innerRadius: 4
 	    }
@@ -34616,14 +34613,8 @@
 	    }, {
 	      x: 'Tentative',
 	      y: 1
-	    }],
-	    circleAttributes: {
-	      // title: 'Language Tone',
-	      // width: null,
-	      // height: 3,
-	      // radius: 5.1,
-	      // innerRadius: 4.1
-	    }
+	    }]
+	
 	  },
 	
 	  social_tone: {

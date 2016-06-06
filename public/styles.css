@@ -11,15 +11,15 @@ body {
 
 
 .rd3-chart{
-  position: relative;
+  display: block;
 }
 
 .shrink {
-  position: relative;
+  display: inline-block;
 }
 
 .rd3-basic-chart{
-  display: inline-block;
+  display: block;
 }
 
 .chart{
@@ -92,9 +92,4 @@ body {
 .tree-leave.tree-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
-}
-
-.piechart {
-	width:25%;
-	height: 25%;
 }

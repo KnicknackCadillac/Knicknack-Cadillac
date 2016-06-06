@@ -1,14 +1,23 @@
 body {
-	background-color: white;
+	background: linear-gradient(white, black);
+	position: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width:100%;
+	height: 100%;
+
 	font-color: black;
 }
 
 
 .shrink {
-  display: block;
   position: relative;
 }
 
+.large {
+	background: linear-gradient(black, white);
+	position: relative;
+}
 
 .form-horizontal {
 	text-align: center;
@@ -77,15 +86,6 @@ body {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
-/*.rd3-chart-title{
-  display:block;
-  position: relative;
-}
-
-.rd3-basic-chart {
-  display: block;
-  position: relative;
-}*/
 
 .piechart {
 	width:25%;
